@@ -1,17 +1,22 @@
 return {
   {
-    "rose-pine/neovim",
-    name = "rose-pine",
+    "sainnhe/gruvbox-material",
     priority = 1000,
     config = function()
-      require("rose-pine").setup({
-        variant = "moon", -- auto, main, moon, dawn
-        styles = {
-          transparency = true,
-        }
-      })
-      vim.cmd.colorscheme("rose-pine")
-    end
+      vim.o.background = "dark"
+      local cmds = {
+        "let g:gruvbox_material_background = 'hard'",
+        "let g:gruvbox_material_transparent_background = 2",
+        "let g:gruvbox_material_diagnostic_line_highlight = 1",
+        "let g:gruvbox_material_diagnostic_virtual_text = 'colored'",
+        "let g:gruvbox_material_enable_bold = 1",
+        "let g:gruvbox_material_enable_italic = 1",
+        "colorscheme gruvbox-material",
+      }
+      for _, cmd in ipairs(cmds) do
+        vim.cmd(cmd)
+      end
+    end,
   },
   {
     "nvim-lualine/lualine.nvim",
@@ -19,7 +24,7 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     opts = {
-      theme = "rose-pine"
-    }
+      theme = "gruvbox-material",
+    },
   },
 }

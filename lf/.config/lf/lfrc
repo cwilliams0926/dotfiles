@@ -1,0 +1,5 @@
+set previewer ~/.local/bin/lfpreview
+set cleaner ~/.local/bin/lfcleaner
+cmd on-select &{{
+  lf -remote 'send redraw'
+}}
