@@ -35,33 +35,6 @@
     "escape": true,
     "tooltip": false
   },
-  // Modules configuration
-  "sway/workspaces": {
-    "disable-scroll": true,
-    "active-only": false,
-    "all-outputs": true,
-    "warp-on-scroll": false,
-    "format": "{icon}",
-    "format-icons": {
-      "1": "<span>󰧨</span>",
-      "2": "<span>󰈹</span>",
-      "3": "<span></span>",
-      "4": "<span></span>",
-      "5": "<span></span>",
-      "6": "<span>󰭛</span>",
-      "7": "<span>󱓷</span>",
-      "8": "<span>󰚀</span>"
-    }
-  },
-  "sway/window": {
-    "format": "<span color='#f6c657' > 󰣆 </span>{app_id}",
-    "separate-outputs": true,
-    "tooltip": false
-  },
-  "sway/mode": {
-    "format": " {}",
-    "max-length": 50
-  },
   "hyprland/workspaces": {
     "disable-scroll": true,
     "active-only": false,
@@ -80,7 +53,7 @@
     }
   },
   "hyprland/window": {
-    "format": "<span color='#f6c657' > 󰣆 </span>{class}",
+    "format": "<span color='#83a598' > 󰣆 </span>{class}",
     "separate-outputs": true,
     "icon": false,
     "tooltip": false
@@ -94,17 +67,17 @@
     "spacing": 8
   },
   "disk": {
-    "format": "<span color='#ea6962' >  </span>{free}",
+    "format": "<span color='#83a598' >  </span>{free}",
     "interval": 20
   },
   "cpu": {
-    "format": "<span color='#e78a4e' >  </span>{usage}%",
+    "format": "<span color='#83a598' >  </span>{usage}%",
     "tooltip": false,
     "interval": 1
   },
   "backlight": {
     "device": "intel_backlight",
-    "format": "<span color='#f6c657' > 󰞏 </span>{percent}%",
+    "format": "<span color='#83a598' > 󰞏 </span>{percent}%",
     "tooltip": false,
     "on-click-right": "~/.config/custom_scripts/wlsunset.sh",
     "interval": 1
@@ -113,7 +86,7 @@
     "exec": "~/.config/waybar/scripts/memory_usage.sh",
     "interval": 2,
     "return-type": "json",
-    "format": "<span color='#458588' >  </span>{}"
+    "format": "<span color='#83a598' >  </span>{}"
   },
   "pulseaudio": {
     "scroll-step": 1,
@@ -148,22 +121,22 @@
       "󰂂",
       "󰁹"
     ],
-    "format": "<span color='#689d6a' > {icon} </span>{capacity}%",
+    "format": "<span color='#' > {icon} </span>{capacity}%",
     "format-critical": "<span color='#cc241d' > {icon} </span>{capacity}%!!",
     "format-warning": "<span color='#e78a4e' > {icon} </span>{capacity}%",
-    "format-full": "<span color='#689d6a' > {icon} </span>{capacity}%",
-    "format-charging": "<span color='#689d6a' > 󰂅 </span>{capacity}%",
+    "format-full": "<span color='#83a598' > {icon} </span>{capacity}%",
+    "format-charging": "<span color='#83a598' > 󰂅 </span>{capacity}%",
     "format-charging-warning": "<span color='#e78a4e' > 󰢝 </span>{capacity}%",
     "format-charging-critical": "<span color='#cc241d' > 󰢜 </span>{capacity}%",
-    "format-plugged": "<span color='#689d6a' > 󰂅 </span>{capacity}%",
-    "format-alt": "<span color='#689d6a' > 󱧥 </span>{time}",
+    "format-plugged": "<span color='#83a598' > 󰂅 </span>{capacity}%",
+    "format-alt": "<span color='#83a598' > 󱧥 </span>{time}",
     "tooltip": false
   },
   "network": {
     "interval": 2,
-    "format": "<span color='#d3869b'> 󱘖 </span>{bandwidthDownBits}",
-    "format-wifi": "<span color='#d3869b'> {icon} </span>{bandwidthDownBits}",
-    "format-ethernet": "<span color='#d3869b'> 󰈀 </span>{bandwidthDownBits}",
+    "format": "<span color='#83a598'> 󱘖 </span>{bandwidthDownBits}",
+    "format-wifi": "<span color='#83a598'> {icon} </span>{bandwidthDownBits}",
+    "format-ethernet": "<span color='#83a598'> 󰈀 </span>{bandwidthDownBits}",
     "format-icons": [
       "󰤫",
       "󰤟",
@@ -178,7 +151,7 @@
   },
   "clock": {
     // "timezone": "America/New_York",
-    "format": "<span color='#8ec07c' >  </span>{:%a %d | %H:%M}",
+    "format": "<span color='#83a598' >  </span>{:%a %d | %H:%M}",
     "tooltip": false,
     "interval": 1
   }

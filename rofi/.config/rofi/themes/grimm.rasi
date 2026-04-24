@@ -3,11 +3,11 @@
   padding : 0;
   spacing : 0;
   dark : #222222;
-  red : #ea6962;
-  red-alt : #ca3433;
+  blue : #83a598;
+  blue-alt : #458588;
   green : #a9b665;
   cream : #d4be98;
-  highlight : underline bold #3D4220;
+  highlight : underline bold #458588;
   font : "JetBrainsMono Nerd Font Propo ExtraBold 14";
 }
 
@@ -37,14 +37,14 @@ prompt {
   padding : 3px 6px;
   text-color : @dark;
   border : 3px;
-  border-color : @red;
-  background-color : @red;
+  border-color : @blue;
+  background-color : @blue;
 }
 
 entry {
   margin : 6px;
   padding : 3px 6px;
-  text-color : @red;
+  text-color : @blue;
   border : 3px;
   border-color : @green;
   background-color : @dark;
@@ -67,7 +67,7 @@ element {
 
 element selected active {
   text-color : @cream;
-  background-color : @red-alt;
+  background-color : @blue-alt;
 }
 
 element-text {
@@ -83,7 +83,7 @@ element-text selected {
 
 element-text selected active {
   text-color : @cream;
-  background-color : @red-alt;
+  background-color : @blue-alt;
 }
 
 element-icon{
@@ -99,7 +99,7 @@ element-icon selected {
 
 element-icon selected active {
   text-color : @cream;
-  background-color : @red-alt;
+  background-color : @blue-alt;
 }
 
 message {
@@ -112,9 +112,9 @@ message {
 textbox {
   expand : true;
   padding : 6px;
-  border-color : @red-alt;
+  border-color : @blue-alt;
   background-color : @dark;
-  text-color : @red-alt;
+  text-color : @blue-alt;
 }
 
 error-message {

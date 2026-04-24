@@ -98,8 +98,8 @@ window#waybar {
 
 #workspaces button:hover {
   color: @bg;
-  background: @pink;
-  border-color: @pink-dark;
+  background: @blue;
+  border-color: @blue-dark;
 }
 
 #workspaces button.visible,
