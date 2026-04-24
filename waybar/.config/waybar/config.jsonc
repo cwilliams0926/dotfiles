@@ -121,7 +121,7 @@
       "󰂂",
       "󰁹"
     ],
-    "format": "<span color='#' > {icon} </span>{capacity}%",
+    "format": "<span color='#83a598' > {icon} </span>{capacity}%",
     "format-critical": "<span color='#cc241d' > {icon} </span>{capacity}%!!",
     "format-warning": "<span color='#e78a4e' > {icon} </span>{capacity}%",
     "format-full": "<span color='#83a598' > {icon} </span>{capacity}%",
