@@ -17,7 +17,7 @@
 @define-color pink #d3869b;
 @define-color pink-dark #b26286;
 
-@define-color green #8ec07c;
+@define-color green #a9b665;
 @define-color green-dark #689d68;
 
 @define-color red #ea6962;
@@ -39,28 +39,26 @@
 }
 
 window#waybar {
-  background: none;
+  background: transparent;
   font-family: IosevkaTerm Nerd Font Propo;
   font-size: 12pt;
-  font-weight: 900;
+  font-weight: 700;
   color: @fg;
 }
 
 .modules-left,
 .modules-center,
 .modules-right {
+  background-color: rgba(51, 51, 51, 0.5);
   padding: 3pt;
-  background: @bg;
+  border-radius: 6px;
 }
 
 /* ===== COMMON MODULE STYLE ===== */
 #window,
-#disk,
 #cpu,
 #custom-cpu_temp,
 #custom-cpu_temp.critical,
-#backlight,
-#custom-memory,
 #pulseaudio,
 #pulseaudio.muted,
 #battery,
@@ -68,25 +66,13 @@ window#waybar {
 #battery.warning,
 #network,
 #clock {
-  border: 2pt solid @border;
   color: @fg-soft;
-  background-color: @bg-alt;
   padding-right: 4.5pt;
-}
-
-/* ===== ROFI ===== */
-#custom-rofi {
-  color: @black;
-  border: 2pt solid @blue-dark;
-  background: @blue;
-  padding: 0pt 6pt;
 }
 
 /* ===== WORKSPACES ===== */
 #workspaces button {
   color: @fg-soft;
-  background-color: @bg-alt;
-  border: 2pt solid @border;
   min-width: 15pt;
   margin-right: 3pt;
   padding: 0pt 3.75pt;
@@ -100,6 +86,7 @@ window#waybar {
   color: @bg;
   background: @green;
   border-color: @green-dark;
+  border-radius: 6px;
 }
 
 #workspaces button.visible,
@@ -108,44 +95,17 @@ window#waybar {
 #workspaces button.active:hover {
   color: @black;
   background: @blue;
-  border-color: @blue-dark;
+  border-radius: 6px;
 }
 
 #workspaces button.urgent {
   color: @bg;
   border-color: @red-dark;
   background: @red;
+  border-radius: 6px;
 }
 
 /* ===== SPECIAL STATES ===== */
-#custom-cpu_temp.critical {
-  background-color: @red-dark;
-  border: 2pt solid @fg;
-}
-
-#custom-cpu_temp.unknown {
-  color: @gray;
-}
-
-#pulseaudio.muted {
-  border: 2pt solid @red;
-}
-
-#battery.critical {
-  border: 2pt solid @red-critical;
-}
-
-#battery.warning {
-  border: 2pt solid @orange;
-}
-
-/* ===== TRAY ===== */
-#tray {
-  color: @fg-soft;
-  background-color: @bg-tray;
-  border: 2pt solid @border;
-  padding: 0 6pt;
-}
 
 /* ===== MODE ===== */
 #mode,

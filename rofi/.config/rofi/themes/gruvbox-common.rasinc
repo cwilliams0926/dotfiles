@@ -1,0 +1,108 @@
+/* ==========================================================================
+   File: gruvbox-common.rasi
+   Desc: Shared rules between all gruvbox themes
+   Author: bardisty <b@bah.im>
+   Source: https://github.com/bardisty/gruvbox-rofi
+   Modified: Mon Feb 12 2018 06:06:47 PST -0800
+   ========================================================================== */
+
+window {
+    background-color: @background;
+    border:           1;
+    border-radius: 6px;
+    border-color: @gruvbox-dark-blue;
+}
+
+mainbox {
+    border:  0;
+    padding: 0;
+}
+
+message {
+    border:       2px 0 0;
+    border-color: @separatorcolor;
+    padding:      1px;
+}
+
+textbox {
+    highlight:  @highlight;
+    text-color: @foreground;
+}
+
+listview {
+    border-color: @separatorcolor;
+    spacing:      2px;
+    scrollbar:    false;
+    background-color: transparent;
+}
+
+element {
+    border:  0;
+    padding: 10px;
+    background-color: transparent;
+    text-color: @normal-foreground;
+}
+
+element selected {
+    background-color: @gruvbox-dark-blue;
+    text-color: @gruvbox-dark-bg0;
+}
+
+scrollbar {
+    width:        4px;
+    border:       0;
+    handle-color: @scrollbar-handle;
+    handle-width: 8px;
+    padding:      0;
+}
+
+mode-switcher {
+    border:       2px 0 0;
+    border-color: @separatorcolor;
+}
+
+inputbar {
+    background-color: transparent; 
+    spacing:    0;
+    padding:    10px;
+    children:   [ prompt, textbox-prompt-sep, entry, case-indicator ];
+}
+
+case-indicator,
+entry,
+prompt,
+button {
+    spacing:    0;
+    text-color: @normal-foreground;
+}
+
+case-indicator {
+    background-color: transparent;
+}
+
+entry {
+    background-color: transparent;
+}
+
+prompt {
+    background-color: transparent;
+}
+
+button.selected {
+    background-color: @selected-normal-background;
+    text-color:       @selected-normal-foreground;
+}
+
+textbox-prompt-sep {
+    expand:     false;
+    str:        "";
+    text-color: @normal-foreground;
+}
+element-text, element-icon {
+    background-color: transparent;
+    text-color: @gruvbox-dark-fg1;
+}
+
+element-text selected {
+    text-color: @gruvbox-dark-bg0;
+}
