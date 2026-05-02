@@ -34,4 +34,12 @@ return {
     "lukas-reineke/virt-column.nvim",
     opts = {},
   },
+  {
+    "OXY2DEV/markview.nvim",
+    lazy = false,
+  },
+  {
+    "christoomey/vim-tmux-navigator",
+    lazy = false,
+  },
 }
