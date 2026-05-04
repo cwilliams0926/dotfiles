@@ -9,6 +9,7 @@ however you could easily copy any individual configuration directory here and
 place it on your machine.
 
 ## TO-DO
+- Add laptop-specific optimizations
 - Fix blue light filter or change to a different one
 - Change wifi speed on waybar so it's less annoying
 - Fix vim-tmux-navigator (or don't idk)
