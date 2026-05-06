@@ -42,7 +42,7 @@ window#waybar {
   background: transparent;
   font-family: IosevkaTerm Nerd Font Propo;
   font-size: 12pt;
-  font-weight: 700;
+  font-weight: 600;
   color: @fg;
 }
 

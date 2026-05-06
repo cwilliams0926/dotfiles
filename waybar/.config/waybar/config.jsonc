@@ -26,14 +26,14 @@
     "warp-on-scroll": false,
     "format": "{icon}",
     "format-icons": {
-      "1": "<span font_weight='heavy'>1</span>",
-      "2": "<span font_weight='heavy'>2</span>",
-      "3": "<span font_weight='heavy'>3</span>",
-      "4": "<span font_weight='heavy'>4</span>",
-      "5": "<span font_weight='heavy'>5</span>",
-      "6": "<span font_weight='heavy'>6</span>",
-      "7": "<span font_weight='heavy'>7</span>",
-      "8": "<span font_weight='heavy'>8</span>"
+      "1": "<span>1</span>",
+      "2": "<span>2</span>",
+      "3": "<span>3</span>",
+      "4": "<span>4</span>",
+      "5": "<span>5</span>",
+      "6": "<span>6</span>",
+      "7": "<span>7</span>",
+      "8": "<span>8</span>"
     }
   },
   "hyprland/window": {
@@ -97,9 +97,9 @@
   },
   "network": {
     "interval": 2,
-    "format": "<span color='#83a598'> 󱘖 </span>{bandwidthDownBits}",
-    "format-wifi": "<span color='#83a598'> {icon} </span>{bandwidthDownBits}",
-    "format-ethernet": "<span color='#83a598'> 󰈀 </span>{bandwidthDownBits}",
+    "format": "<span color='#83a598'> 󱘖 </span>{essid}",
+    "format-wifi": "<span color='#83a598'> {icon} </span>{essid}",
+    "format-ethernet": "<span color='#83a598'> 󰈀 </span>{essid}",
     "format-icons": [
       "󰤫",
       "󰤟",

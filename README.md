@@ -11,11 +11,9 @@ place it on your machine.
 ## TO-DO
 - Add laptop-specific optimizations
 - Fix blue light filter or change to a different one
-- Change wifi speed on waybar so it's less annoying
 - Fix vim-tmux-navigator (or don't idk)
 - Configure swaync
 - Animations
-- Modularize hyprland
 - Potentially: upgrade to hyprland v55 for lua config
 - Add log out menu
 - Add wallpaper and theme switching scripts
