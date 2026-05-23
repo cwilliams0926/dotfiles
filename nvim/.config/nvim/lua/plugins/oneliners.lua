@@ -28,11 +28,9 @@ return {
   },
   {
     "m4xshen/smartcolumn.nvim",
-    opts = {},
-  },
-  {
-    "lukas-reineke/virt-column.nvim",
-    opts = {},
+    opts = {
+      scope = "line",
+    },
   },
   {
     "OXY2DEV/markview.nvim",
