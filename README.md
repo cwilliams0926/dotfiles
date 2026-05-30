@@ -9,6 +9,7 @@ however you could easily copy any individual configuration directory here and
 place it on your machine.
 
 ## TO-DO
+- Configure fastfetch for peak unemployment
 - Add laptop-specific optimizations
 - Fix blue light filter or change to a different one
 - Configure swaync
