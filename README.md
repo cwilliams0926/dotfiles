@@ -11,10 +11,8 @@ place it on your machine.
 ## TO-DO
 - Add laptop-specific optimizations
 - Fix blue light filter or change to a different one
-- Fix vim-tmux-navigator (or don't idk)
 - Configure swaync
-- Animations
-- Potentially: upgrade to hyprland v55 for lua config
+- Fix Animations
 - Add log out menu
 - Add wallpaper and theme switching scripts
 - Add shadows!!1

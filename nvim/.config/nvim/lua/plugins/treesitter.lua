@@ -28,6 +28,7 @@ return {
         end
         vim.wo.foldmethod = "expr"
         vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+        vim.wo.foldenable = false
         vim.treesitter.start(buf, language)
         if filetype ~= "html" then
           vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
