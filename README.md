@@ -13,7 +13,7 @@ place it on your machine.
 - Add laptop-specific optimizations
 - Fix blue light filter or change to a different one
 - Configure swaync
-- Fix Animations
+- Make custom animations maybe
 - Add log out menu
 - Add wallpaper and theme switching scripts
 - Add shadows!!1
