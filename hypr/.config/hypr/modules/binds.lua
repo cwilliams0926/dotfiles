@@ -22,6 +22,7 @@ hl.bind(
 )
 
 hl.bind(mainMod .. " + " .. "E", hl.dsp.exec_cmd("pcmanfm"))
+hl.bind(mainMod .. " + " .. "W", hl.dsp.exec_cmd("wlogout"))
 
 hl.bind(mainMod .. " + " .. "V", hl.dsp.window.float())
 

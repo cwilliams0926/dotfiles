@@ -49,9 +49,9 @@ window#waybar {
 .modules-left,
 .modules-center,
 .modules-right {
-  background-color: rgba(51, 51, 51, 0.5);
+  background-color: rgba(51, 51, 51, 0.8);
   padding: 3pt;
-  border-radius: 6px;
+  border-radius: 24px;
 }
 
 /* ===== COMMON MODULE STYLE ===== */
@@ -86,7 +86,7 @@ window#waybar {
   color: @bg;
   background: @green;
   border-color: @green-dark;
-  border-radius: 6px;
+  border-radius: 24px;
 }
 
 #workspaces button.visible,
@@ -95,14 +95,14 @@ window#waybar {
 #workspaces button.active:hover {
   color: @black;
   background: @blue;
-  border-radius: 6px;
+  border-radius: 24px;
 }
 
 #workspaces button.urgent {
   color: @bg;
   border-color: @red-dark;
   background: @red;
-  border-radius: 6px;
+  border-radius: 24px;
 }
 
 /* ===== SPECIAL STATES ===== */
