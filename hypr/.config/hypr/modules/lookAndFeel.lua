@@ -92,6 +92,13 @@ hl.config({
         { 0.1,  1 },
       },
     }),
+    hl.curve("overshot", {
+      type = "bezier",
+      points = {
+        { 0.05, 0.9 },
+        { 0.1,  1.05 },
+      },
+    }),
 
     -- Default animations
     hl.animation({
@@ -179,23 +186,9 @@ hl.config({
     hl.animation({
       leaf = "workspaces",
       enabled = true,
-      speed = 1.94,
-      bezier = "almostLinear",
-      style = "fade",
-    }),
-    hl.animation({
-      leaf = "workspacesIn",
-      enabled = true,
-      speed = 1.21,
-      bezier = "almostLinear",
-      style = "fade",
-    }),
-    hl.animation({
-      leaf = "workspacesOut",
-      enabled = true,
-      speed = 1.94,
-      bezier = "almostLinear",
-      style = "fade",
+      speed = 3,
+      bezier = "overshot",
+      style = "slidefade 30%",
     }),
     hl.animation({
       leaf = "zoomFactor",

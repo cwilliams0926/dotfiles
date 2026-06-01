@@ -21,7 +21,7 @@ hl.bind(
   hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit")
 )
 
-hl.bind(mainMod .. " + " .. "E", hl.dsp.exec_cmd("pcmanfm"))
+hl.bind(mainMod .. " + " .. "E", hl.dsp.exec_cmd("nautilus"))
 hl.bind(mainMod .. " + " .. "W", hl.dsp.exec_cmd("wlogout"))
 
 hl.bind(mainMod .. " + " .. "V", hl.dsp.window.float())

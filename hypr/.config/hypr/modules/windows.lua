@@ -111,7 +111,7 @@ hl.window_rule({
 hl.window_rule({
   name = "workspace_4",
   match = {
-    class = "^(?i).*pcmanfm.*",
+    class = "^(?i).*nautilus.*",
   },
   workspace = 4,
 })
