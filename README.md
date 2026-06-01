@@ -13,4 +13,4 @@ place it on your machine.
 - Fix blue light filter or change to a different one
 - Configure swaync
 - Make custom animations maybe
-- Add wallpaper and theme switching scripts
+- Add theme switching script
