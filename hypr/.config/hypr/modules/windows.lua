@@ -103,7 +103,7 @@ hl.window_rule({
 hl.window_rule({
   name = "workspace_3",
   match = {
-    class = "^(?i).*discord.*",
+    class = "^(?i).*obsidian.*",
   },
   workspace = 3,
 })
@@ -114,4 +114,12 @@ hl.window_rule({
     class = "^(?i).*nautilus.*",
   },
   workspace = 4,
+})
+
+hl.window_rule({
+  name = "workspace_5",
+  match = {
+    class = "^(?i).*discord.*",
+  },
+  workspace = 5,
 })
