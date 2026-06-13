@@ -4,9 +4,10 @@
 
 ---@module 'hl'
 
-hl.env("XCURSOR_SIZE", 24)
-
-hl.env("HYPRCURSOR_SIZE", 24)
+hl.env("HYPRCURSOR_THEME", "macOS-hypr")
+hl.env("HYPRCURSOR_SIZE", "24")
+hl.env("XCURSOR_THEME", "macOS")
+hl.env("XCURSOR_SIZE", "24")
 
 hl.env("HYPRSHOT_DIR", "/home/cwilliams0926/Pictures/Screenshots/")
 
