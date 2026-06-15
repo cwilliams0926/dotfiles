@@ -30,7 +30,12 @@ bindkey -M menuselect '^xh' accept-and-hold                # Hold
 bindkey -M menuselect '^xn' accept-and-infer-next-history  # Next
 bindkey -M menuselect '^xu' undo                           # Undo
 
-autoload -U compinit; compinit
+autoload -Uz compinit
+if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
 _comp_options+=(globdots) # With hidden files
 
 # Only work with the Zsh function vman
@@ -54,7 +59,7 @@ setopt COMPLETE_IN_WORD     # Complete from both ends of a word.
 # :completion:<function>:<completer>:<command>:<argument>:<tag>
 
 # Define completers
-zstyle ':completion:*' completer _extensions _complete _approximate
+zstyle ':completion:*' completer _extensions _complete _ignored _approximate
 
 # Use cache for commands using cache
 zstyle ':completion:*' use-cache on
