@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 alias psmouse="sudo modprobe -r psmouse && sudo modprobe psmouse"
-alias ls="eza"
+alias ls="eza -l"
 alias grep="grep -P -i --color=auto"
 
 alias cp="cp -iv"
