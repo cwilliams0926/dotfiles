@@ -45,7 +45,6 @@
         {
             "key": "󰍛 cpu",
             "type": "cpu",
-            "showPeCoreCount": true,
             "keyColor": "33"
         },
         {

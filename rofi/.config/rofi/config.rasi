@@ -1,7 +1,7 @@
 configuration {
-  display-drun: "";
+  display-drun: "    Apps";
   drun-display-format: "{icon} {name}";
-  font: "IosevkaTerm Nerd Font Propo 12";
+  font: "IosevkaTerm Propo Nerd Font 12";
   show-icons: true;
   modi: "window,run,drun";
 }

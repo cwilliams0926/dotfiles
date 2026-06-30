@@ -7,8 +7,6 @@ hl.env("XCURSOR_SIZE", "24")
 
 hl.env("HYPRSHOT_DIR", "/home/cwilliams0926/Pictures/Screenshots/")
 
-hl.env("KITTY_STARTUP", "1")
-
 -- Autostart
 hl.on("hyprland.start", function()
   hl.exec_cmd("systemctl --user start hyprpolkitagent")
