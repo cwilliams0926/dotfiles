@@ -6,7 +6,9 @@ local input = require("modules.input")
 
 local programs = require("modules.programs")
 
-local lookAndFeel = require("modules.lookAndFeel")
+local lookAndFeel = require("modules.decorations.rounded")
+
+local animations = require("modules.decorations.animations")
 
 local binds = require("modules.binds")
 

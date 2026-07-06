@@ -29,11 +29,9 @@ hl.bind(mainMod .. " + " .. "V", hl.dsp.window.float())
 hl.bind(mainMod .. " + " .. "space", hl.dsp.exec_cmd("rofi -show drun -display-drun"))
 hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "W", hl.dsp.exec_cmd("~/.config/custom_scripts/wallpaper-picker.sh"))
 
-hl.bind(mainMod .. " + " .. "P", hl.dsp.window.pseudo())
-
 -- dwindle
 
-hl.bind(mainMod .. " + " .. "J", hl.dsp.layout("togglesplit"))
+hl.bind(mainMod .. " + " .. "r", hl.dsp.layout("togglesplit"))
 
 -- dwindle
 
@@ -134,3 +132,11 @@ hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
+
+-- Fullscreen
+
+hl.bind(mainMod .. " + f", hl.dsp.window.fullscreen({ "fullscreen", toggle }))
+
+-- Move window
+
+hl.bind(mainMod .. " + n", hl.dsp.window.swap({ next = true }))

@@ -33,3 +33,10 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "css", "scss", "less" },
+  callback = function()
+    vim.opt_local.formatoptions:remove({ "o", "r" })
+  end,
+})
