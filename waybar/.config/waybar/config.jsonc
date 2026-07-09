@@ -1,11 +1,12 @@
 {
   "layer": "top",
-  "height": 20,
+  "height": 29,
   "spacing": 4,
   "margin-top": 5,
   "margin-left": 5,
   "margin-right": 5,
   "modules-left": [
+    "custom/arch-logo",
     "hyprland/workspaces",
     "hyprland/window",
     "hyprland/submap"
@@ -18,6 +19,12 @@
     "pulseaudio",
     "battery"
   ],
+ "custom/arch-logo": {
+    "format": "<span color='#83a598' >  </span>",
+    "separate-outputs": true,
+    "icon": false,
+    "tooltip": false
+ },
  "hyprland/workspaces": {
     "disable-scroll": true,
     "active-only": false,
