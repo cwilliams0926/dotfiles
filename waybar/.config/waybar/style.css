@@ -24,6 +24,8 @@
 @define-color red-dark #cc241d;
 @define-color red-critical #b22222;
 
+@define-color aqua #89b482;
+
 @define-color orange #e78a4e;
 
 /* ===== GLOBAL ===== */
@@ -93,7 +95,7 @@ window#waybar {
 #workspaces button.active,
 #workspaces button.active:hover {
   color: @black;
-  background: @blue;
+  background: @aqua;
   border-radius: 24px;
 }
 

@@ -20,7 +20,7 @@
     "battery"
   ],
  "custom/arch-logo": {
-    "format": "<span color='#83a598' >  </span>",
+    "format": "<span>  </span>",
     "separate-outputs": true,
     "icon": false,
     "tooltip": false
@@ -43,7 +43,7 @@
     }
   },
   "hyprland/window": {
-    "format": "<span color='#83a598' > 󰣆 </span>{class}",
+    "format": "<span color='#ea6962' > 󰣆 </span>{class}",
     "separate-outputs": true,
     "icon": false,
     "tooltip": false
@@ -54,9 +54,9 @@
   },
   "pulseaudio": {
     "scroll-step": 1,
-    "format": "<span color='#83a598' >  </span>{volume}%",
+    "format": "<span color='#d8a657' >  </span>{volume}%",
     "format-muted": "<span color='#ea6962' >  </span>{volume}%",
-    "format-bluetooth": "<span color='#83a598' > 󰂰 </span>{volume}%",
+    "format-bluetooth": "<span color='#d8a657' > 󰂰 </span>{volume}%",
     "format-bluetooth-muted": "<span color='#ea6962' > 󰂲 </span>{volume}%",
     "format-source": "{volume}% ",
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
@@ -85,22 +85,22 @@
       "󰂂",
       "󰁹"
     ],
-    "format": "<span color='#83a598' > {icon} </span>{capacity}%",
+    "format": "<span color='#a9b665' > {icon} </span>{capacity}%",
     "format-critical": "<span color='#cc241d' > {icon} </span>{capacity}%!!",
     "format-warning": "<span color='#e78a4e' > {icon} </span>{capacity}%",
-    "format-full": "<span color='#83a598' > {icon} </span>{capacity}%",
-    "format-charging": "<span color='#83a598' > 󰂅 </span>{capacity}%",
+    "format-full": "<span color='#a9b665' > {icon} </span>{capacity}%",
+    "format-charging": "<span color='#a9b665' > 󰂅 </span>{capacity}%",
     "format-charging-warning": "<span color='#e78a4e' > 󰢝 </span>{capacity}%",
     "format-charging-critical": "<span color='#cc241d' > 󰢜 </span>{capacity}%",
-    "format-plugged": "<span color='#83a598' > 󰂅 </span>{capacity}%",
-    "format-alt": "<span color='#83a598' > 󱧥 </span>{time}",
+    "format-plugged": "<span color='#a9b665' > 󰂅 </span>{capacity}%",
+    "format-alt": "<span color='#a9b665' > 󱧥 </span>{time}",
     "tooltip": false
   },
   "network": {
     "interval": 2,
-    "format": "<span color='#83a598'> 󱘖 </span>{essid}",
-    "format-wifi": "<span color='#83a598'> {icon} </span>{essid}",
-    "format-ethernet": "<span color='#83a598'> 󰈀 </span>{essid}",
+    "format": "<span color='#d3869b'> 󱘖 </span>{essid}",
+    "format-wifi": "<span color='#d3869b'> {icon} </span>{essid}",
+    "format-ethernet": "<span color='#d3869b'> 󰈀 </span>{essid}",
     "format-icons": [
       "󰤫",
       "󰤟",
