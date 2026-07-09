@@ -1,0 +1,1 @@
+/home/cwilliams0926/.config/hypr/modules/decorations/boxed.lua

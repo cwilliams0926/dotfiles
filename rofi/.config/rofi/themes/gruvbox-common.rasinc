@@ -48,7 +48,7 @@ listview {
     scrollbar:    false;
     background-color: transparent;
     lines: 6;
-    columns: 2;
+    columns: 1;
     cycle: true;
     dynamic: true;
     layout: vertical;
