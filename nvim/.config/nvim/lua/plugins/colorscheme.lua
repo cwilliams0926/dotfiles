@@ -16,6 +16,8 @@ return {
       for _, cmd in ipairs(cmds) do
         vim.cmd(cmd)
       end
+      vim.api.nvim_set_hl(0, "StatusLine", { bg = "none" })
+      vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "none" })
     end,
   },
   {
@@ -23,8 +25,44 @@ return {
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },
-    opts = {
-      theme = "gruvbox-material",
-    },
+    opts = function()
+      local custom_theme = require("lualine.themes.gruvbox-material")
+
+      for _, mode in pairs(custom_theme) do
+        if mode.c then
+          mode.c.bg = "none"
+        end
+      end
+
+      return {
+        options = {
+          theme = custom_theme,
+          section_separators = { left = "", right = "" },
+          component_separators = "",
+        },
+        sections = {
+          lualine_a = { { "mode", separator = { left = "" }, right_padding = 2 } },
+          lualine_b = { "filename", "branch", "diff" },
+          lualine_c = {
+            "%=", --[[ add your center components here in place of this comment ]]
+          },
+          lualine_x = {},
+          lualine_y = { "filetype", "progress" },
+          lualine_z = {
+            { "location", separator = { right = "" }, left_padding = 2 },
+          },
+        },
+        inactive_sections = {
+          lualine_a = { "filename" },
+          lualine_b = {},
+          lualine_c = {},
+          lualine_x = {},
+          lualine_y = {},
+          lualine_z = { "location" },
+        },
+        tabline = {},
+        extensions = {},
+      }
+    end,
   },
 }
