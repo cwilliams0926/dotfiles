@@ -1,3 +1,6 @@
 zsh/.config/zsh/.zcompdump
 zsh/.config/zsh/.zhistory
 zsh/.config/zsh/plugins/
+
+*.log
+tmux-*.log
