@@ -33,10 +33,6 @@ return {
     },
   },
   {
-    "OXY2DEV/markview.nvim",
-    lazy = false,
-  },
-  {
     "christoomey/vim-tmux-navigator",
     lazy = false,
   },
