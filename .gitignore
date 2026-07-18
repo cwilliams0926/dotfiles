@@ -4,3 +4,5 @@ zsh/.config/zsh/plugins/
 
 *.log
 tmux-*.log
+
+hypr/.config/hypr/modules/decorations/current.lua
