@@ -40,7 +40,9 @@
 }
 
 window#waybar {
-  background: transparent;
+  border-radius: 0px;
+  margin: 0;
+  background: @bg;
   font-family: IosevkaTerm Nerd Font Propo;
   font-size: 12pt;
   font-weight: 600;
@@ -50,9 +52,7 @@ window#waybar {
 .modules-left,
 .modules-center,
 .modules-right {
-  background-color: @bg;
   padding: 3pt;
-  border-radius: 24px;
 }
 
 /* ===== COMMON MODULE STYLE ===== */
@@ -87,7 +87,6 @@ window#waybar {
   color: @bg;
   background: @green;
   border-color: @green-dark;
-  border-radius: 24px;
 }
 
 #workspaces button.visible,
@@ -96,14 +95,12 @@ window#waybar {
 #workspaces button.active:hover {
   color: @black;
   background: @orange;
-  border-radius: 24px;
 }
 
 #workspaces button.urgent {
   color: @bg;
   border-color: @red-dark;
   background: @red;
-  border-radius: 24px;
 }
 
 /* ===== SPECIAL STATES ===== */
@@ -112,7 +109,5 @@ window#waybar {
 #mode,
 #submap {
   color: @black;
-  border: 2pt solid @blue-dark;
   background: @blue;
-  padding: 0pt 6pt;
 }

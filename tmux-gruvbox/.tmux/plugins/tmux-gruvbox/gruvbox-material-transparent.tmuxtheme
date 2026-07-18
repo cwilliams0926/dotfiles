@@ -4,6 +4,7 @@
 # --> Gruvbox (Material)
 thm_bg="default"
 thm_contrast="#282828"
+thm_window_contrast="#3c3836"
 thm_fg="#d4be98"
 thm_cyan="#89b482"
 thm_black="#665c54"
