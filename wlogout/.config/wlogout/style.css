@@ -1,3 +1,5 @@
+@import "colors/colors.css";
+
 * {
   background-image: none;
   box-shadow: none;
@@ -8,11 +10,12 @@ window {
 }
 
 button {
+  margin: 8px;
   border-radius: 12px;
-  border-color: black;
-  text-decoration-color: #ffffff;
-  color: #ffffff;
-  background-color: #1d2021;
+  border-color: @bg0;
+  text-decoration-color: @fg;
+  color: @fg;
+  background-color: @bg1;
   border-style: solid;
   border-width: 1px;
   background-repeat: no-repeat;
@@ -20,10 +23,8 @@ button {
   background-size: 25%;
 }
 
-button:focus,
-button:active,
 button:hover {
-  background-color: #83a598;
+  background-color: @blue;
   outline-style: none;
 }
 

@@ -1,9 +1,9 @@
+@theme "colors/colors.rasi"
+
 configuration {
-  display-drun: "    Apps";
+  display-drun: "Select Application";
   drun-display-format: "{icon} {name}";
   font: "IosevkaTerm Propo Nerd Font 12";
   show-icons: true;
   modi: "window,run,drun";
 }
-@theme "~/.config/rofi/themes/gruvbox-dark-soft.rasi"
-

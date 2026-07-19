@@ -52,3 +52,13 @@ vim.api.nvim_create_autocmd("FileType", {
     end
   end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "css",
+  callback = function()
+    -- Checks if the file path contains "wlogout"
+    if vim.fn.expand("%:p"):match("wlogout") then
+      vim.diagnostic.enable(false, { bufnr = 0 })
+    end
+  end,
+})

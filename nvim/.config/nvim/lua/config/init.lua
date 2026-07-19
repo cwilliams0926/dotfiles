@@ -1,3 +1,4 @@
+require("config.theme")
 require("config.remap")
 require("config.lazy")
 require("config.set")

@@ -23,4 +23,4 @@ place it on your machine.
 ## TO-DO
 
 - Configure swaync
-- Add theme switching script
+- Set up colors switcher for rofi and neovim

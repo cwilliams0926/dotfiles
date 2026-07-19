@@ -6,8 +6,9 @@ window {
     x-offset: 0px;
     y-offset: 0px;
     margin: 0px;
-    background-color: rgba(34, 34, 34, 0.8);
-    border-radius:    30px;
+    background-color: @bg0;
+    border: 0px;
+    border-radius: 30px;
     padding: 0px;
 }
 
@@ -21,22 +22,22 @@ message {
     border: 0px;
     padding: 10px;
     margin: 0px;
-    border-color: @gruvbox-dark-blue;
-    text-color: @normal-foreground;
+    border-color: @blue;
+    text-color: @fg;
 }
 
 textbox {
-    highlight:  @highlight;
+    highlight: @bg0;
     text-color: inherit;
 }
 
 listview {
-    spacing:      5px;
+    spacing: 5px;
     margin: 0px;
     padding: 0px;
     border: 0px solid;
     border-radius: 0px;
-    scrollbar:    false;
+    scrollbar: false;
     background-color: transparent;
     lines: 6;
     columns: 1;
@@ -51,45 +52,38 @@ listview {
 
 element {
     border:  0px;
-    padding: 10px;
+    padding: 12px;
     background-color: transparent;
-    text-color: @normal-foreground;
+    text-color: @fg;
     cursor: pointer;
 }
 
 element selected {
-    background-color: @gruvbox-dark-blue;
-    text-color: @gruvbox-dark-bg0;
-    border-radius: 20px;
+    background-color: @bg2;
+    text-color: @blue;
+    border-radius: 24px;
 }
 
 scrollbar {
     border:       0;
-    handle-color: @scrollbar-handle;
+    handle-color: @bg0;
     handle-width: 0;
     padding:      0;
 }
 
 mode-switcher {
     enabled: false;
-    border-color: @separatorcolor;
+    border-color: @bg0;
 }
 
 inputbar {
     background-color: transparent; 
     spacing: 0;
-    padding: 0 0 12px;
-    border: 0px;
-    border-radius: 0px;
-    children:   [ prompt, textbox-prompt-sep, entry, case-indicator ];
-}
-
-case-indicator,
-entry,
-prompt,
-button {
-    spacing:    0;
-    text-color: @normal-foreground;
+    border: 2px;
+    padding: 12px;
+    border-radius: 24px;
+    border-color: @blue;
+    children:   [ prompt, entry, case-indicator ];
 }
 
 case-indicator {
@@ -97,46 +91,36 @@ case-indicator {
 }
 
 entry {
+    text-color: @fg;
+    padding: 0px 0px 0px 8px;
+    border: 0px;
+    border-radius: 0px;
+    placeholder: "";
     background-color: transparent;
-    border-color: @gruvbox-dark-blue;
-    border: 2px;
-    border-radius: 20px;
-    padding: 8px;
-    spacing: 0px;
     cursor: text;
+    vertical-align: 0.5;
 }
 
 prompt {
+    text-color: @blue;
     background-color: transparent;
-    padding: 10px;
-    text-color: @gruvbox-dark-blue;
-}
-
-button.selected {
-    background-color: @selected-normal-background;
-    text-color:       @selected-normal-foreground;
-}
-
-textbox-prompt-sep {
-    expand: false;
-    padding: 10px 0px;
-    border-radiu: 0px;
-    background-color: transparent;
-    text-color: @gruvbox-dark-blue;
+    border-radius: 24px;
+    border: 0px;
+    vertical-align: 0.5;
 }
 
 element-text, element-icon {
     background-color: transparent;
-    text-color: @gruvbox-dark-fg1;
+    text-color: @fg;
     cursor: inherit;
+}
+
+element-text selected {
+    text-color: @blue;
 }
 
 element-text {
     vertical-align: 0.5;
     horizontal-align: 0.0;
-}
-
-element-text selected {
-    text-color: @gruvbox-dark-bg0;
 }
 

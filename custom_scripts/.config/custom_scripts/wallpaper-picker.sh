@@ -25,7 +25,7 @@ selection=$(
         -p "Wallpaper" \
         -show-icons \
         -icon-size 100 \
-        -theme-str 'listview { columns: 3; lines: 3; }' \
+        -theme-str 'listview { columns: 3; lines: 1; }' \
         -theme-str 'element { orientation: vertical; }' \
         -theme-str 'element-icon { size: 150px; }'
 )
