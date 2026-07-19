@@ -1,8 +1,8 @@
 {
   "layer": "top",
-  "height": 29,
+  "height": 32,
   "spacing": 4,
-  "margin-top": 8,
+  "margin-top": 12,
   "margin-left": 8,
   "margin-right": 8,
   "modules-center": [
@@ -14,7 +14,7 @@
     "battery"
   ],
  "custom/arch-logo": {
-    "format": "<span>  </span>",
+    "format": "",
     "separate-outputs": true,
     "icon": false,
     "tooltip": false
@@ -45,10 +45,10 @@
   },
   "pulseaudio": {
     "scroll-step": 1,
-    "format": "<span color='#d8a657' >  </span>",
-    "format-muted": "<span color='#ea6962' >  </span>",
-    "format-bluetooth": "<span color='#d8a657' > 󰂰 </span>",
-    "format-bluetooth-muted": "<span color='#ea6962' > 󰂲 </span>",
+    "format": "",
+    "format-muted": "",
+    "format-bluetooth": "󰂰",
+    "format-bluetooth-muted": "󰂲",
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
     "tooltip": false,
     "max-volume": 130
@@ -75,22 +75,22 @@
       "󰂂",
       "󰁹"
     ],
-    "format": "<span color='#a9b665' > {icon} </span>",
-    "format-critical": "<span color='#cc241d' > {icon} </span>",
-    "format-warning": "<span color='#e78a4e' > {icon} </span>",
-    "format-full": "<span color='#a9b665' > {icon} </span>",
-    "format-charging": "<span color='#a9b665' > 󰂅 </span>",
-    "format-charging-warning": "<span color='#e78a4e' > 󰢝 </span>",
-    "format-charging-critical": "<span color='#cc241d' > 󰢜 </span>",
-    "format-plugged": "<span color='#a9b665' > 󰂅 </span>",
-    "format-alt": "<span color='#a9b665' > 󱧥 </span>{time}",
+    "format": "{icon}",
+    "format-critical": "{icon}",
+    "format-warning": "{icon}",
+    "format-full": "{icon}",
+    "format-charging": "󰂅",
+    "format-charging-warning": "󰢝",
+    "format-charging-critical": "󰢜",
+    "format-plugged": "󰂅",
+    "format-alt": "󱧥 {time}",
     "tooltip": false
   },
   "network": {
     "interval": 2,
-    "format": "<span color='#d3869b'> 󱘖 </span>",
-    "format-wifi": "<span color='#d3869b'> {icon} </span>",
-    "format-ethernet": "<span color='#d3869b'> 󰈀 </span>",
+    "format": "󱘖",
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰈀",
     "format-icons": [
       "󰤫",
       "󰤟",
