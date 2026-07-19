@@ -42,3 +42,13 @@ vim.diagnostic.config({
     severity = { max = vim.diagnostic.severity.WARN },
   },
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "css",
+  callback = function()
+    -- Checks if the file path contains "waybar"
+    if vim.fn.expand("%:p"):match("waybar") then
+      vim.diagnostic.enable(false, { bufnr = 0 })
+    end
+  end,
+})
