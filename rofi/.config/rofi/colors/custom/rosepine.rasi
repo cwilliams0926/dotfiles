@@ -1,4 +1,7 @@
 * {
+  highlight: bold italic;
+  scrollbar: false;
+
   bg0:    #191724;
   bg1:    #1f1d2e;
   bg2:    #1f1d2e;

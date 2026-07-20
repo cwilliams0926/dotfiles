@@ -13,7 +13,7 @@ hl.bind(mainMod .. " + " .. "V", hl.dsp.window.float())
 
 hl.bind(mainMod .. " + " .. "space", hl.dsp.exec_cmd("rofi -show drun -display-drun"))
 hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "W", hl.dsp.exec_cmd("~/.config/custom_scripts/wallpaper-picker.sh"))
-hl.bind(mainMod .. " + SHIFT + D", hl.dsp.exec_cmd("~/.config/custom_scripts/decoration-picker.sh"))
+hl.bind(mainMod .. " + SHIFT + D", hl.dsp.exec_cmd("~/.config/custom_scripts/appearance-menu.sh"))
 
 -- dwindle
 

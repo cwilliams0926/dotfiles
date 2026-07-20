@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# ~/.config/hypr/scripts/decoration-switcher.sh
 
 DECOR_DIR="$HOME/.config/hypr/modules/decorations"
 CURRENT_LINK="$DECOR_DIR/current.lua"

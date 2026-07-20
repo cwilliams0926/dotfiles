@@ -1,3 +1,1 @@
----@module 'hl'
-
-return require("colors.custom.gruvbox-material")
+return require("colors.custom.catppuccin")

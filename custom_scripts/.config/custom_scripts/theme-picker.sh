@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+THEMES="gruvbox-material
+catppuccin
+everforest
+gruvbox
+rosepine"
+
+choice=$(echo "$THEMES" | rofi -dmenu -p "Change Theme")
+[ -z "$choice" ] && exit 0
+
+"$SCRIPT_DIR/set-theme.sh" "$choice"

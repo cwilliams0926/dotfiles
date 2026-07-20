@@ -1,9 +1,16 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-WALLPAPER_DIR="$HOME/.config/GruvBox_Material"
-CACHE_DIR="$HOME/.cache/wallpaper-thumbs"
+CENTRAL_STATE="$HOME/.config/current-theme"
+theme=$(cat "$CENTRAL_STATE" 2>/dev/null || echo "gruvbox-material")
 
+WALLPAPER_DIR="$HOME/.config/wallpapers/$theme"
+CACHE_DIR="$HOME/.cache/wallpaper-thumbs/$theme"
 mkdir -p "$CACHE_DIR"
+
+if [ ! -d "$WALLPAPER_DIR" ]; then
+    notify-send "Wallpaper" "No wallpaper folder for theme '$theme'"
+    exit 1
+fi
 
 # Generate thumbnails for rofi icons
 for img in "$WALLPAPER_DIR"/*.{jpg,jpeg,png,gif}; do
@@ -22,7 +29,7 @@ selection=$(
         filename=$(basename "$img")
         echo -en "$filename\x00icon\x1f$CACHE_DIR/$filename\n"
     done | rofi -dmenu \
-        -p "Wallpaper" \
+        -p "Change Wallpaper" \
         -show-icons \
         -icon-size 100 \
         -theme-str 'listview { columns: 3; lines: 1; }' \
@@ -35,4 +42,5 @@ if [ -n "$selection" ]; then
     awww img "$WALLPAPER_DIR/$selection" \
         --transition-type grow \
         --transition-step 90
+    echo "$WALLPAPER_DIR/$selection" > "$HOME/.cache/current-wallpaper"
 fi
