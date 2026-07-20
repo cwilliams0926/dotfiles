@@ -32,7 +32,7 @@ selection=$(
         filename=$(basename "$img")
         echo -en "$filename\x00icon\x1f$CACHE_DIR/$filename\n"
     done | rofi -dmenu \
-        -p "Wallpaper ($theme)" \
+        -p "Change Wallpaper" \
         -show-icons \
         -icon-size 100 \
         -theme-str 'listview { columns: 3; lines: 1; }' \

@@ -3,7 +3,7 @@
 DECOR_DIR="$HOME/.config/hypr/modules/decorations"
 CURRENT_LINK="$DECOR_DIR/current.lua"
 
-choice=$(printf "rounded\nboxed" | rofi -dmenu -p "Decoration style")
+choice=$(printf "rounded\nboxed" | rofi -dmenu -p "Change Decoration")
 
 [ -z "$choice" ] && exit 0
 
