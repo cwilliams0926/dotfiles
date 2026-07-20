@@ -12,12 +12,12 @@ choice=$(printf "Decorations\nWallpaper\nTheme" | rofi -dmenu -p "Change appeara
 
 case "$choice" in
     "Decorations")
-        "$SCRIPT_DIR/decoration-picker.sh"
+        "$SCRIPT_DIR/decoration-picker"
         ;;
     "Wallpaper")
-        "$SCRIPT_DIR/wallpaper-picker.sh"
+        "$SCRIPT_DIR/wallpaper-picker"
         ;;
     "Theme")
-        "$SCRIPT_DIR/theme-picker.sh"
+        "$SCRIPT_DIR/theme-picker"
         ;;
 esac

@@ -2,14 +2,14 @@
 # Applies a theme across every app: writes the central state file, then
 # rewrites each app's colors.* pointer file to import that theme's palette.
 #
-# Usage: set-theme.sh <theme-name>
-# e.g.:  set-theme.sh catppuccin
+# Usage: set-theme <theme-name>
+# e.g.:  set-theme catppuccin
 
 set -euo pipefail
 
 theme="${1:-}"
 if [ -z "$theme" ]; then
-    echo "Usage: set-theme.sh <theme-name>" >&2
+    echo "Usage: set-theme <theme-name>" >&2
     exit 1
 fi
 
@@ -24,7 +24,7 @@ HYPRLOCK_COLORS="$HOME/.config/hypr/colors/colors-lock.conf"
 HYPRLOCK_WALLPAPER="$HOME/.config/hypr/colors/wallpaper.conf"
 WALLPAPER_ROOT="$HOME/.config/wallpapers"
 
-# 1. Write the central state file - this is what wallpaper-picker.sh
+# 1. Write the central state file - this is what wallpaper-picker
 #    and Neovim's config/theme.lua both read to know the active theme.
 echo "$theme" > "$CENTRAL_STATE"
 

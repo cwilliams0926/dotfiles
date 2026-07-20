@@ -11,4 +11,4 @@ rosepine"
 choice=$(echo "$THEMES" | rofi -dmenu -p "Change Theme")
 [ -z "$choice" ] && exit 0
 
-"$SCRIPT_DIR/set-theme.sh" "$choice"
+"$SCRIPT_DIR/set-theme" "$choice"

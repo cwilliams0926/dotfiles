@@ -1,5 +1,7 @@
 ---@module 'hl'
 
+local colors = require("colors.colors")
+
 local mainMod = "SUPER"
 
 hl.bind(mainMod .. " + " .. "return", hl.dsp.exec_cmd("kitty"))
@@ -12,8 +14,8 @@ hl.bind(mainMod .. " + " .. "W", hl.dsp.exec_cmd("wlogout"))
 hl.bind(mainMod .. " + " .. "V", hl.dsp.window.float())
 
 hl.bind(mainMod .. " + " .. "space", hl.dsp.exec_cmd("rofi -show drun -display-drun"))
-hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "W", hl.dsp.exec_cmd("~/.config/custom_scripts/wallpaper-picker.sh"))
-hl.bind(mainMod .. " + SHIFT + D", hl.dsp.exec_cmd("~/.config/custom_scripts/appearance-menu.sh"))
+hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "W", hl.dsp.exec_cmd("~/.config/custom_scripts/wallpaper-picker"))
+hl.bind(mainMod .. " + SHIFT + D", hl.dsp.exec_cmd("~/.config/custom_scripts/appearance-menu"))
 
 -- dwindle
 
@@ -27,7 +29,7 @@ hl.bind("SHIFT" .. " + " .. "PRINT", hl.dsp.exec_cmd("hyprshot -m region"))
 
 hl.bind("CTRL" .. " + " .. "PRINT", hl.dsp.exec_cmd("hyprshot -m output"))
 
-hl.bind(mainMod .. " + " .. "B", hl.dsp.exec_cmd("/home/cwilliams0926/.config/custom_scripts/wlsunset.sh"))
+hl.bind(mainMod .. " + " .. "B", hl.dsp.exec_cmd("/home/cwilliams0926/.config/custom_scripts/wlsunset"))
 
 -- Move focus with mainMod + arrow keys
 
@@ -131,7 +133,7 @@ hl.bind("SUPER + m", hl.dsp.exec_cmd("pkill waybar || waybar &"))
 -- The "no fun" bind
 hl.bind("SUPER + F1", function()
   local game_mode = (hl.get_config("animations.enabled") == false)
-  hl.exec_cmd("pkill waybar && waybar -s ~/.config/waybar/minimal.css -c ~/.config/waybar/minimal-config.jsonc &")
+  hl.exec_cmd("pkill waybar || waybar")
 
   if game_mode then
     hl.exec_cmd("hyprctl reload")
@@ -143,8 +145,8 @@ hl.bind("SUPER + F1", function()
       gaps_in = 0,
       gaps_out = 0, -- Disable gaps
       border_size = 2,
-      ["col.active_border"] = "rgb(d3869b)",
-      ["col.inactive_border"] = "rgb(1d2021)",
+      ["col.active_border"] = colors.purple,
+      ["col.inactive_border"] = colors.bg2,
     },
 
     animations = {

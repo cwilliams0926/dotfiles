@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Lists wallpapers for the CURRENTLY ACTIVE theme only.
-# Reads the theme name from the central state file set-theme.sh writes to.
+# Reads the theme name from the central state file set-theme writes to.
 
 CENTRAL_STATE="$HOME/.config/current-theme"
 theme=$(cat "$CENTRAL_STATE" 2>/dev/null || echo "gruvbox-material")
