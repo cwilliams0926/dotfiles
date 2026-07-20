@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
+# Lists wallpapers for the CURRENTLY ACTIVE theme only.
+# Reads the theme name from the central state file set-theme.sh writes to.
 
 CENTRAL_STATE="$HOME/.config/current-theme"
 theme=$(cat "$CENTRAL_STATE" 2>/dev/null || echo "gruvbox-material")
 
 WALLPAPER_DIR="$HOME/.config/wallpapers/$theme"
 CACHE_DIR="$HOME/.cache/wallpaper-thumbs/$theme"
+HYPRLOCK_WALLPAPER="$HOME/.config/hypr/colors/wallpaper.conf"
 mkdir -p "$CACHE_DIR"
 
 if [ ! -d "$WALLPAPER_DIR" ]; then
@@ -29,7 +32,7 @@ selection=$(
         filename=$(basename "$img")
         echo -en "$filename\x00icon\x1f$CACHE_DIR/$filename\n"
     done | rofi -dmenu \
-        -p "Change Wallpaper" \
+        -p "Wallpaper ($theme)" \
         -show-icons \
         -icon-size 100 \
         -theme-str 'listview { columns: 3; lines: 1; }' \
@@ -43,4 +46,5 @@ if [ -n "$selection" ]; then
         --transition-type grow \
         --transition-step 90
     echo "$WALLPAPER_DIR/$selection" > "$HOME/.cache/current-wallpaper"
+    echo "\$wallpaper = $WALLPAPER_DIR/$selection" > "$HYPRLOCK_WALLPAPER"
 fi
