@@ -8,7 +8,12 @@ everforest
 gruvbox
 rosepine"
 
-choice=$(echo "$THEMES" | rofi -dmenu -p "Change Theme")
+choice=$(echo "$THEMES" | rofi -dmenu \
+  -p "Change Theme" \
+  -theme-str 'listview { columns: 1; lines: 6; orientation: horizontal; }' \
+  -theme-str 'element-text { vertical-align: 0.5; horizontal-align: 0.0; }' \
+  -theme-str 'element-icon { size: 0px; }' 
+)
 [ -z "$choice" ] && exit 0
 
 "$SCRIPT_DIR/set-theme" "$choice"
