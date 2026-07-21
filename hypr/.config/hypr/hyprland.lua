@@ -10,7 +10,7 @@ local generalDecorations = require("modules.decorations.general")
 
 local lookAndFeel = require("modules.decorations.current")
 
-local animations = require("modules.decorations.almost-default-animations")
+local animations = require("modules.decorations.sane-animations")
 
 local binds = require("modules.binds")
 

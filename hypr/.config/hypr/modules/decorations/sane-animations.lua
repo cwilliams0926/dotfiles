@@ -50,14 +50,14 @@ hl.config({
     hl.animation({
       leaf = "windows",
       enabled = true,
-      speed = 4,
+      speed = 5,
       bezier = "overshot",
       style = "popin 80%",
     }),
     hl.animation({
       leaf = "windowsIn",
       enabled = true,
-      speed = 4,
+      speed = 5,
       bezier = "overshot",
       style = "popin 80%",
     }),
@@ -71,7 +71,7 @@ hl.config({
     hl.animation({
       leaf = "windowsMove",
       enabled = true,
-      speed = 3,
+      speed = 4,
       bezier = "softSnap",
     }),
 
@@ -79,65 +79,63 @@ hl.config({
     hl.animation({
       leaf = "layersIn",
       enabled = true,
-      speed = 2,
+      speed = 6,
       bezier = "smoothIn",
-      style = "slide right",
     }),
     hl.animation({
       leaf = "layersOut",
       enabled = true,
-      speed = 2,
+      speed = 8,
       bezier = "softSnap",
-      style = "slide right",
     }),
 
     -- Fade
     hl.animation({
       leaf = "fade",
       enabled = true,
-      speed = 2,
+      speed = 4,
       bezier = "smoothIn",
     }),
     hl.animation({
       leaf = "fadeIn",
       enabled = true,
-      speed = 2,
+      speed = 4,
       bezier = "smoothIn",
     }),
     hl.animation({
       leaf = "fadeOut",
       enabled = true,
-      speed = 2,
+      speed = 4,
       bezier = "smoothOut",
     }),
     hl.animation({
       leaf = "fadeSwitch",
       enabled = true,
-      speed = 2,
+      speed = 4,
       bezier = "smoothIn",
     }),
     hl.animation({
       leaf = "fadeShadow",
       enabled = true,
-      speed = 2,
+      speed = 4,
       bezier = "smoothIn",
     }),
     hl.animation({
       leaf = "fadeDim",
       enabled = true,
-      speed = 2,
+      speed = 4,
       bezier = "smoothIn",
     }),
     hl.animation({
       leaf = "fadeDpms",
       enabled = true,
-      speed = 2,
+      speed = 4,
       bezier = "smoothIn",
     }),
     hl.animation({
       leaf = "fadeLayers",
       enabled = true,
-      speed = 1,
+      speed = 3,
       bezier = "softSnap",
     }),
 
@@ -145,14 +143,14 @@ hl.config({
     hl.animation({
       leaf = "workspaces",
       enabled = true,
-      speed = 3,
+      speed = 4,
       bezier = "overshot",
       style = "slidefade 30%",
     }),
     hl.animation({
       leaf = "specialWorkspace",
       enabled = true,
-      speed = 3,
+      speed = 4,
       bezier = "overshot",
       style = "slidefadevert 30%",
     }),

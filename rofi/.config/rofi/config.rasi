@@ -5,5 +5,6 @@ configuration {
   drun-display-format: "{icon} {name}";
   font: "IosevkaTerm Propo Nerd Font 12";
   show-icons: true;
+  icon-theme: "Papirus";
   modi: "window,run,drun";
 }

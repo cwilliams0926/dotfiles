@@ -39,13 +39,13 @@ listview {
     border-radius: 0px;
     scrollbar: false;
     background-color: transparent;
-    lines: 6;
-    columns: 1;
+    lines: 3;
+    columns: 4;
     cycle: true;
     dynamic: true;
     layout: vertical;
     cursor: "default";
-    fixed-height: true;
+    fixed-height: false;
     fixed-columns: true;
     reverse: false;
 }
@@ -56,6 +56,12 @@ element {
     background-color: transparent;
     text-color: @fg;
     cursor: pointer;
+    orientation: vertical;
+}
+
+element-icon {
+  size: 3em;
+  horizontal-align: 0.5;
 }
 
 element selected {
@@ -113,6 +119,7 @@ element-text, element-icon {
     background-color: transparent;
     text-color: @fg;
     cursor: inherit;
+    horizontal-align: 0.5;
 }
 
 element-text selected {
@@ -120,7 +127,6 @@ element-text selected {
 }
 
 element-text {
-    vertical-align: 0.5;
-    horizontal-align: 0.0;
+    horizontal-align: 0.5;
 }
 
