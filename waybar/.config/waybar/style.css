@@ -13,8 +13,8 @@
 
 window#waybar {
   background: transparent;
-  font-family: IosevkaTerm Nerd Font Propo;
-  font-size: 12pt;
+  font-family: SF Pro Text Regular;
+  font-size: 11.5pt;
   font-weight: 600;
   color: @fg;
 }
