@@ -3,7 +3,7 @@
 DECOR_DIR="$HOME/.config/hypr/modules/decorations"
 CURRENT_LINK="$DECOR_DIR/current.lua"
 
-choice=$(printf "Rounded\nBoxed" | rofi -dmenu \
+choice=$(printf "Rounded\nBoxed\nRounded-Borders" | rofi -dmenu \
   -p "Change Decoration" \
   -theme-str 'listview { columns: 1; lines: 6; orientation: horizontal; }' \
   -theme-str 'element-text { vertical-align: 0.5; horizontal-align: 0.0; }' \
