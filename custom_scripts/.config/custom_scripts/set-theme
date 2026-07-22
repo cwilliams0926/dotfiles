@@ -2,14 +2,14 @@
 # Applies a theme across every app: writes the central state file, then
 # rewrites each app's colors.* pointer file to import that theme's palette.
 #
-# Usage: set-theme <theme-name>
-# e.g.:  set-theme catppuccin
+# Usage: set-theme.sh <theme-name>
+# e.g.:  set-theme.sh catppuccin
 
 set -euo pipefail
 
 theme="${1:-}"
 if [ -z "$theme" ]; then
-    echo "Usage: set-theme <theme-name>" >&2
+    echo "Usage: set-theme.sh <theme-name>" >&2
     exit 1
 fi
 
@@ -21,10 +21,12 @@ ROFI_COLORS="$HOME/.config/rofi/colors/colors.rasi"
 WLOGOUT_COLORS="$HOME/.config/wlogout/colors/colors.css"
 WAYBAR_COLORS="$HOME/.config/waybar/colors/colors.css"
 HYPRLOCK_COLORS="$HOME/.config/hypr/colors/colors-lock.conf"
+TMUX_COLORS_PRE="$HOME/.config/tmux/colors/pre-plugin.conf"
+TMUX_COLORS_POST="$HOME/.config/tmux/colors/post-plugin.conf"
 HYPRLOCK_WALLPAPER="$HOME/.config/hypr/colors/wallpaper.conf"
 WALLPAPER_ROOT="$HOME/.config/wallpapers"
 
-# 1. Write the central state file - this is what wallpaper-picker
+# 1. Write the central state file - this is what wallpaper-picker.sh
 #    and Neovim's config/theme.lua both read to know the active theme.
 echo "$theme" > "$CENTRAL_STATE"
 
@@ -52,6 +54,13 @@ echo "@import url(\"custom/$theme.css\");" > "$WAYBAR_COLORS"
 #     Expects a matching custom/<theme>-lock.conf file to exist.
 echo "source = custom/$theme-lock.conf" > "$HYPRLOCK_COLORS"
 
+# 6c. Tmux - two source-file pointers: one runs before the catppuccin
+#     plugin loads (sets flavor), one runs after (overrides @thm_* colors
+#     for non-catppuccin themes). Both target files must exist for every
+#     theme, even if empty - source-file errors on a missing file.
+echo "source-file $HOME/.config/tmux/colors/custom/$theme-pre.conf" > "$TMUX_COLORS_PRE"
+echo "source-file $HOME/.config/tmux/colors/custom/$theme-post.conf" > "$TMUX_COLORS_POST"
+
 # 7. Reload what needs reloading.
 #    Hyprland picks up the Lua change automatically on save, but a
 #    reload is cheap insurance.
@@ -64,6 +73,13 @@ pkill -SIGUSR1 kitty 2>/dev/null || true
 #    Waybar reloads its config/style on SIGUSR2 without a full restart,
 #    as long as it's a recent-enough version.
 pkill -SIGUSR2 waybar 2>/dev/null || true
+
+#    Tmux doesn't watch its config file - it has to be told to re-source.
+#    Only attempt this if a tmux server is actually running, so the
+#    script doesn't fail on a machine with no active session.
+if tmux info &>/dev/null; then
+    tmux source-file "$HOME/.config/tmux/tmux.conf"
+fi
 
 #    Rofi and wlogout read their config fresh each launch - nothing to do.
 #    Neovim reads current-theme on next startup - nothing to do for
