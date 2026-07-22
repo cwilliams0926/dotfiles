@@ -23,4 +23,5 @@ place it on your machine.
 ## TO-DO
 
 - Configure swaync
-- Set up colors switcher for rofi and neovim
+- Make custom animations
+- Learn quickshell
