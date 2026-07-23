@@ -18,3 +18,6 @@
 @define-color grey0 #7a8478;
 @define-color grey1 #859289;
 @define-color grey2 #9da6a0;
+
+@define-color gradient0 @orange;
+@define-color gradient1 @yellow;
