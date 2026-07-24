@@ -7,7 +7,8 @@ catppuccin
 everforest
 gruvbox
 rosepine
-e-ink"
+e-ink
+tokyonight"
 
 choice=$(echo "$THEMES" | rofi -dmenu \
   -p "Change Theme" \

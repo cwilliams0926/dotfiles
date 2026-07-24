@@ -1,0 +1,55 @@
+* {
+  highlight: bold italic;
+  scrollbar: false;
+
+  bg0:    #1e2030;
+  bg1:    #222436;
+  bg2:    #2f334d;
+  bg3:    #3b4261;
+  bg4:    #444a73;
+
+  fg:     #c8d3f5;
+
+  red:    #ff757f;
+  orange: #ff966c;
+  yellow: #ffc777;
+  green:  #c3e88d;
+  aqua:   #86e1fc;
+  blue:   #82aaff;
+  purple: #c099ff;
+  pink:   #fca7ea;
+
+  grey0:  #545c7e;
+  grey1:  #737aa2;
+  grey2:  #828bb8;
+
+  background: @bg0;
+  foreground: @fg;
+  lightbg: @bg2;
+  lightfg: @fg;
+  normal-background: @bg0;
+  normal-foreground: @fg;
+  separatorcolor: @grey0;
+
+  normal-background: @background;
+  normal-foreground: @foreground;
+  alternate-normal-background: @background;
+  alternate-normal-foreground: @foreground;
+  selected-normal-background: @lightbg;
+  selected-normal-foreground: @foreground;
+
+  active-background:           @yellow;
+  active-foreground:           @background;
+  alternate-active-background: @active-background;
+  alternate-active-foreground: @active-foreground;
+  selected-active-background:  @yellow;
+  selected-active-foreground:  @active-foreground;
+
+  urgent-background:           @red;
+  urgent-foreground:           @background;
+  alternate-urgent-background: @urgent-background;
+  alternate-urgent-foreground: @urgent-foreground;
+  selected-urgent-background:  @red;
+  selected-urgent-foreground:  @urgent-foreground;
+}
+
