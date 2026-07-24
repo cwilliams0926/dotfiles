@@ -93,4 +93,18 @@ return {
       vim.cmd.colorscheme("rose-pine")
     end,
   },
+  {
+    "e-ink-colorscheme/e-ink.nvim",
+    name = "e-ink",
+    cond = theme == "e-ink",
+    priority = 1000,
+    config = function()
+      require("e-ink").setup()
+      vim.opt.background = "light"
+      local set_hl = vim.api.nvim_set_hl
+      local mono = require("e-ink.palette").mono()
+
+      set_hl(0, "Normal", { fg = mono[12], bg = "NONE" })
+    end,
+  },
 }

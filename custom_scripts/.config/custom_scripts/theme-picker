@@ -6,7 +6,8 @@ THEMES="gruvbox-material
 catppuccin
 everforest
 gruvbox
-rosepine"
+rosepine
+e-ink"
 
 choice=$(echo "$THEMES" | rofi -dmenu \
   -p "Change Theme" \

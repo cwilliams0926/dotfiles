@@ -43,7 +43,7 @@ selection=$(
 # Apply if something was selected
 if [ -n "$selection" ]; then
     awww img "$WALLPAPER_DIR/$selection" \
-        --transition-type grow \
+        --transition-type wipe \
         --transition-step 90
     echo "$WALLPAPER_DIR/$selection" > "$HOME/.cache/current-wallpaper"
     echo "\$wallpaper = $WALLPAPER_DIR/$selection" > "$HYPRLOCK_WALLPAPER"

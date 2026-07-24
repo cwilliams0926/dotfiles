@@ -1,25 +1,25 @@
 ---@module 'hl'
 
-local bg0 = "#333333"
-local bg1 = "#474747"
-local bg2 = "#4a4a4a"
-local bg3 = "#545454"
-local bg4 = "#5e5e5e"
+local bg0 = "#cccccc"
+local bg1 = "#c2c2c2"
+local bg2 = "#b8b8b8"
+local bg3 = "#aeaeae"
+local bg4 = "#a4a4a4"
 
-local fg = "#cccccc"
+local fg = "#333333"
 
-local red = "#fb4934"
-local orange = "#fe8019"
-local yellow = "#fabd2f"
-local green = "#b8bb26"
-local aqua = "#8ec07c"
-local blue = "#83a598"
-local purple = "#d3869b"
-local pink = "#d3869b"
+local red = "#9a9a9a"
+local orange = "#909090"
+local yellow = "#868686"
+local green = "#7c7c7c"
+local aqua = "#727272"
+local blue = "#686868"
+local purple = "#5e5e5e"
+local pink = "#5e5e5e"
 
-local grey0 = "#686868"
-local grey1 = "#727272"
-local grey2 = "#7c7c7c"
+local grey0 = "#474747"
+local grey1 = "#4a4a4a"
+local grey2 = "#545454"
 
 return {
   bg0 = bg0,

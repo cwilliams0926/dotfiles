@@ -92,7 +92,7 @@ if [ -d "$theme_wall_dir" ]; then
         \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" \) \
         | shuf -n 1)
     if [ -n "$default_wall" ]; then
-        awww img "$default_wall" --transition-type grow --transition-step 90
+        awww img "$default_wall" --transition-type wipe --transition-step 90
         echo "$default_wall" > "$HOME/.cache/current-wallpaper"
         echo "\$wallpaper = $default_wall" > "$HYPRLOCK_WALLPAPER"
     else
