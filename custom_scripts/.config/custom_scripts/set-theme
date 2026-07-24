@@ -26,6 +26,17 @@ TMUX_COLORS_POST="$HOME/.config/tmux/colors/post-plugin.conf"
 HYPRLOCK_WALLPAPER="$HOME/.config/hypr/colors/wallpaper.conf"
 WALLPAPER_ROOT="$HOME/.config/wallpapers"
 
+declare -A GTK_THEME_MAP=(
+    ["gruvbox-material"]="Gruvbox-Material-Dark"
+    ["catppuccin"]="catppuccin-mocha-mauve-standard+default"
+    ["everforest"]="Everforest-Green-Dark"
+    ["gruvbox"]="Gruvbox-Dark"
+    ["rosepine"]="Graphite-Dark"
+    ["tokyonight"]="Tokyonight-Dark"
+    ["e-ink"]="Graphite-Dark"
+)
+GTK_ICON_THEME="Papirus-Dark"
+
 # 1. Write the central state file - this is what wallpaper-picker.sh
 #    and Neovim's config/theme.lua both read to know the active theme.
 echo "$theme" > "$CENTRAL_STATE"
@@ -60,6 +71,37 @@ echo "source = custom/$theme-lock.conf" > "$HYPRLOCK_COLORS"
 #     theme, even if empty - source-file errors on a missing file.
 echo "source-file $HOME/.config/tmux/colors/custom/$theme-pre.conf" > "$TMUX_COLORS_PRE"
 echo "source-file $HOME/.config/tmux/colors/custom/$theme-post.conf" > "$TMUX_COLORS_POST"
+
+# 6d. GTK - no palette file, just an installed theme NAME. Look up the
+#     mapped name for this theme, falling back to a neutral default if
+#     this theme has no mapping (or the mapped theme isn't installed).
+gtk_theme="${GTK_THEME_MAP[$theme]:-Graphite-Dark}"
+ 
+# e-ink is the one light-background theme in the set - flip the
+# dark-preference flag accordingly so GTK apps don't look inverted.
+if [ "$theme" = "e-ink" ]; then
+    gtk_prefer_dark=0
+else
+    gtk_prefer_dark=1
+fi
+ 
+gsettings set org.gnome.desktop.interface gtk-theme "$gtk_theme"
+gsettings set org.gnome.desktop.interface icon-theme "$GTK_ICON_THEME"
+gsettings set org.gnome.desktop.interface color-scheme \
+    "$([ "$gtk_prefer_dark" = 1 ] && echo prefer-dark || echo prefer-light)"
+ 
+# Mirror into settings.ini too, since not every GTK app (especially
+# outside a full GNOME session, and most GTK4 apps) reads gsettings.
+for gtk_ini in "$HOME/.config/gtk-3.0/settings.ini" "$HOME/.config/gtk-4.0/settings.ini"; do
+    mkdir -p "$(dirname "$gtk_ini")"
+    cat > "$gtk_ini" <<EOF
+[Settings]
+gtk-theme-name=$gtk_theme
+gtk-icon-theme-name=$GTK_ICON_THEME
+gtk-application-prefer-dark-theme=$gtk_prefer_dark
+EOF
+done
+
 
 # 7. Reload what needs reloading.
 #    Hyprland picks up the Lua change automatically on save, but a
