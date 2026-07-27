@@ -25,7 +25,7 @@
   "image-visibility": "when-available",
   "transition-time": 200,
   "hide-on-clear": false,
-  "hide-on-action": false,
+  "hide-on-action": true,
   "script-fail-notify": true,
   "scripts": {
     "example-script": {
@@ -81,11 +81,11 @@
         },
         {
           "label": " ",
-          "command": "nm-connection-editor"
+          "command": "sh -c '~/.config/custom_scripts/rofi-wifi-menu'"
         },
         {
           "label": "󰂯",
-          "command": "blueman-manager"
+          "command": "sh -c 'rofi-bluetooth'"
         },
         {
           "label": "󰏘",

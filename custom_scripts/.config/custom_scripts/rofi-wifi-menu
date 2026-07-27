@@ -1,0 +1,90 @@
+#!/usr/bin/env bash
+# Rofi-based Wi-Fi menu, built on nmcli. Lists available networks,
+# shows the currently connected one, prompts for a password on new
+# connections, and lets you disconnect/toggle wifi entirely.
+
+set -euo pipefail
+
+# Make sure NetworkManager can see wifi at all before doing anything else.
+if ! nmcli radio wifi | grep -q enabled; then
+    choice=$(printf "Enable Wi-Fi" | rofi -dmenu -p "Wi-Fi is off" \
+        -theme-str 'listview { columns: 1; lines: 6; orientation: horizontal; }' \
+        -theme-str 'element-text { vertical-align: 0.5; horizontal-align: 0.0; }' \
+        -theme-str 'element-icon { size: 0px; }')
+    [ "$choice" = "Enable Wi-Fi" ] && nmcli radio wifi on
+    exit 0
+fi
+
+# Current connection, if any, so we can mark it in the list.
+current_ssid=$(nmcli -t -f active,ssid dev wifi | awk -F: '$1=="yes"{print $2}')
+
+# Build the menu: rescan, then list SSIDs (deduplicated, strongest first).
+# nmcli's own sort already favors signal strength.
+mapfile -t networks < <(nmcli -t -f ssid,signal,security dev wifi list --rescan yes \
+    | awk -F: '!seen[$1]++ && $1 != ""')
+
+menu_entries="Disconnect
+Turn Wi-Fi Off
+Rescan
+---"
+for entry in "${networks[@]}"; do
+    ssid="${entry%%:*}"
+    rest="${entry#*:}"
+    signal="${rest%%:*}"
+    security="${rest#*:}"
+    marker=""
+    [ "$ssid" = "$current_ssid" ] && marker=" (connected)"
+    lock=""
+    [ -n "$security" ] && [ "$security" != "--" ] && lock=" 🔒"
+    menu_entries="$menu_entries
+$ssid$marker$lock  [$signal%]"
+done
+
+selection=$(echo "$menu_entries" | rofi -dmenu -p "Wi-Fi" \
+    -theme-str 'listview { columns: 1; lines: 6; orientation: horizontal; }' \
+    -theme-str 'element-text { vertical-align: 0.5; horizontal-align: 0.0; }' \
+    -theme-str 'element-icon { size: 0px; }')
+[ -z "$selection" ] && exit 0
+
+case "$selection" in
+    "Disconnect")
+        [ -n "$current_ssid" ] && nmcli con down id "$current_ssid"
+        notify-send "Wi-Fi" "Disconnected"
+        exit 0
+        ;;
+    "Turn Wi-Fi Off")
+        nmcli radio wifi off
+        notify-send "Wi-Fi" "Turned off"
+        exit 0
+        ;;
+    "Rescan"|"---")
+        exit 0
+        ;;
+esac
+
+# Strip the trailing "(connected)"/lock/signal decoration back to a bare SSID.
+target_ssid=$(echo "$selection" | sed -E 's/ \(connected\)//; s/ 🔒//; s/  \[[0-9]+%\]$//')
+
+if [ "$target_ssid" = "$current_ssid" ]; then
+    exit 0
+fi
+
+# Does this network already have a saved connection profile?
+if nmcli -t -f NAME con show | grep -qx "$target_ssid"; then
+    nmcli con up id "$target_ssid" && notify-send "Wi-Fi" "Connected to $target_ssid" \
+        || notify-send "Wi-Fi" "Failed to connect to $target_ssid"
+else
+    security=$(nmcli -t -f ssid,security dev wifi list | awk -F: -v s="$target_ssid" '$1==s{print $2; exit}')
+    if [ -n "$security" ] && [ "$security" != "--" ]; then
+        password=$(rofi -dmenu -password -p "Password for $target_ssid" \
+            -theme-str 'element-icon { size: 0px; }')
+        [ -z "$password" ] && exit 0
+        nmcli dev wifi connect "$target_ssid" password "$password" \
+            && notify-send "Wi-Fi" "Connected to $target_ssid" \
+            || notify-send "Wi-Fi" "Failed to connect - check password"
+    else
+        nmcli dev wifi connect "$target_ssid" \
+            && notify-send "Wi-Fi" "Connected to $target_ssid" \
+            || notify-send "Wi-Fi" "Failed to connect to $target_ssid"
+    fi
+fi
