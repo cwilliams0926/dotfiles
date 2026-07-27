@@ -23,6 +23,7 @@ WAYBAR_COLORS="$HOME/.config/waybar/colors/colors.css"
 HYPRLOCK_COLORS="$HOME/.config/hypr/colors/colors-lock.conf"
 TMUX_COLORS_PRE="$HOME/.config/tmux/colors/pre-plugin.conf"
 TMUX_COLORS_POST="$HOME/.config/tmux/colors/post-plugin.conf"
+SWAYNC_COLORS="$HOME/.config/swaync/colors/colors.css"
 HYPRLOCK_WALLPAPER="$HOME/.config/hypr/colors/wallpaper.conf"
 WALLPAPER_ROOT="$HOME/.config/wallpapers"
 
@@ -84,6 +85,9 @@ if [ "$theme" = "e-ink" ]; then
 else
     gtk_prefer_dark=1
 fi
+
+# 6e. Swaync - same GTK CSS @import pattern as wlogout/waybar.
+echo "@import url(\"custom/$theme.css\");" > "$SWAYNC_COLORS"
  
 gsettings set org.gnome.desktop.interface gtk-theme "$gtk_theme"
 gsettings set org.gnome.desktop.interface icon-theme "$GTK_ICON_THEME"
