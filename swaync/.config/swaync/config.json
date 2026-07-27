@@ -73,11 +73,11 @@
       "actions": [
         {
           "label": " ",
-          "command": "amixer set Master toggle"
+          "command": "sh -c 'pamixer -t'"
         },
         {
           "label": "",
-          "command": "amixer set Capture toggle"
+          "command": "sh -c 'pamixer --default-source -t'"
         },
         {
           "label": " ",
@@ -89,7 +89,7 @@
         },
         {
           "label": "󰏘",
-          "command": "nwg-look"
+          "command": "sh -c '~/.config/custom_scripts/appearance-menu'"
         }
       ]
     }
