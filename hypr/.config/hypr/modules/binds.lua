@@ -168,4 +168,6 @@ hl.bind("ALT + mouse:272", hl.dsp.window.drag(), { mouse = true })   -- ALT + LM
 hl.bind("ALT + mouse:273", hl.dsp.window.resize(), { mouse = true }) -- ALT + RMB: Resize a window
 
 -- SwayNC
-hl.bind("SUPER + SHIFT + n", hl.dsp.exec_cmd("swaync-client -t -sw"))
+hl.bind("SUPER + ALT + t", hl.dsp.exec_cmd('notify-send "test" "even longer test"'))
+hl.bind("SUPER + ALT + r", hl.dsp.exec_cmd("swaync-client -R && swaync-client -rs"))
+hl.bind("SUPER + n", hl.dsp.exec_cmd("swaync-client -t"))

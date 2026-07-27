@@ -62,3 +62,13 @@ vim.api.nvim_create_autocmd("FileType", {
     end
   end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "css",
+  callback = function()
+    -- Checks if the file path contains "swaync"
+    if vim.fn.expand("%:p"):match("swaync") then
+      vim.diagnostic.enable(false, { bufnr = 0 })
+    end
+  end,
+})

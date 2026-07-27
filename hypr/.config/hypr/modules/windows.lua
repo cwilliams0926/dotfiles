@@ -57,12 +57,6 @@ hl.layer_rule({
     namespace = "waybar",
   },
   blur = true,
-})
-
-hl.layer_rule({
-  match = {
-    namespace = "waybar",
-  },
   ignore_alpha = 0,
 })
 
@@ -71,11 +65,20 @@ hl.layer_rule({
     namespace = "^rofi$",
   },
   blur = true,
+  ignore_alpha = 0,
 })
 
 hl.layer_rule({
   match = {
-    namespace = "^rofi$",
+    namespace = "swaync-control-center",
+  },
+  blur = true,
+  ignore_alpha = 0,
+})
+
+hl.layer_rule({
+  match = {
+    namespace = "swaync-notification-window",
   },
   ignore_alpha = 0,
 })
