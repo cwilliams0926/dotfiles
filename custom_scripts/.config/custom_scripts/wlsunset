@@ -1,8 +1,10 @@
 #!/usr/bin/bash
 
 if pidof wlsunset; then
-   killall wlsunset
+  notify-send -i "/home/cwilliams0926/.config/swaync/icons/dark_mode.svg" "Night Light Off" "Night light turned off" &&
+  killall wlsunset
 else
-   wlsunset -T 4001
+  notify-send -i "/home/cwilliams0926/.config/swaync/icons/dark_mode.svg" "Night Light On" "Night light turned on" &&
+  wlsunset -T 4001
 fi
 
