@@ -13,3 +13,10 @@ zsh/.config/zsh/
 - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 - [zsh-completions](https://github.com/zsh-users/zsh-completions)
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+
+## custom_scripts
+
+For the wlsunset and battery-monitor scripts, the notify-send lines use the -i (icon) tags
+with an absolute path to ~/.config/swaync/icons/, however they don't use the ~ and instead
+use /home/user/... To fix this, you have to manually change those lines to include your
+username instead of mine, otherwise there will be no icon.
