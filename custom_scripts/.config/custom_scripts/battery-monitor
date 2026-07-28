@@ -1,0 +1,97 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+LOW_THRESHOLD=20
+REMINDER_INTERVAL=300   # seconds between repeat reminders while still low
+NOTIF_ID_FILE="$HOME/.cache/battery-notif-id"
+LOCK_FILE="/tmp/battery-monitor.lock"
+
+exec 200>"$LOCK_FILE"
+if ! flock -n 200; then
+    echo "battery-monitor already running" >&2
+    exit 1
+fi
+
+battery_device=$(upower -e | grep -m1 'BAT')
+if [ -z "$battery_device" ]; then
+    echo "No battery found via upower - nothing to monitor" >&2
+    exit 1
+fi
+
+was_low=false
+last_reminder=0
+
+send_low_battery_notification() {
+    local capacity="$1"
+    if [ -f "$NOTIF_ID_FILE" ]; then
+        local prev_id
+        prev_id=$(cat "$NOTIF_ID_FILE")
+        notify-send -u critical -p -r "$prev_id" \
+            -i "/home/cwilliams0926/.config/swaync/icons/low_battery.svg" \
+            "Low Battery" "Battery at ${capacity}%" \
+            > "$NOTIF_ID_FILE"
+    else
+        notify-send -u critical -p \
+            -i "/home/cwilliams0926/.config/swaync/icons/low_battery.svg" \
+            "Low Battery" "Battery at ${capacity}%" \
+            > "$NOTIF_ID_FILE"
+    fi
+}
+
+send_charging_notification() {
+    local capacity="$1"
+    if [ -f "$NOTIF_ID_FILE" ]; then
+        local prev_id
+        prev_id=$(cat "$NOTIF_ID_FILE")
+        notify-send -r "$prev_id" -i "/home/cwilliams0926/.config/swaync/icons/battery-charging.svg" \
+            "Charging" "Battery is now charging (${capacity}%)"
+        rm -f "$NOTIF_ID_FILE"
+    else
+        notify-send -i "/home/cwilliams0926/.config/swaync/icons/battery-charging.svg" \
+            "Charging" "Battery is now charging (${capacity}%)"
+    fi
+}
+
+# Check current state once at startup, in case we launch while already low.
+check_now() {
+    local info capacity state
+    info=$(upower -i "$battery_device")
+    capacity=$(echo "$info" | grep -oP 'percentage:\s*\K[0-9]+')
+    state=$(echo "$info" | grep -oP 'state:\s*\K\S+')
+
+    if [ "$state" = "discharging" ] && [ "$capacity" -le "$LOW_THRESHOLD" ]; then
+        send_low_battery_notification "$capacity"
+        was_low=true
+        last_reminder=$(date +%s)
+    elif [ "$state" != "discharging" ] && [ "$was_low" = true ]; then
+        send_charging_notification "$capacity"
+        was_low=false
+    fi
+}
+
+check_now
+
+# Stream live property changes - reacts instantly to plugging in/out,
+# no fixed polling delay.
+upower --monitor-detail | while read -r line; do
+    if echo "$line" | grep -qE 'percentage:|state:'; then
+        info=$(upower -i "$battery_device")
+        capacity=$(echo "$info" | grep -oP 'percentage:\s*\K[0-9]+')
+        state=$(echo "$info" | grep -oP 'state:\s*\K\S+')
+        now=$(date +%s)
+
+        if [ "$state" = "discharging" ] && [ "$capacity" -le "$LOW_THRESHOLD" ]; then
+            # Send immediately on first crossing into "low", then only
+            # repeat every REMINDER_INTERVAL seconds after that.
+            if [ "$was_low" = false ] || [ $((now - last_reminder)) -ge "$REMINDER_INTERVAL" ]; then
+                send_low_battery_notification "$capacity"
+                last_reminder=$now
+            fi
+            was_low=true
+        elif [ "$state" != "discharging" ] && [ "$was_low" = true ]; then
+            send_charging_notification "$capacity"
+            was_low=false
+        fi
+    fi
+done
