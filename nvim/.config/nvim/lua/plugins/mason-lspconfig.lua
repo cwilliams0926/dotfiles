@@ -8,6 +8,11 @@ return {
       "emmet_language_server",
       "clangd",
       "bashls",
+      "eslint",
     },
+  },
+  dependencies = {
+    { "mason-org/mason.nvim", opts = {} },
+    "neovim/nvim-lspconfig",
   },
 }
