@@ -1,7 +1,6 @@
 # dotfiles
 
-My collection of configurations and such I use for coding. Not extremely pretty
-or anything. Just what I use to get stuff done. A lot of inspiration was taken from
+My collection of configurations and such I use for coding. A lot of inspiration was taken from
 other dotfiles I've seen however everything is custom.
 
 ## Requirements
@@ -22,6 +21,4 @@ place it on your machine.
 
 ## TO-DO
 
-- Configure swaync
-- Make custom animations
 - Learn quickshell
