@@ -8,7 +8,6 @@ return {
       "emmet_language_server",
       "clangd",
       "bashls",
-      "eslint",
     },
   },
 }

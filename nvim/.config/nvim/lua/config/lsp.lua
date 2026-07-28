@@ -72,11 +72,3 @@ vim.api.nvim_create_autocmd("FileType", {
     end
   end,
 })
-
-vim.lsp.enable("eslint")
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = { "*.js", "*.jsx", "*.ts", "*.tsx", "*.vue" },
-  callback = function()
-    vim.cmd("EslintFixAll")
-  end,
-})

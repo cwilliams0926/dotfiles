@@ -25,6 +25,7 @@
     "all-outputs": true,
     "warp-on-scroll": false,
     "format": "{icon}",
+    "on-click": "activate",
     "persistent-workspaces": {
       "1": [],
       "2": [],
@@ -50,7 +51,8 @@
     "format-bluetooth": "󰂰",
     "format-bluetooth-muted": "󰂲",
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-    "tooltip": false,
+    "tooltip": true,
+    "tooltip-format": "{volume}%",
     "max-volume": 130
   },
   "battery#bat2": {
@@ -84,7 +86,8 @@
     "format-charging-critical": "󰢜",
     "format-plugged": "󰂅",
     "format-alt": "󱧥 {time}",
-    "tooltip": false
+    "tooltip": true,
+    "tooltip-format": "{capacity}%"
   },
   "network": {
     "interval": 2,
@@ -98,7 +101,8 @@
       "󰤥",
       "󰤨"
     ],
-    "tooltip": false,
+    "tooltip": true,
+    "tooltip-format": "{essid}",
     "states": {
       "normal": 25
     }
