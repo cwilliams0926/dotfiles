@@ -34,7 +34,7 @@ if [ -z "$temp" ] || [ "$temp" = "null" ]; then
         echo '{"text": "?", "tooltip": "Weather unavailable", "class": "weather-error"}' > "$CACHE_FILE"
     fi
 else
-    printf '{"text": "%s %.0f%s", "tooltip": "Current temperature: %.0f%s", "class": "weather"}\n' \
+    printf '{"text": "%s  %.0f%s", "tooltip": "Current temperature: %.0f%s", "class": "weather"}\n' \
         "$icon" "$temp" "$unit_symbol" "$temp" "$unit_symbol" > "$CACHE_FILE"
 fi
 

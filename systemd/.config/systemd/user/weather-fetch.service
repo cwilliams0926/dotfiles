@@ -3,4 +3,4 @@ Description=Fetch current weather for waybar
 
 [Service]
 Type=oneshot
-ExecStart=%h/.config/waybar/scripts/weather-fetch.sh
+ExecStart=%h/.config/custom_scripts/weather-fetch
