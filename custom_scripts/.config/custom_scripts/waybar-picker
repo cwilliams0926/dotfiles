@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# ~/.config/hypr/scripts/waybar-picker.sh
+LAYOUT_DIR="$HOME/.config/waybar/layouts"
+CONFIG_LINK="$HOME/.config/waybar/config.jsonc"
+STYLE_LINK="$HOME/.config/waybar/style.css"
+
+# Build the menu from whatever .jsonc layouts actually exist, so adding
+# a new layout file is the only step needed to add it to this menu too.
+choice=$(find "$LAYOUT_DIR" -maxdepth 1 -name "*.jsonc" -exec basename {} .jsonc \; | sort \
+    | rofi -dmenu \
+  -p "Change Waybar" \
+  -theme-str 'listview { columns: 1; lines: 6; orientation: horizontal; }' \
+  -theme-str 'element-text { vertical-align: 0.5; horizontal-align: 0.0; }' \
+  -theme-str 'element-icon { size: 0px; }' 
+)
+[ -z "$choice" ] && exit 0
+
+ln -sf "$LAYOUT_DIR/$choice.jsonc" "$CONFIG_LINK"
+ln -sf "$LAYOUT_DIR/$choice-style.css" "$STYLE_LINK"
+
+# A structural config swap (different modules/layout, not just colors)
+# needs a full restart, not just SIGUSR2 - that only re-reads style/CSS
+# on the config waybar already has open, it won't pick up a swap to a
+# different underlying file reliably.
+pkill waybar
+waybar >/dev/null 2>&1 & disown
+
+notify-send "Waybar" "Layout switched to: $choice"

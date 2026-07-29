@@ -5,7 +5,7 @@
 # regardless of where it's called from.
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-choice=$(printf "   Decorations\n󰸉   Wallpaper\n   Theme" | rofi -dmenu \
+choice=$(printf "   Decorations\n󰸉   Wallpaper\n   Theme\n   Waybar" | rofi -dmenu \
   -p "Change appearance" \
   -theme-str 'listview { columns: 1; lines: 6; orientation: horizontal; }' \
   -theme-str 'element-text { vertical-align: 0.5; horizontal-align: 0.0; }' \
@@ -24,5 +24,8 @@ case "$choice" in
         ;;
     "   Theme")
         "$SCRIPT_DIR/theme-picker"
+        ;;
+    "   Waybar")
+        "$SCRIPT_DIR/waybar-picker"
         ;;
 esac

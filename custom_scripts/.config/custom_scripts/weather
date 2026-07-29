@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# Waybar custom module: current temperature via Open-Meteo (no API key).
+# Replace LAT/LON with your actual coordinates - see setup instructions.
+
+LAT="37.7782"
+LON="-81.1882"
+UNIT="fahrenheit"   # or "celsius"
+
+response=$(curl -s "https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current_weather=true&temperature_unit=${UNIT}")
+
+temp=$(echo "$response" | jq -r '.current_weather.temperature')
+code=$(echo "$response" | jq -r '.current_weather.weathercode')
+
+# Rough WMO weather-code -> icon mapping. Extend as you like.
+case "$code" in
+    0) icon="󰖙" ;;               # clear
+    1|2) icon="󰖕" ;;             # mostly clear / partly cloudy
+    3) icon="󰖐" ;;                # overcast
+    45|48) icon="󰖑" ;;           # fog
+    51|53|55|56|57) icon="󰖗" ;;  # drizzle
+    61|63|65|66|67) icon="󰖖" ;;  # rain
+    71|73|75|77) icon="󰖘" ;;     # snow
+    80|81|82) icon="󰖖" ;;        # showers
+    95|96|99) icon="󰖓" ;;        # thunderstorm
+    *) icon="󰖐" ;;
+esac
+
+unit_symbol=$([ "$UNIT" = "fahrenheit" ] && echo "°F" || echo "°C")
+
+if [ -z "$temp" ] || [ "$temp" = "null" ]; then
+    echo "{\"text\": \"?\", \"tooltip\": \"Weather unavailable\", \"class\": \"weather-error\"}"
+else
+    printf '{"text": "%s  %.0f%s", "tooltip": "Current temperature: %.0f%s", "class": "weather"}\n' \
+        "$icon" "$temp" "$unit_symbol" "$temp" "$unit_symbol"
+fi
