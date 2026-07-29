@@ -169,4 +169,4 @@ hl.bind("ALT + mouse:273", hl.dsp.window.resize(), { mouse = true }) -- ALT + RM
 
 -- SwayNC
 hl.bind("SUPER + ALT + r", hl.dsp.exec_cmd("swaync-client -R && swaync-client -rs"))
-hl.bind("SUPER + n", hl.dsp.exec_cmd("swaync-client -t"))
+hl.bind("SUPER + SHIFT + n", hl.dsp.exec_cmd("swaync-client -t"))

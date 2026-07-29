@@ -50,14 +50,14 @@ hl.config({
     hl.animation({
       leaf = "windows",
       enabled = true,
-      speed = 5,
+      speed = 4,
       bezier = "overshot",
       style = "popin 80%",
     }),
     hl.animation({
       leaf = "windowsIn",
       enabled = true,
-      speed = 5,
+      speed = 4,
       bezier = "overshot",
       style = "popin 80%",
     }),
