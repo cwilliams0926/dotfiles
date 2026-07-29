@@ -21,6 +21,7 @@ window#waybar {
 
 #custom-arch-logo,
 #custom-weather,
+#custom-notification,
 #window,
 #pulseaudio,
 #pulseaudio.muted,
@@ -107,7 +108,8 @@ window#waybar {
   color: @purple;
 }
 
-#custom-arch-logo {
+#custom-arch-logo,
+#custom-notification {
   font-family: "JetBrainsMono Nerd Font Propo";
 }
 
