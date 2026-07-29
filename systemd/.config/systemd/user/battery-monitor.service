@@ -1,0 +1,11 @@
+[Unit]
+Description=Low battery reminder notifications
+After=graphical-session.target
+
+[Service]
+ExecStart=%h/.config/custom_scripts/battery-monitor
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

@@ -17,7 +17,7 @@
   "custom/weather": {
     "exec": "~/.config/custom_scripts/weather",
     "return-type": "json",
-    "interval": 900,
+    "signal": 8,
     "tooltip": true
   },
   "custom/notification": {
