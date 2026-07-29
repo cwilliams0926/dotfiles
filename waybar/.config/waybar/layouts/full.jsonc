@@ -5,9 +5,9 @@
   "margin-top": 12,
   "margin-left": 8,
   "margin-right": 8,
-  "modules-left": ["custom/arch-logo", "custom/weather"],
+  "modules-left": ["custom/arch-logo", "network","custom/weather"],
   "modules-center": ["clock", "hyprland/workspaces"],
-  "modules-right": ["pulseaudio", "network", "battery", "custom/notification"],
+  "modules-right": ["pulseaudio", "battery", "custom/notification"],
   "custom/arch-logo": {
     "format": "",
     "separate-outputs": true,
