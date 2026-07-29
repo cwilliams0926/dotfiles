@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 CACHE_FILE="$HOME/.cache/waybar-weather.json"
-FETCH_SCRIPT="$HOME/.config/waybar/scripts/weather-fetch.sh"
+FETCH_SCRIPT="$HOME/.config/custom_scripts/weather-fetch"
 
 if [ -f "$CACHE_FILE" ]; then
     cat "$CACHE_FILE"

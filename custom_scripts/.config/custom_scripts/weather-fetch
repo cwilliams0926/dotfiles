@@ -13,16 +13,16 @@ temp=$(echo "$response" | jq -r '.current_weather.temperature')
 code=$(echo "$response" | jq -r '.current_weather.weathercode')
 
 case "$code" in
-    0) icon="" ;;
-    1|2) icon="" ;;
-    3) icon="" ;;
-    45|48) icon="" ;;
-    51|53|55|56|57) icon="" ;;
-    61|63|65|66|67) icon="" ;;
-    71|73|75|77) icon="" ;;
-    80|81|82) icon="" ;;
-    95|96|99) icon="" ;;
-    *) icon="" ;;
+    0) icon="󰖙" ;;
+    1|2) icon="󰖕" ;;
+    3) icon="󰖐" ;;
+    45|48) icon="󰖑" ;;
+    51|53|55|56|57) icon="󰖗" ;;
+    61|63|65|66|67) icon="󰖖" ;;
+    71|73|75|77) icon="󰖘" ;;
+    80|81|82) icon="󰖖" ;;
+    95|96|99) icon="󰖓" ;;
+    *) icon="󰖕" ;;
 esac
 
 unit_symbol=$([ "$UNIT" = "fahrenheit" ] && echo "°F" || echo "°C")
