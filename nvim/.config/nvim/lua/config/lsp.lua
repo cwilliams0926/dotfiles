@@ -74,3 +74,10 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.lsp.enable("eslint")
+
+vim.lsp.config("qmlls", {
+  cmd = { "qmlls6" },
+  filetypes = { "qml" },
+  root_markers = { ".git", "CMakeLists.txt" },
+})
+vim.lsp.enable("qmlls")
