@@ -1,4 +1,4 @@
-@import url("colors/colors.css");
+@import url('colors/colors.css');
 
 /* ===== GLOBAL ===== */
 * {
@@ -26,7 +26,6 @@ window#waybar {
 }
 
 /* ===== COMMON MODULE STYLE ===== */
-#custom-arch-logo,
 #window,
 #pulseaudio,
 #pulseaudio.muted,
@@ -106,8 +105,4 @@ window#waybar {
 
 #network {
   color: @purple;
-}
-
-#custom-arch-logo {
-  font-family: "JetBrainsMono Nerd Font Propo";
 }

@@ -6,19 +6,12 @@
   "margin-left": 8,
   "margin-right": 8,
   "modules-center": [
-    "custom/arch-logo",
     "clock",
     "hyprland/workspaces",
     "network",
     "pulseaudio",
     "battery"
   ],
-  "custom/arch-logo": {
-    "format": "",
-    "separate-outputs": true,
-    "icon": false,
-    "tooltip": false
-  },
   "hyprland/workspaces": {
     "disable-scroll": true,
     "active-only": false,
