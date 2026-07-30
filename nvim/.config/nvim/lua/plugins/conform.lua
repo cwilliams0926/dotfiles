@@ -16,11 +16,20 @@ return {
         markdown = { "prettierd", "prettier", stop_after_first = true },
         json = { "prettierd", "prettier", stop_after_first = true },
         yaml = { "prettierd", "prettier", stop_after_first = true },
+        qml = { "qmlformat" },
+      },
+
+      formatters = {
+        qmlformat = {
+          command = "/usr/lib/qt6/bin/qmlformat",
+          args = { "-w", "2", "-i", "$FILENAME" },
+          stdin = false,
+        },
       },
 
       format_on_save = {
         timeout_ms = 500,
-        lsp_fallback = true, -- falls back to LSP formatting if no formatter is configured
+        lsp_fallback = false, -- falls back to LSP formatting if no formatter is configured
       },
     })
 

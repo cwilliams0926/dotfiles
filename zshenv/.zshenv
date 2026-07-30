@@ -18,4 +18,3 @@ export SAVEHIST=10000                   # Maximum events in history file
 export PATH="$PATH:/home/cwilliams0926/.local/bin"
 
 export PATH=~/.npm-global/bin:$PATH
-

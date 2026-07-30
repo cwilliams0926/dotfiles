@@ -64,8 +64,8 @@ hl.config({
     hl.animation({
       leaf = "windowsOut",
       enabled = true,
-      speed = 4,
-      bezier = "fluent",
+      speed = 3,
+      bezier = "softSnap",
       style = "slide",
     }),
     hl.animation({
