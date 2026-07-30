@@ -13,7 +13,7 @@
 
 window#waybar {
   background: transparent;
-  font-family: SF Pro Text Regular;
+  font-family: "SF Pro Display", "JetBrainsMono Nerd Font Propo";
   font-size: 14px;
   font-weight: 600;
   color: @fg;
