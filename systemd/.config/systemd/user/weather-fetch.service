@@ -1,6 +1,9 @@
 [Unit]
 Description=Fetch current weather for waybar
+After=network-online.target
+Wants=network-online.target
 
 [Service]
 Type=oneshot
 ExecStart=%h/.config/custom_scripts/weather-fetch
+
