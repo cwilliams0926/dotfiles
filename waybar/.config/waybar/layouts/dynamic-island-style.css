@@ -15,7 +15,7 @@ window#waybar {
   background: transparent;
   font-family: "SF Pro Display", "JetBrainsMono Nerd Font Propo";
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
   color: @fg;
 }
 
@@ -37,7 +37,7 @@ window#waybar {
   color: @fg;
   background: @bg0;
   padding: 0 4px;
-  margin: 0 8px;
+  margin: 0 6px;
 }
 
 /* ===== WORKSPACES ===== */
@@ -51,7 +51,7 @@ window#waybar {
 }
 
 #workspaces button {
-  color: @fg;
+  color: @bg3;
   margin: 0px 4px;
   padding: 0px 6px;
   transition: all 0.3s ease-in-out;

@@ -58,7 +58,7 @@
       "warning": 30,
       "critical": 20
     },
-    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "format-icons": ["", "", "", "", ""], 
     "format": "{icon}",
     "format-critical": "{icon}",
     "format-warning": "{icon}",
