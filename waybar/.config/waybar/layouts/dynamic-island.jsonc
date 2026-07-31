@@ -63,11 +63,6 @@
     "format-critical": "{icon}",
     "format-warning": "{icon}",
     "format-full": "{icon}",
-    "format-charging": "󰂅",
-    "format-charging-warning": "󰢝",
-    "format-charging-critical": "󰢜",
-    "format-plugged": "󰂅",
-    "format-alt": "󱧥 {time}",
     "tooltip": true,
     "tooltip-format": "{capacity}%"
   },
