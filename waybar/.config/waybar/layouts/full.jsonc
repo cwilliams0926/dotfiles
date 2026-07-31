@@ -96,7 +96,7 @@
   },
   "network": {
     "interval": 2,
-    "format": "󱘖",
+    "format": "󱘖 Not Connected",
     "format-wifi": "{icon}  {essid}",
     "format-ethernet": "󰈀",
     "format-icons": ["󰤫", "󰤟", "󰤢", "󰤥", "󰤨"],

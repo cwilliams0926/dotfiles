@@ -25,38 +25,71 @@
 
 /* Notifications  */
 .control-center .notification-row .notification-background,
-.control-center .notification-row .notification-background .notification.critical {
+.control-center
+  .notification-row
+  .notification-background
+  .notification.critical {
   background-color: @bg2;
   border-radius: 16px;
   margin: 4px 0px;
   padding: 4px;
 }
 
-.control-center .notification-row .notification-background .notification.critical {
+.control-center
+  .notification-row
+  .notification-background
+  .notification.critical {
   color: @red;
 }
 
-.control-center .notification-row .notification-background .notification .notification-content {
+.control-center
+  .notification-row
+  .notification-background
+  .notification
+  .notification-content {
   margin: 6px;
   padding: 8px 6px 2px 2px;
 }
 
-.control-center .notification-row .notification-background .notification>*:last-child>* {
+.control-center
+  .notification-row
+  .notification-background
+  .notification
+  > *:last-child
+  > * {
   min-height: 3.4em;
 }
 
-.control-center .notification-row .notification-background .notification>*:last-child>* .notification-action {
+.control-center
+  .notification-row
+  .notification-background
+  .notification
+  > *:last-child
+  > *
+  .notification-action {
   background: @blue;
   color: @fg;
   border-radius: 12px;
   margin: 6px;
 }
 
-.control-center .notification-row .notification-background .notification>*:last-child>* .notification-action:hover {
+.control-center
+  .notification-row
+  .notification-background
+  .notification
+  > *:last-child
+  > *
+  .notification-action:hover {
   background: @blue;
 }
 
-.control-center .notification-row .notification-background .notification>*:last-child>* .notification-action:active {
+.control-center
+  .notification-row
+  .notification-background
+  .notification
+  > *:last-child
+  > *
+  .notification-action:active {
   background-color: @blue;
 }
 
@@ -74,7 +107,10 @@
   background-color: @blue;
 }
 
-.control-center .notification-row .notification-background .close-button:active {
+.control-center
+  .notification-row
+  .notification-background
+  .close-button:active {
   background-color: @blue;
 }
 
@@ -147,7 +183,7 @@ progressbar {
   font-size: 1.2rem;
 }
 
-.widget-dnd>switch {
+.widget-dnd > switch {
   background: @bg2;
   font-size: initial;
   border-radius: 8px;
@@ -155,19 +191,19 @@ progressbar {
   padding: 2px;
 }
 
-.widget-dnd>switch:hover {
+.widget-dnd > switch:hover {
   background: @blue;
 }
 
-.widget-dnd>switch:checked {
+.widget-dnd > switch:checked {
   background: @blue;
 }
 
-.widget-dnd>switch:checked:hover {
+.widget-dnd > switch:checked:hover {
   background: @blue;
 }
 
-.widget-dnd>switch slider {
+.widget-dnd > switch slider {
   background: @fg;
   border-radius: 6px;
 }
@@ -187,11 +223,11 @@ progressbar {
   halign: center;
 }
 
-.widget-buttons-grid>flowbox {
+.widget-buttons-grid > flowbox {
   padding: 0px;
 }
 
-.widget-buttons-grid>flowbox>flowboxchild>button {
+.widget-buttons-grid > flowbox > flowboxchild > button {
   margin: 4px;
   padding: 6px 12px;
   min-width: 30px;
@@ -199,7 +235,7 @@ progressbar {
   border-radius: 8px;
 }
 
-.widget-buttons-grid>flowbox>flowboxchild>button:hover {
+.widget-buttons-grid > flowbox > flowboxchild > button:hover {
   background: @blue;
 }
 
@@ -219,7 +255,7 @@ progressbar {
   margin: 6px;
 }
 
-.widget-mpris>box>button {
+.widget-mpris > box > button {
   color: @fg;
   border-radius: 20px;
 }
