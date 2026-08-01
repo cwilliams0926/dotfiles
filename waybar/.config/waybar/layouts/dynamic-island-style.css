@@ -81,11 +81,6 @@ window#waybar {
   color: @yellow;
 }
 
-#pulseaudio.muted,
-#pulseaudio.bluetooth.muted {
-  color: @red;
-}
-
 #battery,
 #battery.full,
 #battery.charging,
