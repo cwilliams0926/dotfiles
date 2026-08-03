@@ -9,7 +9,7 @@ hl.bind(mainMod .. " + " .. "return", hl.dsp.exec_cmd("kitty"))
 hl.bind(mainMod .. " + " .. "C", hl.dsp.window.close())
 
 hl.bind(mainMod .. " + " .. "E", hl.dsp.exec_cmd("nautilus"))
-hl.bind(mainMod .. " + " .. "W", hl.dsp.exec_cmd("wlogout"))
+hl.bind(mainMod .. " + " .. "W", hl.dsp.exec_cmd("wlogout -b 4 -c 0 -r 0 -m 300"))
 
 hl.bind(mainMod .. " + " .. "V", hl.dsp.window.float())
 
@@ -132,39 +132,39 @@ hl.bind("SUPER + m", hl.dsp.exec_cmd("pkill waybar || waybar &"))
 
 -- The "no fun" bind
 hl.bind("SUPER + F1", function()
-  local game_mode = (hl.get_config("animations.enabled") == false)
-  hl.exec_cmd("pkill waybar || waybar")
+	local game_mode = (hl.get_config("animations.enabled") == false)
+	hl.exec_cmd("pkill waybar || waybar")
 
-  if game_mode then
-    hl.exec_cmd("hyprctl reload")
-    return
-  end
+	if game_mode then
+		hl.exec_cmd("hyprctl reload")
+		return
+	end
 
-  hl.config({
-    general = {
-      gaps_in = 0,
-      gaps_out = 0, -- Disable gaps
-      border_size = 2,
-      ["col.active_border"] = colors.purple,
-      ["col.inactive_border"] = colors.bg2,
-    },
+	hl.config({
+		general = {
+			gaps_in = 0,
+			gaps_out = 0, -- Disable gaps
+			border_size = 2,
+			["col.active_border"] = colors.purple,
+			["col.inactive_border"] = colors.bg2,
+		},
 
-    animations = {
-      enabled = false, -- Disable animations
-    },
+		animations = {
+			enabled = false, -- Disable animations
+		},
 
-    -- Disable blur, shadow and window rounding
-    decoration = {
-      shadow = { enabled = false },
-      blur = { enabled = false },
-      rounding = 0,
-    },
-  })
+		-- Disable blur, shadow and window rounding
+		decoration = {
+			shadow = { enabled = false },
+			blur = { enabled = false },
+			rounding = 0,
+		},
+	})
 end)
 
 -- Mouse resizing and moving
 
-hl.bind("ALT + mouse:272", hl.dsp.window.drag(), { mouse = true })   -- ALT + LMB: Move a window
+hl.bind("ALT + mouse:272", hl.dsp.window.drag(), { mouse = true }) -- ALT + LMB: Move a window
 hl.bind("ALT + mouse:273", hl.dsp.window.resize(), { mouse = true }) -- ALT + RMB: Resize a window
 
 -- SwayNC
