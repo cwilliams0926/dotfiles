@@ -20,3 +20,8 @@ For the wlsunset and battery-monitor scripts, the notify-send lines use the -i (
 with an absolute path to ~/.config/swaync/icons/, however they don't use the ~ and instead
 use /home/user/... To fix this, you have to manually change those lines to include your
 username instead of mine, otherwise there will be no icon.
+
+## systemd
+
+The systemd services need to be enabled using --user to be used. The scripts for weather and
+battery both rely on these services to function.
