@@ -1,0 +1,92 @@
+@import url('colors/colors.css');
+
+/* ===== GLOBAL ===== */
+* {
+  padding: 0;
+  min-height: 0;
+  margin: 0;
+  text-shadow: none;
+  transition: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+window#waybar {
+  background: transparent;
+  font-family: 'SF Pro Display', 'JetBrainsMono Nerd Font Propo';
+  font-size: 14px;
+  font-weight: 700;
+  color: @fg;
+}
+
+#custom-arch-logo,
+#custom-weather,
+#custom-notification,
+#window,
+#pulseaudio,
+#pulseaudio.muted,
+#network,
+#workspaces,
+#clock {
+  background: @bg0;
+  padding: 0 20px;
+  margin: 0 4px;
+  border-radius: 36px;
+}
+
+#clock {
+  color: @blue;
+}
+
+#workspaces {
+  background: @bg0;
+  padding: 6px;
+  border: none;
+  box-shadow: none;
+  border-radius: 32px;
+}
+
+#workspaces button {
+  font-family: 'JetBrainsMono Nerd Font Propo';
+  color: @bg1;
+  background-color: @bg1;
+  margin: 0px 4px;
+  padding: 0px 6px;
+  transition: all 0.3s ease-in-out;
+  border-radius: 32px;
+}
+
+#workspaces button:hover {
+  color: @fg;
+  background: @bg1;
+}
+
+#workspaces button.active {
+  color: @bg0;
+  background: @blue;
+  min-width: 40px;
+  transition: all 0.3s ease-in-out;
+}
+
+#workspaces button.urgent {
+  color: @bg0;
+  background: @red;
+}
+
+#pulseaudio,
+#pulseaudio.bluetooth {
+  color: @yellow;
+}
+
+#network {
+  color: @purple;
+}
+
+#custom-arch-logo,
+#custom-notification {
+  font-family: 'JetBrainsMono Nerd Font Propo';
+}
+
+#custom-weather {
+  color: @red;
+}
