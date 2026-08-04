@@ -16,6 +16,8 @@ hl.env("GTK_THEME", "Graphite-Dark")
 
 hl.env("HYPRSHOT_DIR", "/home/cwilliams0926/Pictures/Screenshots/")
 
+hl.permission("/usr/(bin|local/bin)/hyprpm", "plugin", "allow")
+
 -- Autostart
 hl.on("hyprland.start", function()
 	hl.exec_cmd("systemctl --user start hyprpolkitagent")

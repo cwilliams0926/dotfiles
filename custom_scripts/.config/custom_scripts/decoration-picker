@@ -15,10 +15,10 @@ choice=$(printf "Rounded\nBoxed\nRounded-Borders\nGlass On\nGlass Off" | rofi -d
 
 case "$choice" in
   "Glass On")
-    ln -sf "$GLASS_DIR/Hyprglass-On.lua" "$GLASS_LINK"
+    ln -sf "$GLASS_DIR/glass-on.lua" "$GLASS_LINK"
     ;;
   "Glass Off")
-    ln -sf "$GLASS_DIR/Hyprglass-Off.lua" "$GLASS_LINK"
+    ln -sf "$GLASS_DIR/glass-off.lua" "$GLASS_LINK"
     ;;
   *)
     ln -sf "$DECOR_DIR/$choice.lua" "$CURRENT_LINK"
