@@ -25,3 +25,7 @@ username instead of mine, otherwise there will be no icon.
 
 The systemd services need to be enabled using --user to be used. The scripts for weather and
 battery both rely on these services to function.
+
+## Hyprglass
+
+The decoration picker includes a hyprglass toggle, you need to install hyprglass to use this.

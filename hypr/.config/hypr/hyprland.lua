@@ -10,6 +10,8 @@ local generalDecorations = require("modules.decorations.general")
 
 local lookAndFeel = require("modules.decorations.current")
 
+local hyprglass = require("modules.decorations.glass-current")
+
 local animations = require("modules.decorations.sane-animations")
 
 local binds = require("modules.binds")

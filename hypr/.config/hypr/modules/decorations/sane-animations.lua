@@ -143,14 +143,14 @@ hl.config({
 		hl.animation({
 			leaf = "workspaces",
 			enabled = true,
-			speed = 4,
+			speed = 5,
 			bezier = "overshot",
 			style = "slidefade 30%",
 		}),
 		hl.animation({
 			leaf = "specialWorkspace",
 			enabled = true,
-			speed = 4,
+			speed = 5,
 			bezier = "overshot",
 			style = "slidefadevert 30%",
 		}),

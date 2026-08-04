@@ -32,6 +32,11 @@ hl.window_rule({
 	float = true,
 })
 
+hl.window_rule({
+	match = { class = "^(zen)$" },
+	opacity = "0.90 0.90",
+})
+
 hl.workspace_rule({
 	workspace = 1,
 	monitor = "eDP-1",
