@@ -7,18 +7,6 @@ vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
--- html tab width fix
---[[ vim.api.nvim_create_autocmd("FileType", {
-  pattern = "html",
-  callback = function()
-    vim.opt_local.tabstop = 2
-    vim.opt_local.shiftwidth = 2
-    vim.opt_local.softtabstop = 2
-    vim.opt_local.expandtab = true
-  end,
-})
-]]
-
 vim.opt.wrap = false
 
 vim.opt.hlsearch = false
@@ -35,8 +23,8 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "css", "scss", "less" },
-  callback = function()
-    vim.opt_local.formatoptions:remove({ "o", "r" })
-  end,
+	pattern = { "css", "scss", "less" },
+	callback = function()
+		vim.opt_local.formatoptions:remove({ "o", "r" })
+	end,
 })

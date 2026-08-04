@@ -140,6 +140,10 @@ hl.bind("SUPER + F1", function()
 		return
 	end
 
+	if hl.plugin.hyprglass then
+		hl.plugin.hyprglass.config({ enabled = false })
+	end
+
 	hl.config({
 		general = {
 			gaps_in = 0,
