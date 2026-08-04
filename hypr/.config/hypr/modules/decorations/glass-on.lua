@@ -12,7 +12,6 @@ if hl.plugin.hyprglass then
 	hg.config({
 		default_theme = "dark",
 		default_preset = "apple",
-		tint_color = 0x8899aa22,
 
 		brightness = 0.9,
 		dark = { brightness = 0.82 },
@@ -47,7 +46,7 @@ if hl.plugin.hyprglass then
 	})
 
 	hg.preset("glass", {
-		blur_strength = 2.0,
+		blur_strength = 1.0,
 		blur_iterations = 3,
 		chromatic_aberration = 0.8,
 		fresnel_strength = 0.8,
@@ -63,8 +62,8 @@ if hl.plugin.hyprglass then
 	})
 
 	hg.preset("apple", {
-		blur_strength = 2.2,
-		blur_iterations = 3,
+		blur_strength = 1.2,
+		blur_iterations = 2,
 		refraction_strength = 0.55,
 		chromatic_aberration = 0.3,
 		fresnel_strength = 0.5,
