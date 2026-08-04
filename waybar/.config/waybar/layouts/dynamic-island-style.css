@@ -1,4 +1,4 @@
-@import url("colors/colors.css");
+@import url('colors/colors.css');
 
 /* ===== GLOBAL ===== */
 * {
@@ -13,7 +13,7 @@
 
 window#waybar {
   background: transparent;
-  font-family: "SF Pro Display", "JetBrainsMono Nerd Font Propo";
+  font-family: 'SF Pro Display', 'JetBrainsMono Nerd Font Propo';
   font-size: 16px;
   font-weight: 700;
   color: @fg;
@@ -35,7 +35,7 @@ window#waybar {
 #network,
 #clock {
   color: @fg;
-  background: @bg0;
+  background: transparent;
   padding: 0 4px;
   margin: 0 6px;
 }
@@ -77,7 +77,8 @@ window#waybar {
 }
 
 #pulseaudio,
-#pulseaudio.bluetooth {
+#pulseaudio.bluetooth,
+#pulseaudio.muted {
   color: @yellow;
 }
 

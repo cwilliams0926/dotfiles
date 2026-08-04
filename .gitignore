@@ -6,3 +6,4 @@ zsh/.config/zsh/plugins/
 tmux-*.log
 
 hypr/.config/hypr/modules/decorations/current.lua
+hypr/.config/hypr/modules/decorations/glass-current.lua

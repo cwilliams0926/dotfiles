@@ -19,6 +19,7 @@ hl.env("HYPRSHOT_DIR", "/home/cwilliams0926/Pictures/Screenshots/")
 -- Autostart
 hl.on("hyprland.start", function()
 	hl.exec_cmd("systemctl --user start hyprpolkitagent")
+	hl.exec_cmd("hyprpm enable hyprglass")
 	hl.exec_cmd("waybar & swaync & hypridle")
 	hl.exec_cmd("awww-daemon")
 	hl.exec_cmd("sh -c 'sleep 0.5 && awww img \"$(cat ~/.cache/current-wallpaper)\"'")
