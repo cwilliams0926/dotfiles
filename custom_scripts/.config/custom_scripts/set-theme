@@ -139,21 +139,14 @@ if [ -n "$vscodium_theme" ]; then
 fi
 
 # 7. Reload what needs reloading.
-#    Hyprland picks up the Lua change automatically on save, but a
-#    reload is cheap insurance.
 hyprctl reload
 
-#    Kitty reloads its config on SIGUSR1. This signals every running
-#    kitty instance.
 pkill -SIGUSR1 kitty 2>/dev/null || true
 
-#    Waybar reloads its config/style on SIGUSR2 without a full restart,
-#    as long as it's a recent-enough version.
+pkill -SIGUSR1 nvim || true
+
 pkill -SIGUSR2 waybar 2>/dev/null || true
 
-#    Tmux doesn't watch its config file - it has to be told to re-source.
-#    Only attempt this if a tmux server is actually running, so the
-#    script doesn't fail on a machine with no active session.
 if tmux info &>/dev/null; then
     tmux source-file "$HOME/.config/tmux/tmux.conf"
 fi
@@ -185,7 +178,7 @@ if [ -d "$theme_wall_dir" ]; then
     fi
 
     if [ -n "$default_wall" ]; then
-        awww img "$default_wall" --transition-type grow --transition-step 90
+        awww img "$default_wall" --transition-type wipe --transition-step 90
         echo "$default_wall" > "$HOME/.cache/current-wallpaper"
         echo "\$wallpaper = $default_wall" > "$HYPRLOCK_WALLPAPER"
     else
