@@ -6,8 +6,8 @@ hl.config({
 	general = {
 		gaps_in = 6,
 		gaps_out = 14,
-		["col.active_border"] = colors.bg2,
-		["col.inactive_border"] = colors.bg1,
+		["col.active_border"] = colors.bg1,
+		["col.inactive_border"] = colors.bg2,
 		resize_on_border = false,
 		allow_tearing = false,
 		layout = "dwindle",

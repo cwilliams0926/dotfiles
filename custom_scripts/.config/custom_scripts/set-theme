@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-#
 # Usage: set-theme.sh <theme-name>
+# e.g.:  set-theme.sh catppuccin
 
 set -euo pipefail
 
@@ -33,12 +33,26 @@ declare -A GTK_THEME_MAP=(
     ["catppuccin"]="catppuccin-mocha-blue-standard+default"
     ["everforest"]="Everforest-Dark"
     ["gruvbox"]="Gruvbox-Dark"
-    ["rose-pine"]="rose-pine-gtk"
+    ["rosepine"]="rose-pine-gtk"
     ["tokyonight"]="Tokyonight-Dark"
     ["e-ink"]="Adwaita"
 )
 GTK_ICON_THEME="Papirus-Dark"
 GTK_CURSOR_THEME="Bibata-Modern-Classic"
+
+# VSCodium - same "pick an installed theme by name" mechanism as GTK,
+# but the name lives inside settings.json alongside everything else,
+# so it needs a merge (via jq) rather than a full file overwrite.
+declare -A VSCODIUM_THEME_MAP=(
+    ["gruvbox-material"]="Gruvbox Material Dark"
+    ["catppuccin"]="Catppuccin Mocha"
+    ["everforest"]="Everforest Dark"
+    ["gruvbox"]="Gruvbox Dark Medium"
+    ["rosepine"]="Rosé Pine"
+    ["tokyonight"]="Tokyo Night Storm"
+    ["kanagawa"]="Kanagawa Wave"
+)
+VSCODIUM_SETTINGS="$HOME/.config/VSCodium/User/settings.json"
 
 # 1. Write the central state file - this is what wallpaper-picker.sh
 #    and Neovim's config/theme.lua both read to know the active theme.
@@ -110,30 +124,60 @@ gtk-application-prefer-dark-theme=$gtk_prefer_dark
 EOF
 done
 
+# 6f. VSCodium - merge just the colorTheme key into the existing
+#     settings.json rather than overwriting the whole file, since it
+#     holds every other VSCodium preference too.
+vscodium_theme="${VSCODIUM_THEME_MAP[$theme]:-}"
+if [ -n "$vscodium_theme" ]; then
+    mkdir -p "$(dirname "$VSCODIUM_SETTINGS")"
+    if [ ! -f "$VSCODIUM_SETTINGS" ]; then
+        echo '{}' > "$VSCODIUM_SETTINGS"
+    fi
+    tmp_settings=$(mktemp)
+    jq --arg theme "$vscodium_theme" '."workbench.colorTheme" = $theme' \
+        "$VSCODIUM_SETTINGS" > "$tmp_settings" && mv "$tmp_settings" "$VSCODIUM_SETTINGS"
+fi
+
 # 7. Reload what needs reloading.
+#    Hyprland picks up the Lua change automatically on save, but a
+#    reload is cheap insurance.
 hyprctl reload
 
+#    Kitty reloads its config on SIGUSR1. This signals every running
+#    kitty instance.
 pkill -SIGUSR1 kitty 2>/dev/null || true
 
-pkill -SIGUSR1 nvim || true
-
+#    Waybar reloads its config/style on SIGUSR2 without a full restart,
+#    as long as it's a recent-enough version.
 pkill -SIGUSR2 waybar 2>/dev/null || true
 
+#    Tmux doesn't watch its config file - it has to be told to re-source.
+#    Only attempt this if a tmux server is actually running, so the
+#    script doesn't fail on a machine with no active session.
 if tmux info &>/dev/null; then
     tmux source-file "$HOME/.config/tmux/tmux.conf"
 fi
 
+#    Swaync's client hangs waiting for a connection if the daemon isn't
+#    running, so guard with a process check before calling it.
 if pgrep -x swaync >/dev/null; then
     swaync-client --reload-css
 fi
 
+#    Rofi and wlogout read their config fresh each launch - nothing to do.
+#    Neovim reads current-theme on next startup - nothing to do for
+#    already-open instances.
+
 # 8. Pick a default wallpaper for this theme and apply it.
 theme_wall_dir="$WALLPAPER_ROOT/$theme"
 if [ -d "$theme_wall_dir" ]; then
+    # Look for a file specifically named "default.*" first - lets each
+    # theme pin a deterministic wallpaper instead of picking randomly.
     default_wall=$(find "$theme_wall_dir" -maxdepth 1 -type f \
         \( -iname "default.jpg" -o -iname "default.jpeg" -o -iname "default.png" -o -iname "default.gif" \) \
         | head -n 1)
 
+    # No designated default for this theme - fall back to a random pick.
     if [ -z "$default_wall" ]; then
         default_wall=$(find "$theme_wall_dir" -maxdepth 1 -type f \
             \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" \) \
@@ -141,7 +185,7 @@ if [ -d "$theme_wall_dir" ]; then
     fi
 
     if [ -n "$default_wall" ]; then
-        awww img "$default_wall" --transition-type wipe --transition-step 90
+        awww img "$default_wall" --transition-type grow --transition-step 90
         echo "$default_wall" > "$HOME/.cache/current-wallpaper"
         echo "\$wallpaper = $default_wall" > "$HYPRLOCK_WALLPAPER"
     else
