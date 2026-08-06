@@ -33,7 +33,7 @@ declare -A GTK_THEME_MAP=(
     ["catppuccin"]="catppuccin-mocha-blue-standard+default"
     ["everforest"]="Everforest-Dark"
     ["gruvbox"]="Gruvbox-Dark"
-    ["rosepine"]="rose-pine-gtk"
+    ["rose-pine"]="rose-pine-gtk"
     ["tokyonight"]="Tokyonight-Dark"
     ["e-ink"]="Adwaita"
 )
@@ -48,7 +48,7 @@ declare -A VSCODIUM_THEME_MAP=(
     ["catppuccin"]="Catppuccin Mocha"
     ["everforest"]="Everforest Dark"
     ["gruvbox"]="Gruvbox Dark Medium"
-    ["rosepine"]="Rosé Pine"
+    ["rose-pine"]="Rosé Pine"
     ["tokyonight"]="Tokyo Night Storm"
     ["kanagawa"]="Kanagawa Wave"
 )
