@@ -13,8 +13,6 @@ if hl.plugin.hyprglass then
 		default_theme = "dark",
 		default_preset = "apple",
 
-		brightness = 0.9,
-		dark = { brightness = 0.82 },
 		light = { adaptive_boost = 0.5 },
 
 		layers = { enabled = 1 },
@@ -24,6 +22,7 @@ if hl.plugin.hyprglass then
 	hg.layer("waybar", { exclude = true })
 	hg.layer("swaync", { exclude = true })
 	hg.layer("^(zen)$")
+	hg.layer("rofi", { exclude = true })
 	hg.layer("quickshell:bezel", { preset = "ui", mask_threshold = 0.3 })
 	hg.layer("debug-panel", { exclude = true })
 
@@ -64,13 +63,13 @@ if hl.plugin.hyprglass then
 	hg.preset("apple", {
 		blur_strength = 1.2,
 		blur_iterations = 2,
-		refraction_strength = 0.55,
-		chromatic_aberration = 0.3,
-		fresnel_strength = 0.5,
-		specular_strength = 0.75,
-		edge_thickness = 0.05,
-		lens_distortion = 0.3,
-		dark = { brightness = 0.82, contrast = 0.90, saturation = 0.80, vibrancy = 0.15, adaptive_dim = 0.4 },
-		light = { brightness = 1.12, contrast = 0.92, saturation = 0.85, vibrancy = 0.12, adaptive_dim = 0.4 },
+		refraction_strength = 0.75,
+		chromatic_aberration = 0.28,
+		fresnel_strength = 0.9,
+		specular_strength = 1.2,
+		edge_thickness = 0.12,
+		lens_distortion = 0.6,
+		dark = { brightness = 1, contrast = 1.08, saturation = 1.05, vibrancy = 0.35, adaptive_dim = 0 },
+		light = { brightness = 1.05, contrast = 1.06, saturation = 1.08, vibrancy = 0.3, adaptive_dim = 0.15 },
 	})
 end
