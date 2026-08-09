@@ -1,10 +1,18 @@
 #!/usr/bin/bash
+ID_FILE="/tmp/wlsunset_notif_id"
 
 if pidof wlsunset; then
-  notify-send -i "/home/cwilliams0926/.config/swaync/icons/dark_mode.svg" "Night Light Off" "Night light turned off" &&
+  if [ -f "$ID_FILE" ]; then
+    notify-send -r "$(cat "$ID_FILE")" -i "/home/cwilliams0926/.config/swaync/icons/dark_mode.svg" "Night Light Off" "Night light turned off"
+  else
+    notify-send -p -i "/home/cwilliams0926/.config/swaync/icons/dark_mode.svg" "Night Light Off" "Night light turned off" > "$ID_FILE"
+  fi
   killall wlsunset
 else
-  notify-send -i "/home/cwilliams0926/.config/swaync/icons/dark_mode.svg" "Night Light On" "Night light turned on" &&
+  if [ -f "$ID_FILE" ]; then
+    notify-send -r "$(cat "$ID_FILE")" -i "/home/cwilliams0926/.config/swaync/icons/dark_mode.svg" "Night Light On" "Night light turned on"
+  else
+    notify-send -p -i "/home/cwilliams0926/.config/swaync/icons/dark_mode.svg" "Night Light On" "Night light turned on" > "$ID_FILE"
+  fi
   wlsunset -T 4001
 fi
-
