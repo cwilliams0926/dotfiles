@@ -11,7 +11,7 @@ if hl.plugin.hyprglass then
 
 	hg.config({
 		default_theme = "dark",
-		default_preset = "apple",
+		default_preset = "glass",
 
 		light = { adaptive_boost = 0.5 },
 
@@ -65,7 +65,7 @@ if hl.plugin.hyprglass then
 		blur_iterations = 2,
 		refraction_strength = 0.75,
 		chromatic_aberration = 0.28,
-		fresnel_strength = 0.9,
+		fresnel_strength = 0.8,
 		specular_strength = 1.2,
 		edge_thickness = 0.12,
 		lens_distortion = 0.6,

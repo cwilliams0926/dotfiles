@@ -8,7 +8,7 @@ hl.config({
 
 hl.config({
 	decoration = {
-		rounding = 24,
+		rounding = 20,
 		rounding_power = 8,
 	},
 })
