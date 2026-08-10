@@ -70,21 +70,6 @@ hl.layer_rule({
 
 hl.layer_rule({
 	match = {
-		namespace = "swaync-control-center",
-	},
-	blur = true,
-	ignore_alpha = 0,
-})
-
-hl.layer_rule({
-	match = {
-		namespace = "swaync-notification-window",
-	},
-	ignore_alpha = 0,
-})
-
-hl.layer_rule({
-	match = {
 		namespace = "logout_dialog",
 	},
 	blur = true,

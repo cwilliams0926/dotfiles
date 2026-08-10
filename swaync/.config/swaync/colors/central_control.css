@@ -3,7 +3,7 @@
 
   all: unset;
   font-size: 14px;
-  font-family: "SF Pro Text Regular";
+  font-family: 'SF Pro Text Regular';
   transition: 200ms;
 }
 
@@ -17,10 +17,9 @@
 .control-center {
   background: @bg0;
   border-radius: 24px;
-  border: 1px solid @blue;
-  border-radius: 24px;
   margin: 18px;
   padding: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
 }
 
 /* Notifications  */
