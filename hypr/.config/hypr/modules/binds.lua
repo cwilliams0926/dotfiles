@@ -47,6 +47,7 @@ hl.bind("SUPER + 0", hl.dsp.focus({ workspace = 10 }))
 
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
 hl.bind("SUPER + SHIFT + 1", hl.dsp.window.move({ workspace = 1 }))
+hl.bind("SUPER + SHIFT + 2", hl.dsp.window.move({ workspace = 2 }))
 hl.bind("SUPER + SHIFT + 3", hl.dsp.window.move({ workspace = 3 }))
 hl.bind("SUPER + SHIFT + 4", hl.dsp.window.move({ workspace = 4 }))
 hl.bind("SUPER + SHIFT + 5", hl.dsp.window.move({ workspace = 5 }))
