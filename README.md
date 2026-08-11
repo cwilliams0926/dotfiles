@@ -10,7 +10,7 @@ other dotfiles I've seen however everything is custom.
 - Obviously, there is no configured display manager, you have to
   handle that yourself
 - There are a few manual changes that you cannot do by running Stow
-  on directories (some tmux theming and zsh plugins, to name a few), these
+  on directories, these
   changes can be found in manual-changes.md
 
 ## Installation
@@ -18,6 +18,10 @@ other dotfiles I've seen however everything is custom.
 Meant to be installed using GNU Stow (the directories are designed this way)
 however you could easily copy any individual configuration directory here and
 place it on your machine.
+
+## Usage
+
+Neovim keybinds are found in nvim-README.md. Hyprland keybinds are found in hypr/.config/hypr/modules/binds.
 
 ## TO-DO
 
