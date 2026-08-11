@@ -1,4 +1,4 @@
-@theme "colors.rasi"
+@theme "colors/colors.rasi"
 
 configuration {
   display-drun: "Select Application";
@@ -33,7 +33,7 @@ message {
     border: 0px;
     padding: 10px;
     margin: 0px;
-    border-color: @blue;
+    border-color: @green;
     text-color: @fg;
 }
 
@@ -43,7 +43,7 @@ textbox {
 }
 
 listview {
-    spacing: 5px;
+    spacing: 8px;
     margin: 0px;
     padding: 0px;
     border: 0px solid;
@@ -57,7 +57,7 @@ listview {
     layout: vertical;
     cursor: "default";
     fixed-height: false;
-    fixed-columns: true;
+    fixed-columns: false;
     reverse: false;
 }
 
@@ -65,6 +65,8 @@ element {
     border:  0px;
     padding: 12px;
     background-color: transparent;
+    margin: 2px;
+    border-radius: 12px;
     text-color: @fg;
     cursor: pointer;
     orientation: vertical;
@@ -76,9 +78,9 @@ element-icon {
 }
 
 element selected {
+    text-color: @green;
+    border-radius: 12px;
     background-color: @bg2;
-    text-color: @blue;
-    border-radius: 24px;
 }
 
 scrollbar {
@@ -96,10 +98,10 @@ mode-switcher {
 inputbar {
     background-color: transparent; 
     spacing: 0;
-    border: 2px;
     padding: 12px;
-    border-radius: 24px;
-    border-color: @blue;
+    border-radius: 12px;
+    border-color: @green;
+    border: 1px;
     children:   [ prompt, entry, case-indicator ];
 }
 
@@ -119,7 +121,7 @@ entry {
 }
 
 prompt {
-    text-color: @blue;
+    text-color: @green;
     background-color: transparent;
     border-radius: 24px;
     border: 0px;
@@ -134,7 +136,7 @@ element-text, element-icon {
 }
 
 element-text selected {
-    text-color: @blue;
+    text-color: @green;
 }
 
 element-text {

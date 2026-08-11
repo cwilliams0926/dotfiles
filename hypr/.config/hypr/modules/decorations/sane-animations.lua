@@ -145,7 +145,7 @@ hl.config({
 			enabled = true,
 			speed = 5,
 			bezier = "overshot",
-			style = "slidefade 30%",
+			style = "slide",
 		}),
 		hl.animation({
 			leaf = "specialWorkspace",

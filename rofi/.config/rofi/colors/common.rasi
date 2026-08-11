@@ -46,7 +46,7 @@ listview {
     layout: vertical;
     cursor: "default";
     fixed-height: false;
-    fixed-columns: true;
+    fixed-columns: false;
     reverse: false;
 }
 

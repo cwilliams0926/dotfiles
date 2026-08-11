@@ -1,4 +1,4 @@
-@import url("colors/colors.css");
+@import url('colors/colors.css');
 
 /* ===== GLOBAL ===== */
 * {
@@ -13,7 +13,7 @@
 
 window#waybar {
   background: transparent;
-  font-family: "SF Pro Display", "JetBrainsMono Nerd Font Propo";
+  font-family: 'SF Pro Display', 'JetBrainsMono Nerd Font Propo';
   font-size: 14px;
   font-weight: 700;
   color: @fg;
@@ -50,13 +50,13 @@ window#waybar {
 }
 
 #workspaces button {
-  font-family: "JetBrainsMono Nerd Font Propo";
+  font-family: 'JetBrainsMono Nerd Font Propo';
   color: @bg1;
   background-color: @bg1;
   margin: 0px 4px;
   padding: 0px 6px;
   transition: all 0.3s ease-in-out;
-  border-radius: 32px;
+  border-radius: 20px;
 }
 
 #workspaces button:hover {
@@ -105,7 +105,7 @@ window#waybar {
 
 #custom-arch-logo,
 #custom-notification {
-  font-family: "JetBrainsMono Nerd Font Propo";
+  font-family: 'JetBrainsMono Nerd Font Propo';
 }
 
 #custom-weather {
