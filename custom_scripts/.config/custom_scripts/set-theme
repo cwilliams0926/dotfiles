@@ -13,6 +13,7 @@ fi
 # ---- paths - adjust these if your dotfiles live somewhere else ----
 CENTRAL_STATE="$HOME/.config/current-theme"
 HYPR_COLORS="$HOME/.config/hypr/colors/colors.lua"
+QUICKSHELL_COLORS="$HOME/.config/quickshell/colors.json"
 KITTY_COLORS="$HOME/.config/kitty/colors/colors.conf"
 ROFI_COLORS="$HOME/.config/rofi/colors/colors.rasi"
 WLOGOUT_COLORS="$HOME/.config/wlogout/colors/colors.css"
@@ -57,6 +58,9 @@ VSCODIUM_SETTINGS="$HOME/.config/VSCodium/User/settings.json"
 # 1. Write the central state file - this is what wallpaper-picker.sh
 #    and Neovim's config/theme.lua both read to know the active theme.
 echo "$theme" > "$CENTRAL_STATE"
+
+# 1a. Quickshell
+cp "$HOME/.config/quickshell/colors/custom/$theme.json" "$QUICKSHELL_COLORS"
 
 # 2. Hyprland - colors.lua just requires the matching palette module.
 echo "return require(\"colors.custom.$theme\")" > "$HYPR_COLORS"
