@@ -16,7 +16,7 @@ if [ ! -d "$WALLPAPER_DIR" ]; then
 fi
 
 # Generate thumbnails for rofi icons
-for img in "$WALLPAPER_DIR"/*.{jpg,jpeg,png,gif}; do
+for img in "$WALLPAPER_DIR"/*.{jpg,jpeg,webp,png,gif}; do
     [ -f "$img" ] || continue
     filename=$(basename "$img")
     cache_file="$CACHE_DIR/$filename"
@@ -27,7 +27,7 @@ done
 
 # Build rofi menu entries (filename without path)
 selection=$(
-    for img in "$WALLPAPER_DIR"/*.{jpg,jpeg,png,gif}; do
+    for img in "$WALLPAPER_DIR"/*.{jpg,jpeg,webp,png,gif}; do
         [ -f "$img" ] || continue
         filename=$(basename "$img")
         echo -en "$filename\x00icon\x1f$CACHE_DIR/$filename\n"
