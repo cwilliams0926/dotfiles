@@ -73,6 +73,9 @@ vim.lsp.config("qmlls", {
 	cmd = { "qmlls6" },
 	filetypes = { "qml" },
 	root_markers = { ".git", "CMakeLists.txt" },
+	on_attach = function(client, bufnr)
+		client.server_capabilities.semanticTokensProvider = nil
+	end,
 })
 vim.lsp.enable("qmlls")
 
