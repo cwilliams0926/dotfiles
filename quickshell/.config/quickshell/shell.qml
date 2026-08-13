@@ -1,3 +1,5 @@
+//@ pragma IconTheme Papirus
+
 import QtQuick
 import QtQuick.Effects
 import Quickshell

@@ -1,0 +1,5 @@
+module local.components
+BatteryIndicator 1.0 BatteryIndicator.qml
+NetworkIndicator 1.0 NetworkIndicator.qml
+NowPlayingCard 1.0 NowPlayingCard.qml
+
