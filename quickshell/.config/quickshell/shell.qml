@@ -1,4 +1,5 @@
 import QtQuick
+import QtQuick.Effects
 import Quickshell
 
 ShellRoot {
@@ -13,6 +14,14 @@ ShellRoot {
     color: "transparent"
     mask: Region {
       item: island
+    }
+
+    RectangularShadow {
+      anchors.fill: island
+      radius: island.radius
+      blur: 20
+      spread: 2
+      color: Qt.rgba(0, 0, 0, 0.4)
     }
 
     Island {
