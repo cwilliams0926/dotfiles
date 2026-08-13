@@ -1,5 +1,5 @@
 window {
-    location: center;
+    location: south;
     anchor: center;
     fullscreen: false;
     width: 600px;
@@ -8,7 +8,7 @@ window {
     margin: 0px;
     background-color: @bg0;
     border: 0px;
-    border-radius: 30px;
+    border-radius: 30px 30px 0 0;
     padding: 0px;
 }
 
