@@ -10,4 +10,4 @@ alias rm="rm -iv"
 
 alias vim="nvim"
 alias vi="nvim"
-alias code="code"
+alias code="codium"
