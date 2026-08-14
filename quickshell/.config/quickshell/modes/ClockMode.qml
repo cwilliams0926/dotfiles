@@ -26,7 +26,7 @@ Item {
   // column to not visually touch — tune this by eye once it's running,
   // since exact text widths depend on your font.
   implicitWidth: collapsed ? 150 : 560
-  implicitHeight: collapsed ? 34 : 148
+  implicitHeight: collapsed ? 34 : 108
 
   SystemClock {
     id: clock
@@ -109,20 +109,18 @@ Item {
     }
 
     color: Colors.bg2
-    border.color: Colors.grey0
-    border.width: 1
-    radius: height / 2
+    radius: height / 3
 
     // Size this container from its own Row's content instead of a fixed
     // number — same "ask the child, don't guess" pattern as before, just
     // applied to a background shape instead of the whole pill.
-    implicitWidth: statusRow.implicitWidth + 20
-    implicitHeight: statusRow.implicitHeight + 12
+    implicitWidth: statusRow.implicitWidth + 32
+    implicitHeight: statusRow.implicitHeight + 20
 
     Row {
       id: statusRow
       anchors.centerIn: parent
-      spacing: 10
+      spacing: 14
 
       BatteryIndicator {}
       NetworkIndicator {}

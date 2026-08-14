@@ -34,6 +34,6 @@ Item {
     anchors.fill: icon
     source: icon
     colorization: 1.0
-    colorizationColor: Colors.fg
+    colorizationColor: Colors.green
   }
 }
