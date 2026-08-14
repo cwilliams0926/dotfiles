@@ -35,17 +35,17 @@ Rectangle {
   implicitHeight: content.item ? content.item.implicitHeight : 34
 
   Behavior on implicitWidth {
-    NumberAnimation {
-      duration: 500
-      easing.type: Easing.Bezier
-      easing.bezierCurve: [0.38, 1.21, 0.22, 1, 1, 1]
+    SpringAnimation {
+      spring: 3.0
+      damping: 0.3
+      mass: 0.7
     }
   }
   Behavior on implicitHeight {
-    NumberAnimation {
-      duration: 500
-      easing.type: Easing.Bezier
-      easing.bezierCurve: [0.38, 1.21, 0.22, 1, 1, 1]
+    SpringAnimation {
+      spring: 3.0
+      damping: 0.3
+      mass: 0.7
     }
   }
 
