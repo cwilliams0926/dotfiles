@@ -1,31 +1,68 @@
 import QtQuick
-import QtQuick.Effects
 import Quickshell
 import Quickshell.Io
-import Quickshell.Widgets
 import ".."
 
 Item {
   id: root
-  implicitWidth: 18
+  implicitWidth: 24
   implicitHeight: 18
 
   property string connectionType: ""
   property int wifiSignal: 0
 
-  readonly property string iconName: {
+  // 0 = offline, 1-3 = wifi signal tiers, 4 = wired (always full)
+  readonly property int tier: {
     if (connectionType === "ethernet")
-      return "network-wired-symbolic";
+      return 4;
     if (connectionType === "wifi") {
       if (wifiSignal >= 75)
-        return "network-wireless-signal-excellent-symbolic";
-      if (wifiSignal >= 50)
-        return "network-wireless-signal-good-symbolic";
-      if (wifiSignal >= 25)
-        return "network-wireless-signal-ok-symbolic";
-      return "network-wireless-signal-weak-symbolic";
+        return 3;
+      if (wifiSignal >= 40)
+        return 2;
+      if (wifiSignal > 0)
+        return 1;
     }
-    return "network-wireless-offline-symbolic";
+    return 0;
+  }
+
+  // Canvas only redraws when needed to
+  onTierChanged: canvas.requestPaint()
+  Component.onCompleted: canvas.requestPaint()
+
+  Canvas {
+    id: canvas
+    anchors.fill: parent
+
+    onPaint: {
+      const ctx = getContext("2d");
+      ctx.reset();
+      ctx.lineCap = "round";
+
+      const cx = width / 2;
+      const cy = height - 3;
+      const radii = [5, 9, 13];
+
+      for (let i = 0; i < radii.length; i++) {
+        const barTier = i + 1;
+        const active = root.tier === 4 || root.tier >= barTier;
+
+        ctx.beginPath();
+        // Upper arc of a circle: -135deg to -45deg, i.e. the "fan"
+        // shape a wifi icon uses, opening upward.
+        ctx.arc(cx, cy, radii[i], -Math.PI * 0.75, -Math.PI * 0.25);
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = active ? Colors.aqua : Colors.grey0;
+        ctx.stroke();
+      }
+
+      // Base dot — always drawn, colored the same as an active bar
+      // when there's any connection at all, grey when fully offline.
+      ctx.beginPath();
+      ctx.arc(cx, cy, 1.5, 0, Math.PI * 2);
+      ctx.fillStyle = root.tier > 0 ? Colors.aqua : Colors.grey0;
+      ctx.fill();
+    }
   }
 
   Process {
@@ -66,20 +103,5 @@ Item {
     repeat: true
     triggeredOnStart: true
     onTriggered: statusProc.running = true
-  }
-
-  IconImage {
-    id: icon
-    anchors.fill: parent
-    implicitSize: 18
-    visible: false
-    source: Quickshell.iconPath(root.iconName, true) || Quickshell.iconPath("network-wireless-offline-symbolic")
-  }
-
-  MultiEffect {
-    anchors.fill: icon
-    source: icon
-    colorization: 1.0
-    colorizationColor: Colors.green
   }
 }

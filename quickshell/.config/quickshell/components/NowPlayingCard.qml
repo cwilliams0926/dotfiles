@@ -3,10 +3,6 @@ import Quickshell
 import Quickshell.Services.Mpris
 import ".."
 
-// Fixed size always — this no longer collapses to 0 width when nothing's
-// playing. Instead it swaps its *internal content* between real track
-// info and a placeholder, based on hasMedia. The component always exists
-// in the same place; only what's drawn inside it changes.
 Item {
   id: root
 
@@ -55,9 +51,8 @@ Item {
         fillMode: Image.PreserveAspectCrop
         asynchronous: true
       }
-      // Placeholder glyph shown when nothing's playing — a plain music
-      // note character, no extra asset needed. Swap for an icon/SVG
-      // later if you want something fancier.
+
+      // Placeholder glyph for when nothing's playing
       Text {
         anchors.centerIn: parent
         visible: !root.hasMedia

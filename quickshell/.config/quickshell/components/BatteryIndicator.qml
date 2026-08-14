@@ -1,39 +1,71 @@
 import QtQuick
-import QtQuick.Effects
 import Quickshell
 import Quickshell.Services.UPower
-import Quickshell.Widgets
 import ".."
 
 Item {
   id: root
-  implicitWidth: 18
-  implicitHeight: 18
+  implicitWidth: 34
+  implicitHeight: 16
 
   readonly property real pct: UPower.displayDevice.percentage * 100
   readonly property bool charging: UPower.displayDevice.state === UPowerDeviceState.Charging
 
-  readonly property string bucket: {
-    const step = Math.max(0, Math.min(100, Math.round(pct / 10) * 10));
-    return String(step).padStart(3, "0");
-  }
-  readonly property string iconName: "battery-" + bucket + (charging ? "-charging" : "") + "-symbolic"
-
-  // The raw icon — kept invisible. MultiEffect reads its pixels as a
-  // source and draws the colorized result; the original stays hidden
-  // so you don't see two overlapping copies.
-  IconImage {
-    id: icon
-    anchors.fill: parent
-    implicitSize: 18
-    visible: false
-    source: Quickshell.iconPath(root.iconName, true) || Quickshell.iconPath("battery-full-symbolic")
+  readonly property string fillColor: {
+    if (charging)
+      return Colors.aqua;
+    if (pct <= 15)
+      return Colors.red;
+    if (pct <= 30)
+      return Colors.orange;
+    return Colors.aqua;
   }
 
-  MultiEffect {
-    anchors.fill: icon
-    source: icon
-    colorization: 1.0
-    colorizationColor: Colors.green
+  // Battery itself
+  Rectangle {
+    id: body
+    anchors.left: parent.left
+    anchors.verticalCenter: parent.verticalCenter
+    width: parent.width - 3 // leave room for the nub
+    height: parent.height
+    radius: 4
+    color: "transparent"
+    border.color: Colors.grey0
+    border.width: 1.5
+
+    // The fill of the battery
+    Rectangle {
+      anchors.left: parent.left
+      anchors.verticalCenter: parent.verticalCenter
+      anchors.leftMargin: 3
+      height: parent.height - 6
+      width: (parent.width - 6) * (root.pct / 100)
+      radius: 1
+      color: root.fillColor
+
+      Behavior on width {
+        NumberAnimation {
+          duration: 400
+        }
+      }
+    }
+
+    Text {
+      anchors.centerIn: parent
+      text: Math.round(root.pct)
+      color: Colors.bg0
+      font.pixelSize: 9
+      font.weight: 700
+    }
+  }
+
+  // The nub
+  Rectangle {
+    anchors.left: body.right
+    anchors.verticalCenter: parent.verticalCenter
+    width: 2
+    height: parent.height * 0.5
+    radius: 1
+    color: Colors.grey0
   }
 }
