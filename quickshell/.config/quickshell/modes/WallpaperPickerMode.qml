@@ -93,6 +93,8 @@ Item {
           Image {
             anchors.fill: parent
             source: modelData.startsWith("file://") ? modelData : "file://" + modelData
+            sourceSize.width: 200
+            sourceSize.height: 150
             fillMode: Image.PreserveAspectCrop
             asynchronous: true
           }
