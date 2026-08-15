@@ -182,6 +182,7 @@ Item {
           id: mouseArea
           anchors.fill: parent
           hoverEnabled: true
+          cursorShape: Qt.PointingHandCursor
           onClicked: {
             modelData.execute();
             root.closeRequested();

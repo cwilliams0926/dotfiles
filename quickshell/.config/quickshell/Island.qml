@@ -73,8 +73,17 @@ Rectangle {
 
   IpcHandler {
     target: "launcher"
+
     function toggle(): void {
       island.mode = island.mode === "launcher" ? "clock" : "launcher";
+    }
+  }
+
+  IpcHandler {
+    target: "themePicker"
+
+    function toggle(): void {
+      island.mode = island.mode === "themePicker" ? "clock" : "themePicker";
     }
   }
 }
