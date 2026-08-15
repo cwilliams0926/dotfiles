@@ -11,7 +11,7 @@ PanelWindow {
     right: true
   }
   exclusiveZone: 38
-  implicitHeight: 160
+  implicitHeight: 360
   color: "transparent"
   mask: Region {
     item: island

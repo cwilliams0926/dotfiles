@@ -1,4 +1,5 @@
 import QtQuick
+import QtQuick.Layouts
 import Quickshell
 import Quickshell.Widgets
 import "../components"
@@ -12,16 +13,19 @@ Item {
   id: root
 
   property string query: ""
+  property bool collapsed: true
+
+  implicitWidth: 440
+  implicitHeight: 346
 
   ScriptModel {
     id: filteredApps
     values: {
-      const all = [...DesktopEntries.applications.values]
-        .filter(app => app.name)
-        .sort((a, b) => a.name.localeCompare(b.name))
-      const q = root.query.trim().toLowerCase()
-      if (q === "") return all
-      return all.filter(app => app.name.toLowerCase().includes(q))
+      const all = [...DesktopEntries.applications.values].filter(app => app.name).sort((a, b) => a.name.localeCompare(b.name));
+      const q = root.query.trim().toLowerCase();
+      if (q === "")
+        return all;
+      return all.filter(app => app.name.toLowerCase().includes(q));
     }
   }
 
@@ -31,6 +35,38 @@ Item {
   //     above automatically via the binding it already reads from
   // Anchor this Row near the top of root.
 
+  RowLayout {
+    anchors {
+      top: parent.top
+      right: parent.right
+      left: parent.left
+      margins: 16
+    }
+    spacing: 16
+
+    Text {
+      id: magnify
+      Layout.alignment: Qt.AlignVCenter
+      text: ""
+      font {
+        pixelSize: 14
+      }
+      color: Colors.fg
+    }
+
+    TextInput {
+      id: textInput
+      Layout.alignment: Qt.AlignVCenter
+      Layout.fillWidth: true
+      color: Colors.fg
+      text: "Search..."
+      focus: true
+
+      onAccepted: {
+        console.log("User typed" + textInput.text);
+      }
+    }
+  }
   // TODO: build the ListView below the search bar:
   //   ListView {
   //     model: filteredApps

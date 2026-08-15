@@ -4,7 +4,7 @@ import Quickshell
 Rectangle {
   id: island
 
-  property string mode: "clock"
+  property string mode: "launcher"
 
   property bool hoverExpand: hover.hovered
 
