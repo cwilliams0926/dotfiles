@@ -1,10 +1,11 @@
 import QtQuick
 import Quickshell
+import Quickshell.Io
 
 Rectangle {
   id: island
 
-  property string mode: "launcher"
+  property string mode: "clock"
 
   property bool hoverExpand: hover.hovered
 
@@ -48,6 +49,17 @@ Rectangle {
       if (item && "collapsed" in item) {
         item.collapsed = Qt.binding(() => !island.hoverExpand);
       }
+      if (item && item.closeRequested) {
+        item.closeRequested.connect(() => {
+          island.mode = "clock";
+        });
+      }
+    }
+  }
+  IpcHandler {
+    target: "launcher"
+    function toggle(): void {
+      island.mode = island.mode === "launcher" ? "clock" : "launcher";
     }
   }
 }

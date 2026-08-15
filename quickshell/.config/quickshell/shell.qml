@@ -16,6 +16,7 @@ PanelWindow {
   mask: Region {
     item: island
   }
+  focusable: island.mode === "launcher"
 
   RectangularShadow {
     anchors.fill: island

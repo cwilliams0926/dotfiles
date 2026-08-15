@@ -11,12 +11,15 @@ import ".."
 // that shrinks/grows the way the clock's collapsed/expanded does.
 Item {
   id: root
+  signal closeRequested
 
   property string query: ""
   property bool collapsed: true
 
   implicitWidth: 440
   implicitHeight: 346
+
+  Component.onCompleted: textInput.forceActiveFocus()
 
   ScriptModel {
     id: filteredApps
@@ -29,13 +32,8 @@ Item {
     }
   }
 
-  // TODO: build the search bar — a Row containing:
-  //   - a Text with "🔍" (or similar), sized/colored to match your theme
-  //   - a TextInput bound to root.query, so typing updates the filter
-  //     above automatically via the binding it already reads from
-  // Anchor this Row near the top of root.
-
   RowLayout {
+    id: searchBar
     anchors {
       top: parent.top
       right: parent.right
@@ -54,39 +52,143 @@ Item {
       color: Colors.fg
     }
 
-    TextInput {
-      id: textInput
-      Layout.alignment: Qt.AlignVCenter
+    Item {
+      id: searchInputWrapper
       Layout.fillWidth: true
-      color: Colors.fg
-      text: "Search..."
-      focus: true
+      Layout.alignment: Qt.AlignVCenter
+      implicitHeight: textInput.implicitHeight
 
-      onAccepted: {
-        console.log("User typed" + textInput.text);
+      TextInput {
+        id: textInput
+        anchors.fill: parent
+        color: Colors.fg
+        onTextChanged: root.query = text
+
+        Keys.onPressed: event => {
+          if (event.key === Qt.Key_Down) {
+            listView.currentIndex = Math.min(listView.currentIndex + 1, filteredApps.values.length - 1);
+            event.accepted = true;
+          } else if (event.key === Qt.Key_Up) {
+            listView.currentIndex = Math.max(listView.currentIndex - 1, 0);
+            event.accepted = true;
+          } else if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter) {
+            const selected = filteredApps.values[listView.currentIndex];
+            if (selected) {
+              selected.execute();
+              root.closeRequested();
+            }
+            event.accepted = true;
+          } else if (event.key === Qt.Key_Escape) {
+            root.closeRequested();
+            event.accepted = true;
+          }
+        }
+      }
+
+      Text {
+        anchors.verticalCenter: textInput.verticalCenter
+        text: "Search..."
+        color: Colors.grey2
+        visible: textInput.text.length === 0
+        font.family: "SF Pro Display"
       }
     }
   }
-  // TODO: build the ListView below the search bar:
-  //   ListView {
-  //     model: filteredApps
-  //     delegate: Component {
-  //       // `modelData` here is one DesktopEntry from the array above.
-  //       // Build a Row: an Image/IconImage using
-  //       //   Quickshell.iconPath(modelData.icon)
-  //       // next to a Text showing modelData.name — same shape as
-  //       // NowPlayingCard's art-next-to-text layout.
-  //     }
-  //   }
-  //
-  // Give the ListView real anchors/height so it actually has room to
-  // render rows — an Item with no size shows nothing, same lesson as
-  // your very first RowLayout bug.
 
-  // TODO: launching — when a row is clicked (or Enter is pressed on the
-  // selected one), call modelData.execute(), then close the launcher by
-  // setting island.mode back to "clock". You'll need a way to reach
-  // `island` from here — think about whether that should be a signal
-  // this file emits upward, or something else. This is a real design
-  // choice, not a fact I'm withholding.
+  Rectangle {
+    id: separator
+    anchors {
+      top: searchBar.bottom
+      topMargin: 8
+      right: parent.right
+      rightMargin: 16
+      left: parent.left
+      leftMargin: 16
+    }
+    height: 1
+    width: parent.width
+    color: Colors.grey2
+  }
+
+  ListView {
+    id: listView
+    anchors {
+      top: searchBar.bottom
+      topMargin: 16
+      left: parent.left
+      leftMargin: 16
+      right: parent.right
+      rightMargin: 16
+      bottom: parent.bottom
+    }
+    clip: true
+    spacing: 2
+    model: filteredApps
+    delegate: Component {
+      Rectangle {
+        id: delegateRoot
+        width: ListView.view.width
+        height: 44
+        color: (mouseArea.containsMouse || delegateRoot.ListView.isCurrentItem) ? Colors.bg2 : "transparent"
+        radius: 6
+
+        Row {
+          anchors.verticalCenter: parent.verticalCenter
+          spacing: 8
+
+          Rectangle {
+            id: iconFrame
+            width: 48
+            height: 48
+            radius: 8
+            color: "transparent"
+            clip: true
+
+            Image {
+              anchors.fill: parent
+
+              source: Quickshell.iconPath(modelData.icon)
+              fillMode: Image.PreserveAspectCrop
+              asynchronous: true
+            }
+          }
+
+          Column {
+            spacing: 2
+            y: (parent.height - height) / 2
+            width: delegateRoot.width - iconFrame.width - 16
+
+            Text {
+              text: modelData.name
+              width: parent.width
+              elide: Text.ElideRight
+              color: Colors.fg
+              font.pixelSize: 14
+              font.weight: 700
+              font.family: "SF Pro Display"
+            }
+            Text {
+              text: modelData.comment || ""
+              width: parent.width
+              elide: Text.ElideRight
+              color: Colors.grey2
+              font.pixelSize: 13
+              font.family: "SF Pro Display"
+            }
+          }
+        }
+
+        MouseArea {
+          id: mouseArea
+          anchors.fill: parent
+          hoverEnabled: true
+          onClicked: {
+            modelData.execute();
+            root.closeRequested();
+          }
+        }
+      }
+    }
+  }
+  onQueryChanged: listView.currentIndex = 0
 }
