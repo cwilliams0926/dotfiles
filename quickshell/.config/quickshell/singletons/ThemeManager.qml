@@ -6,6 +6,14 @@ import Quickshell.Io
 
 Item {
   readonly property string themeScript: Quickshell.env("HOME") + "/.config/custom_scripts/set-theme"
+  readonly property string currentTheme: currentThemeFile.text().trim()
+
+  FileView {
+    id: currentThemeFile
+    path: Quickshell.env("HOME") + "/.config/current-theme"
+    watchChanges: true
+    onFileChanged: reload()
+  }
 
   Process {
     id: themeProcess

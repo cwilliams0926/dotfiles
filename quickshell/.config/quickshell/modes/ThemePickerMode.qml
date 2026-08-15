@@ -153,42 +153,4 @@ Item {
       }
     }
   }
-  // TODO: a GridView (not ListView — you want 3 columns, not one long
-  // list). Key differences from what you built for the launcher:
-  //   - cellWidth / cellHeight instead of relying on delegate size —
-  //     pick cellWidth as roughly (parent.width / 3), cellHeight ~100.
-  //   - model: root.themes — but note modelData is now an OBJECT
-  //     ({name, swatch}), not a plain string, since we upgraded the
-  //     data above. applyTheme(modelData.name) is what you'll call now.
-  //
-  // Delegate structure (this part IS spelled out — it's the actual
-  // visual ask):
-  //   Rectangle (rounded, clipped) as the outer swatch card
-  //     -> Row, anchors.fill: parent, spacing: 0
-  //          -> 3x Rectangle, each width: parent.width / 3, height: parent.height,
-  //             color: modelData.swatch[i]  (three separate Rectangles,
-  //             one per index — you're not looping in QML, just write
-  //             three of them explicitly, same as writing 3 Toggles by
-  //             hand rather than generating them)
-  //     -> Text, anchors.centerIn: parent, text: modelData.name,
-  //        centered ON TOP of the three stripes (declare it AFTER the
-  //        Row so it draws above — same z-order rule you already used
-  //        for the battery's percentage-over-fill-bar)
-  //
-  // One real design problem to solve yourself: three arbitrary bright
-  // colors behind white/light text can make it unreadable depending on
-  // which colors land there. Think about how you solved a similar
-  // "is this legible against a variable background" problem with the
-  // battery percentage earlier — a similar trick (a semi-transparent
-  // dark backing behind just the text) might be worth reaching for here.
-  //
-  // TODO: Keys.onPressed for grid navigation — this is genuinely
-  // different math than the launcher's up/down list logic, since
-  // moving "down" in a 3-column grid means jumping the index by 3, not
-  // by 1, and you'll want to think through what should happen at the
-  // edges (e.g. pressing Right on the last item in a row). Work out
-  // the arithmetic yourself before reaching for GridView's own
-  // moveCurrentIndexDown()-style methods, if it has them — worth
-  // checking whether GridView already solves this for you before
-  // hand-rolling it.
 }
