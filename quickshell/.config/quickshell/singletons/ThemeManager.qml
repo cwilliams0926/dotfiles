@@ -11,14 +11,6 @@ Item {
     id: themeProcess
 
     stdinEnabled: false
-
-    stdout: StdioCollector {
-      onStreamFinished: console.log("Theme stdout:", text)
-    }
-
-    stderr: StdioCollector {
-      onStreamFinished: console.log("Theme stderr:", text)
-    }
   }
 
   function applyTheme(name) {
