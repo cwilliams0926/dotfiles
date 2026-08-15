@@ -103,7 +103,8 @@ Item {
     }
     height: 1
     width: parent.width
-    color: Colors.grey2
+    color: Colors.bg2
+    radius: height / 2
   }
 
   ListView {
@@ -126,7 +127,7 @@ Item {
         width: ListView.view.width
         height: 44
         color: (mouseArea.containsMouse || delegateRoot.ListView.isCurrentItem) ? Colors.bg2 : "transparent"
-        radius: 6
+        radius: 8
 
         Row {
           anchors.verticalCenter: parent.verticalCenter

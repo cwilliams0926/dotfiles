@@ -9,7 +9,7 @@ hl.bind("SUPER + w", hl.dsp.exec_cmd("wlogout -b 4 -c 0 -r 0 -m 300"))
 hl.bind("SUPER + space", hl.dsp.exec_cmd("qs ipc call launcher toggle"))
 hl.bind("SUPER + SHIFT + w", hl.dsp.exec_cmd("~/.config/custom_scripts/wallpaper-picker"))
 hl.bind("SUPER + SHIFT + d", hl.dsp.exec_cmd("~/.config/custom_scripts/appearance-menu"))
-hl.bind("SUPER + m", hl.dsp.exec_cmd("pkill waybar || waybar &"))
+hl.bind("SUPER + m", hl.dsp.exec_cmd("qs kill || qs &"))
 hl.bind("SUPER + ALT + r", hl.dsp.exec_cmd("swaync-client -R && swaync-client -rs"))
 hl.bind("SUPER + SHIFT + n", hl.dsp.exec_cmd("swaync-client -t"))
 

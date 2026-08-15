@@ -53,7 +53,7 @@ Item {
     Text {
       anchors.centerIn: parent
       text: Math.round(root.pct)
-      color: root.pct < 30 ? Colors.grey0 : Colors.bg0
+      color: root.pct < 40 ? Colors.grey0 : Colors.bg0
       font.pixelSize: 9
       font.weight: 700
     }
