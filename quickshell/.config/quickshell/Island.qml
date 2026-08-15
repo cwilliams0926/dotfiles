@@ -7,7 +7,6 @@ Rectangle {
   id: island
 
   property string mode: "clock"
-
   property bool hoverExpand: hover.hovered
 
   anchors.horizontalCenter: parent.horizontalCenter
@@ -38,17 +37,31 @@ Rectangle {
 
   HoverHandler {
     id: hover
+    // Only react to hover actually CHANGING, not "what's true right now."
+    // A freshly-loaded mode's initial state comes from onLoaded below
+    // (always a sane default), never from a live snapshot of hoverExpand
+    // — that snapshot can be stale/misleading right at the moment a new
+    // mode loads, e.g. if the pill just shrank out from under a cursor
+    // that was previously inside its larger (launcher) bounds.
+    onHoveredChanged: {
+      if (content.item && "collapsed" in content.item) {
+        content.item.collapsed = !hovered;
+      }
+    }
   }
 
   Loader {
     id: content
     anchors.centerIn: parent
-
     source: "modes/" + island.mode.charAt(0).toUpperCase() + island.mode.slice(1) + "Mode.qml"
 
     onLoaded: {
+      // Every freshly-loaded mode starts collapsed by default, regardless
+      // of whatever hoverExpand happens to be at this exact instant.
+      // Live hover tracking from here on is entirely the HoverHandler's
+      // job, above — not this initial value.
       if (item && "collapsed" in item) {
-        item.collapsed = Qt.binding(() => !island.hoverExpand);
+        item.collapsed = true;
       }
       if (item && item.closeRequested) {
         item.closeRequested.connect(() => {
@@ -57,6 +70,7 @@ Rectangle {
       }
     }
   }
+
   IpcHandler {
     target: "launcher"
     function toggle(): void {
