@@ -86,4 +86,12 @@ Rectangle {
       island.mode = island.mode === "themePicker" ? "clock" : "themePicker";
     }
   }
+
+  IpcHandler {
+    target: "wallpaperPicker"
+
+    function toggle(): void {
+      island.mode = island.mode === "wallpaperPicker" ? "clock" : "wallpaperPicker";
+    }
+  }
 }
