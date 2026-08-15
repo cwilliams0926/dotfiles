@@ -5,10 +5,6 @@ import Quickshell.Widgets
 import "../components"
 import ".."
 
-// TODO: think about implicitWidth/implicitHeight here the same way
-// ClockMode does — the launcher probably wants a fixed, larger size
-// (it needs room for a search bar + several list rows), not something
-// that shrinks/grows the way the clock's collapsed/expanded does.
 Item {
   id: root
   signal closeRequested

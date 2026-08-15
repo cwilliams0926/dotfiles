@@ -3,6 +3,7 @@
 import QtQuick
 import QtQuick.Effects
 import Quickshell
+import Quickshell.Wayland
 
 PanelWindow {
   anchors {
@@ -13,11 +14,12 @@ PanelWindow {
   exclusiveZone: 38
   implicitHeight: 360
   color: "transparent"
+
+  WlrLayershell.keyboardFocus: island.mode === "launcher" ? WlrKeyboardFocus.Exclusive : WlrKeyboardFocus.None
+
   mask: Region {
     item: island
   }
-  focusable: true
-
   RectangularShadow {
     anchors.fill: island
     radius: island.radius
@@ -25,7 +27,6 @@ PanelWindow {
     spread: 2
     color: Qt.rgba(0, 0, 0, 0.4)
   }
-
   Island {
     id: island
   }
