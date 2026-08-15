@@ -29,6 +29,15 @@ Item {
   // Canvas only redraws when needed to
   onTierChanged: canvas.requestPaint()
   Component.onCompleted: canvas.requestPaint()
+  Connections {
+    target: Colors
+    function onGreenChanged() {
+      canvas.requestPaint();
+    }
+    function onGrey0Changed() {
+      canvas.requestPaint();
+    }
+  }
 
   Canvas {
     id: canvas

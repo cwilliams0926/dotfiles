@@ -138,8 +138,8 @@ Item {
 
           Rectangle {
             id: iconFrame
-            width: 48
-            height: 48
+            width: 32
+            height: 32
             radius: 8
             color: "transparent"
             clip: true
