@@ -134,12 +134,15 @@ Item {
 
         Row {
           anchors.verticalCenter: parent.verticalCenter
+          anchors.left: parent.left
+          anchors.leftMargin: 10
           spacing: 8
 
           Rectangle {
             id: iconFrame
             width: 32
             height: 32
+            y: (parent.height - height) / 2
             radius: 8
             color: "transparent"
             clip: true
