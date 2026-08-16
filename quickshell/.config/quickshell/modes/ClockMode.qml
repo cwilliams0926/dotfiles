@@ -91,7 +91,7 @@ Item {
       }
     }
 
-    color: Colors.bg2
+    color: Colors.bg0
     radius: height / 3
 
     implicitWidth: statusRow.implicitWidth + 32
