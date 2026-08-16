@@ -13,7 +13,7 @@ Rectangle {
   anchors.top: parent.top
   anchors.topMargin: 8
 
-  color: Colors.bg0
+  color: "#000000"
   clip: true
   radius: Math.min(height / 2, 26)
 
