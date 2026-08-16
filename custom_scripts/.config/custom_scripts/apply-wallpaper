@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-awww img "$1" --transition-type wipe --transition-step 90
+awww img "$1" --transition-type fade --transition-duration 0.4
 echo "$1" > "$HOME/.cache/current-wallpaper"
 echo "\$wallpaper = $1" > "$HOME/.config/hypr/colors/wallpaper.conf"

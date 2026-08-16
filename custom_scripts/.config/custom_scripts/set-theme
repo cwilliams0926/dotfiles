@@ -182,8 +182,8 @@ if [ -d "$theme_wall_dir" ]; then
     fi
 
     if [ -n "$default_wall" ]; then
-        awww img "$default_wall" --transition-type wipe --transition-step 90
-        echo "$default_wall" > "$HOME/.cache/current-wallpaper"
+        awww img "$default_wall" --transition-type fade --transition-duration 0.4
+        echo "$default_wall" > "$HOME/.cache/current-wallpaper
         echo "\$wallpaper = $default_wall" > "$HYPRLOCK_WALLPAPER"
     else
         notify-send "Theme" "No wallpapers found in $theme_wall_dir"
@@ -192,4 +192,3 @@ else
     notify-send "Theme" "No wallpaper folder for '$theme' at $theme_wall_dir"
 fi
 
-notify-send "Theme" "Switched to: $theme"
