@@ -6,7 +6,7 @@ import Quickshell.Wayland
 Rectangle {
   id: island
 
-  property string mode: "clock"
+  property string mode: "powerMenu"
   property bool hoverExpand: hover.hovered
 
   anchors.horizontalCenter: parent.horizontalCenter
