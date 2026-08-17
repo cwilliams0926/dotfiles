@@ -6,7 +6,7 @@ import Quickshell.Wayland
 Rectangle {
   id: island
 
-  property string mode: "powerMenu"
+  property string mode: "clock"
   property bool hoverExpand: hover.hovered
 
   anchors.horizontalCenter: parent.horizontalCenter
@@ -92,6 +92,14 @@ Rectangle {
 
     function toggle(): void {
       island.mode = island.mode === "wallpaperPicker" ? "clock" : "wallpaperPicker";
+    }
+  }
+
+  IpcHandler {
+    target: "powerMenu"
+
+    function toggle(): void {
+      island.mode = island.mode === "powerMenu" ? "clock" : "powerMenu";
     }
   }
 }
