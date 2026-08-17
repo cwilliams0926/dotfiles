@@ -53,7 +53,7 @@ Item {
         width: (root.width / 5) - 12
         height: 70
         radius: 12
-        color: mouseArea.containsMouse ? Colors.blue : Colors.bg0
+        color: mouseArea.containsMouse ? Colors.aqua : Colors.bg0
 
         Column {
           spacing: 6
