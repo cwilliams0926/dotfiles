@@ -16,27 +16,27 @@ Item {
   readonly property var actions: [
     {
       label: "Lock",
-      icon: "system-lock-screen-symbolic",
+      icon: "",
       command: ["hyprlock"]
     },
     {
       label: "Log Out",
-      icon: "system-log-out-symbolic",
+      icon: "󰍃",
       command: ["hyprctl", "dispatch", "exit"]
     },
     {
       label: "Suspend",
-      icon: "system-suspend-symbolic",
+      icon: "󰍷",
       command: ["systemctl", "suspend"]
     },
     {
       label: "Reboot",
-      icon: "system-reboot-symbolic",
+      icon: "",
       command: ["systemctl", "reboot"]
     },
     {
       label: "Power Off",
-      icon: "system-shutdown-symbolic",
+      icon: "",
       command: ["systemctl", "poweroff"]
     }
   ]
@@ -58,24 +58,11 @@ Item {
         Column {
           spacing: 6
           anchors.centerIn: parent
-          Item {
-            width: 24
-            height: 24
-
-            IconImage {
-              id: buttonIcon
-              anchors.fill: parent
-              source: Quickshell.iconPath(modelData.icon)
-              asynchronous: true
-            }
-
-            MultiEffect {
-              anchors.fill: buttonIcon
-              source: buttonIcon
-
-              colorization: 1.0
-              colorizationColor: mouseArea.containsMouse ? Colors.bg0 : Colors.fg
-            }
+          Text {
+            id: buttonIcon
+            text: modelData.icon
+            font.pixelSize: 14
+            color: mouseArea.containsMouse ? Colors.bg0 : Colors.fg
           }
           Text {
             text: modelData.label
