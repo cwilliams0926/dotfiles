@@ -47,7 +47,7 @@ Item {
       top: parent.top
       topMargin: 16
       left: parent.left
-      leftMargin: 16
+      leftMargin: 22
       right: parent.right
     }
     text: "Wallpaper"
