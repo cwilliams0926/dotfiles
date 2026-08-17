@@ -4,6 +4,7 @@ import Quickshell
 import Quickshell.Io
 import Quickshell.Widgets
 import ".."
+import "../singletons"
 
 Item {
   id: root
@@ -39,16 +40,6 @@ Item {
       command: ["systemctl", "poweroff"]
     }
   ]
-
-  Process {
-    id: actionProcess
-  }
-
-  function runAction(command) {
-    actionProcess.command = command;
-    actionProcess.running = true;
-    root.closeRequested();
-  }
 
   Row {
     anchors.centerIn: parent
@@ -105,7 +96,8 @@ Item {
           hoverEnabled: true
           cursorShape: Qt.PointingHandCursor
           onClicked: {
-            root.runAction(modelData.command);
+            PowerManager.runAction(modelData.command);
+            root.closeRequested();
           }
         }
       }
