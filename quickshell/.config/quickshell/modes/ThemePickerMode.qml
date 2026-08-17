@@ -93,7 +93,7 @@ Item {
         ClippingRectangle {
           id: swatchCard
           anchors.fill: parent
-          anchors.margins: 6
+          anchors.margins: 4
           radius: 12
           clip: true
 
