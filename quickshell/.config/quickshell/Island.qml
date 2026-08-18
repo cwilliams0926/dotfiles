@@ -7,8 +7,9 @@ import "singletons"
 Rectangle {
   id: island
 
-  property string mode: "audioOsd"
+  property string mode: "clock"
   property bool hoverExpand: hover.hovered
+  property bool audioReady: false
 
   anchors.horizontalCenter: parent.horizontalCenter
   anchors.top: parent.top
@@ -23,12 +24,13 @@ Rectangle {
 
   Connections {
     target: AudioManager
+
     function onVolumeChanged() {
-      // Don't hijack the launcher/theme picker/etc. mid-use just because
-      // volume happened to change — only auto-show over the idle clock,
-      // or extend an already-showing OSD.
-      if (island.mode === "clock" || island.mode === "volumeosd") {
-        island.mode = "volumeosd";
+      if (!island.audioReady)
+        return;
+
+      if (island.mode === "clock" || island.mode === "volumeOsd") {
+        island.mode = "volumeOsd";
         osdHideTimer.restart();
       }
     }
@@ -38,6 +40,17 @@ Rectangle {
     id: osdHideTimer
     interval: 1500
     onTriggered: island.mode = "clock"
+  }
+
+  // So that volume osd doesn't appear on shell open
+  Timer {
+    interval: 500
+    running: true
+    repeat: false
+
+    onTriggered: {
+      island.audioReady = true;
+    }
   }
 
   Behavior on implicitWidth {
