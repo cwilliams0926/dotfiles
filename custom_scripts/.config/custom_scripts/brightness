@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+brightnessctl set "$1"
+qs ipc call brightness refresh

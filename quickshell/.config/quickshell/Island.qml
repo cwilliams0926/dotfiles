@@ -149,4 +149,12 @@ Rectangle {
       island.mode = island.mode === "powerMenu" ? "clock" : "powerMenu";
     }
   }
+
+  IpcHandler {
+    target: "brightness"
+
+    function refresh(): void {
+      BrightnessManager.refresh();
+    }
+  }
 }
