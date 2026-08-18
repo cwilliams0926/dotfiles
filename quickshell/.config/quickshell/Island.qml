@@ -10,6 +10,7 @@ Rectangle {
   property string mode: "clock"
   property bool hoverExpand: hover.hovered
   property bool audioReady: false
+  property bool brightnessReady: false
 
   anchors.horizontalCenter: parent.horizontalCenter
   anchors.top: parent.top
@@ -36,13 +37,27 @@ Rectangle {
     }
   }
 
+  Connections {
+    target: BrightnessManager
+
+    function onBrightnessChanged() {
+      if (!island.brightnessReady)
+        return;
+
+      if (island.mode === "clock" || island.mode === "brightnessOsd") {
+        island.mode = "brightnessOsd";
+        osdHideTimer.restart();
+      }
+    }
+  }
+
   Timer {
     id: osdHideTimer
     interval: 1500
     onTriggered: island.mode = "clock"
   }
 
-  // So that volume osd doesn't appear on shell open
+  // So that osds don't appear on shell open
   Timer {
     interval: 500
     running: true
@@ -50,6 +65,15 @@ Rectangle {
 
     onTriggered: {
       island.audioReady = true;
+    }
+  }
+  Timer {
+    interval: 500
+    running: true
+    repeat: false
+
+    onTriggered: {
+      island.brightnessReady = true;
     }
   }
 
