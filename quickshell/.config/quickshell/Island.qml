@@ -20,6 +20,25 @@ Rectangle {
   implicitWidth: content.item ? content.item.implicitWidth : 150
   implicitHeight: content.item ? content.item.implicitHeight : 34
 
+  Connections {
+    target: AudioManager
+    function onVolumeChanged() {
+      // Don't hijack the launcher/theme picker/etc. mid-use just because
+      // volume happened to change — only auto-show over the idle clock,
+      // or extend an already-showing OSD.
+      if (island.mode === "clock" || island.mode === "volumeosd") {
+        island.mode = "volumeosd";
+        osdHideTimer.restart();
+      }
+    }
+  }
+
+  Timer {
+    id: osdHideTimer
+    interval: 1500
+    onTriggered: island.mode = "clock"
+  }
+
   Behavior on implicitWidth {
     SpringAnimation {
       spring: 3.0
@@ -37,12 +56,6 @@ Rectangle {
 
   HoverHandler {
     id: hover
-    // Only react to hover actually CHANGING, not "what's true right now."
-    // A freshly-loaded mode's initial state comes from onLoaded below
-    // (always a sane default), never from a live snapshot of hoverExpand
-    // — that snapshot can be stale/misleading right at the moment a new
-    // mode loads, e.g. if the pill just shrank out from under a cursor
-    // that was previously inside its larger (launcher) bounds.
     onHoveredChanged: {
       if (content.item && "collapsed" in content.item) {
         content.item.collapsed = !hovered;
@@ -56,10 +69,6 @@ Rectangle {
     source: "modes/" + island.mode.charAt(0).toUpperCase() + island.mode.slice(1) + "Mode.qml"
 
     onLoaded: {
-      // Every freshly-loaded mode starts collapsed by default, regardless
-      // of whatever hoverExpand happens to be at this exact instant.
-      // Live hover tracking from here on is entirely the HoverHandler's
-      // job, above — not this initial value.
       if (item && "collapsed" in item) {
         item.collapsed = true;
       }

@@ -1,3 +1,4 @@
 singleton ThemeManager 1.0 ThemeManager.qml
 singleton WallpaperManager 1.0 WallpaperManager.qml
 singleton PowerManager 1.0 PowerManager.qml
+singleton AudioManager 1.0 AudioManager.qml
