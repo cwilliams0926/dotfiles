@@ -2,11 +2,12 @@ import QtQuick
 import Quickshell
 import Quickshell.Io
 import Quickshell.Wayland
+import "singletons"
 
 Rectangle {
   id: island
 
-  property string mode: "clock"
+  property string mode: "audioOsd"
   property bool hoverExpand: hover.hovered
 
   anchors.horizontalCenter: parent.horizontalCenter
