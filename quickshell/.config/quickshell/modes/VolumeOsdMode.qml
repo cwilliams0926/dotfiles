@@ -36,6 +36,11 @@ Item {
         implicitWidth: parent.width * (AudioManager.volume ?? 0)
         radius: parent.radius
         color: AudioManager.muted ? Colors.fg : Colors.aqua
+        Behavior on implicitWidth {
+          NumberAnimation {
+            duration: 100
+          }
+        }
       }
     }
   }

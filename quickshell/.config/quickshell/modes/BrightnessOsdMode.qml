@@ -36,6 +36,12 @@ Item {
         implicitWidth: parent.width * (BrightnessManager.brightness ?? 0)
         radius: parent.radius
         color: Colors.yellow
+
+        Behavior on implicitWidth {
+          NumberAnimation {
+            duration: 100
+          }
+        }
       }
     }
   }
