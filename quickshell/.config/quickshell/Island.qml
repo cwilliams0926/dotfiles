@@ -53,13 +53,13 @@ Rectangle {
 
   Timer {
     id: osdHideTimer
-    interval: 1500
+    interval: 2000
     onTriggered: island.mode = "clock"
   }
 
   // So that osds don't appear on shell open
   Timer {
-    interval: 500
+    interval: 1000
     running: true
     repeat: false
 
@@ -68,7 +68,7 @@ Rectangle {
     }
   }
   Timer {
-    interval: 500
+    interval: 1000
     running: true
     repeat: false
 
