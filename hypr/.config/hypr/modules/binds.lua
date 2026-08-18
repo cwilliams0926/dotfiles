@@ -83,7 +83,7 @@ hl.bind("SUPER + n", hl.dsp.window.swap({ next = true }))
 -- The "no fun" bind
 hl.bind("SUPER + F1", function()
 	local game_mode = (hl.get_config("animations.enabled") == false)
-	hl.exec_cmd("pkill waybar || waybar")
+	hl.exec_cmd("qs kill || qs")
 
 	if game_mode then
 		hl.exec_cmd("hyprctl reload")
@@ -96,8 +96,6 @@ hl.bind("SUPER + F1", function()
 
 	hl.config({
 		general = {
-			gaps_in = 0,
-			gaps_out = 0, -- Disable gaps
 			border_size = 2,
 			["col.active_border"] = colors.purple,
 			["col.inactive_border"] = colors.bg2,
