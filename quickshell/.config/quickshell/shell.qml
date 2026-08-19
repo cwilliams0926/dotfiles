@@ -4,30 +4,35 @@ import QtQuick
 import QtQuick.Effects
 import Quickshell
 import Quickshell.Wayland
+import qs.components
 
-PanelWindow {
-  anchors {
-    top: true
-    left: true
-    right: true
-  }
-  exclusiveZone: 38
-  implicitHeight: 360
-  color: "transparent"
+ShellRoot {
+  PanelWindow {
+    anchors {
+      top: true
+      left: true
+      right: true
+    }
+    exclusiveZone: 38
+    implicitHeight: 360
+    color: "transparent"
 
-  WlrLayershell.keyboardFocus: island.mode === "launcher" ? WlrKeyboardFocus.Exclusive : WlrKeyboardFocus.None
+    WlrLayershell.keyboardFocus: island.mode === "launcher" ? WlrKeyboardFocus.Exclusive : WlrKeyboardFocus.None
 
-  mask: Region {
-    item: island
+    mask: Region {
+      item: island
+    }
+    RectangularShadow {
+      anchors.fill: island
+      radius: island.radius
+      blur: 20
+      spread: 2
+      color: Qt.rgba(0, 0, 0, 0.4)
+    }
+    Island {
+      id: island
+    }
   }
-  RectangularShadow {
-    anchors.fill: island
-    radius: island.radius
-    blur: 20
-    spread: 2
-    color: Qt.rgba(0, 0, 0, 0.4)
-  }
-  Island {
-    id: island
-  }
+
+  ScreenCorners {}
 }
