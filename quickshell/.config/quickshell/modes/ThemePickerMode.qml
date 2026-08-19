@@ -1,8 +1,8 @@
 import QtQuick
 import Quickshell
 import Quickshell.Widgets
-import ".."
-import "../singletons"
+import qs
+import qs.singletons
 
 Item {
   id: root

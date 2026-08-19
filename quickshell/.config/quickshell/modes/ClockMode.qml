@@ -1,7 +1,7 @@
 import QtQuick
 import Quickshell
-import "../components"
-import ".."
+import qs.components
+import qs
 
 Item {
   id: root
