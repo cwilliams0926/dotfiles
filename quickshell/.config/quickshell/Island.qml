@@ -35,6 +35,16 @@ Rectangle {
         osdHideTimer.restart();
       }
     }
+
+    function onMutedChanged() {
+      if (!island.audioReady)
+        return;
+
+      if (island.mode === "clock" || island.mode === "volumeOsd") {
+        island.mode = "volumeOsd";
+        osdHideTimer.restart();
+      }
+    }
   }
 
   Connections {
