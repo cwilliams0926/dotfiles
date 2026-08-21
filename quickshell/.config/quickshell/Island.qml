@@ -11,6 +11,7 @@ Rectangle {
   property bool hoverExpand: hover.hovered
   property bool audioReady: false
   property bool brightnessReady: false
+  property bool nightLightReady: false
 
   anchors.horizontalCenter: parent.horizontalCenter
   anchors.top: parent.top
@@ -61,6 +62,20 @@ Rectangle {
     }
   }
 
+  Connections {
+    target: NightLightManager
+
+    function onOnChanged() {
+      if (!island.nightLightReady)
+        return;
+
+      if (island.mode === "clock" || island.mode === "nightLightOsd") {
+        island.mode = "nightLightOsd";
+        osdHideTimer.restart();
+      }
+    }
+  }
+
   Timer {
     id: osdHideTimer
     interval: 2000
@@ -84,6 +99,15 @@ Rectangle {
 
     onTriggered: {
       island.brightnessReady = true;
+    }
+  }
+  Timer {
+    interval: 1000
+    running: true
+    repeat: false
+
+    onTriggered: {
+      island.nightLightReady = true;
     }
   }
 
@@ -165,6 +189,18 @@ Rectangle {
 
     function refresh(): void {
       BrightnessManager.refresh();
+    }
+  }
+
+  IpcHandler {
+    target: "nightLight"
+
+    function on(): void {
+      NightLightManager.setOn(true);
+    }
+
+    function off(): void {
+      NightLightManager.setOn(false);
     }
   }
 }

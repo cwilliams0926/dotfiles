@@ -25,7 +25,7 @@ hl.bind("SHIFT + PRINT", hl.dsp.exec_cmd("hyprshot -m region"))
 hl.bind("CTRL + PRINT", hl.dsp.exec_cmd("hyprshot -m output"))
 
 -- Toggle night light
-hl.bind("SUPER + b", hl.dsp.exec_cmd("/home/cwilliams0926/.config/custom_scripts/wlsunset"))
+hl.bind("SUPER + b", hl.dsp.exec_cmd("/home/cwilliams0926/.config/custom_scripts/night-light"))
 
 -- Move focus with mainMod + arrow keys
 hl.bind("SUPER + h", hl.dsp.focus({ direction = "left" }))
