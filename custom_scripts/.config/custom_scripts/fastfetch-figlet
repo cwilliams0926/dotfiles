@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# ~/.config/custom_scripts/fastfetch-figlet.sh
+pyfiglet -f small_slant "Arch"
+fastfetch -l none

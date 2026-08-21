@@ -11,3 +11,5 @@ alias rm="rm -iv"
 alias vim="nvim"
 alias vi="nvim"
 alias code="codium"
+
+alias fastfetch='pyfiglet -f small_slant "Arch" && fastfetch -l none'
