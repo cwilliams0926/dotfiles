@@ -8,8 +8,8 @@ Item {
 
   property bool collapsed: true
 
-  implicitWidth: collapsed ? 150 : 560
-  implicitHeight: collapsed ? 34 : 108
+  implicitWidth: collapsed ? 150 : 572
+  implicitHeight: collapsed ? 34 : 84
 
   SystemClock {
     id: clock
@@ -24,7 +24,8 @@ Item {
     font {
       pixelSize: 15
       weight: 700
-      family: "SF Pro Display"
+      family: "SF Mono"
+      letterSpacing: -1
     }
     Behavior on opacity {
       NumberAnimation {
@@ -66,7 +67,8 @@ Item {
       font {
         pixelSize: 26
         weight: 700
-        family: "SF Pro Display"
+        family: "SF Mono"
+        letterSpacing: -1
       }
     }
 

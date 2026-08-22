@@ -63,7 +63,7 @@ Item {
 
       Text {
         width: parent.width
-        text: root.notif?.appName || ""
+        text: root.notif?.summary || ""
         color: Colors.fg
         font.pixelSize: 13
         font.weight: 600
@@ -73,7 +73,7 @@ Item {
 
       Text {
         width: parent.width
-        text: root.notif?.summary || ""
+        text: root.notif?.body || ""
         color: Colors.grey2
         font.pixelSize: 12
         font.family: "SF Pro Display"
