@@ -22,7 +22,7 @@ hl.config({
 		hl.curve("spring_smooth", {
 			type = "spring",
 			mass = 1,
-			stiffness = 420,
+			stiffness = 480,
 			dampening = 45,
 		}),
 

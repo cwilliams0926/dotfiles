@@ -18,5 +18,28 @@ Item {
       weight: 700
       family: "SF Pro Display"
     }
+
+    scale: 0.6
+    opacity: 0
+    transformOrigin: Item.Center
+
+    Component.onCompleted: {
+      scale = 1;
+      opacity = 1;
+    }
+
+    Behavior on scale {
+      SpringAnimation {
+        spring: 5
+        damping: 0.5
+        mass: 1
+      }
+    }
+
+    Behavior on opacity {
+      NumberAnimation {
+        duration: 180
+      }
+    }
   }
 }

@@ -22,7 +22,7 @@ Item {
     text: Qt.formatDateTime(clock.date, "hh:mm")
     color: Colors.fg
     font {
-      pixelSize: 14
+      pixelSize: 15
       weight: 700
       family: "SF Pro Display"
     }
