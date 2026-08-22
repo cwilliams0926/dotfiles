@@ -76,6 +76,20 @@ Rectangle {
     }
   }
 
+  Connections {
+    target: NotificationManager
+    function onActiveNotificationChanged() {
+      if (NotificationManager.activeNotification !== null) {
+        island.mode = "notification";
+      } else {
+        // TODO: only revert if island.mode === "notification"
+        //       (avoid stomping a mode the user switched to manually
+        //        while a notification happened to be showing)
+        island.mode = "clock";
+      }
+    }
+  }
+
   Timer {
     id: osdHideTimer
     interval: 2000
