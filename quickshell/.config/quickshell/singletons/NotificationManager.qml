@@ -8,9 +8,6 @@ Singleton {
   id: root
 
   property var activeNotification: null
-  onActiveNotificationChanged: {
-    console.log("activeNotification changed:", activeNotification ? activeNotification.summary : "null");
-  }
   property var queue: []
 
   NotificationServer {
