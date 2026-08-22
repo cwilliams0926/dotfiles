@@ -4,3 +4,4 @@ singleton PowerManager 1.0 PowerManager.qml
 singleton AudioManager 1.0 AudioManager.qml
 singleton BrightnessManager 1.0 BrightnessManager.qml
 singleton NightLightManager 1.0 NightLightManager.qml
+singleton NotificationManager 1.0 NotificationManager.qml
