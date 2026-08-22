@@ -23,7 +23,6 @@ Singleton {
       notification.tracked = true;
       notification.closed.connect(function () {
         if (notification === root.activeNotification) {
-          root.activeNotification = null;
           root.showNext();
         } else {
           root.queue = root.queue.filter(n => n !== notification);
@@ -31,7 +30,7 @@ Singleton {
       });
       if (root.activeNotification === null) {
         root.activeNotification = notification;
-        root.dismissTimer.restart();
+        dismissTimer.restart();
       } else {
         root.queue = [...root.queue, notification];
       }
@@ -55,7 +54,6 @@ Singleton {
   }
 
   function dismissCurrent() {
-    activeNotification = null;
     showNext();
   }
 }

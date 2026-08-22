@@ -5,6 +5,7 @@ import QtQuick.Effects
 import Quickshell
 import Quickshell.Wayland
 import qs.components
+import qs.singletons
 
 ShellRoot {
   PanelWindow {
@@ -18,6 +19,10 @@ ShellRoot {
     color: "transparent"
 
     WlrLayershell.keyboardFocus: island.mode === "launcher" ? WlrKeyboardFocus.Exclusive : WlrKeyboardFocus.None
+
+    Component.onCompleted: {
+      console.log("touching notification manager:", NotificationManager.activeNotification);
+    }
 
     mask: Region {
       item: island
