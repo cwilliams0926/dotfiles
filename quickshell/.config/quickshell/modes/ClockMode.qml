@@ -92,9 +92,15 @@ Item {
         duration: 200
       }
     }
+    HoverHandler {
+      id: hover
+      cursorShape: Qt.PointingHandCursor
+    }
 
     color: Colors.bg0
     radius: height / 3
+    border.width: hover.hovered ? 1 : 0
+    border.color: hover.hovered ? Colors.aqua : Colors.bg0
 
     implicitWidth: statusRow.implicitWidth + 32
     implicitHeight: statusRow.implicitHeight + 20
