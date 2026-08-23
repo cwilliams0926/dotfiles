@@ -17,7 +17,7 @@ Rectangle {
   anchors.top: parent.top
   anchors.topMargin: 8
 
-  color: "#000000"
+  color: ThemeManager.currentTheme === "e-ink" ? Colors.bg0 : "#000000"
   clip: true
   radius: Math.min(height / 2, 26)
 
