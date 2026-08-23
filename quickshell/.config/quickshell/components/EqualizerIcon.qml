@@ -1,4 +1,3 @@
-// components/EqualizerIcon.qml
 import QtQuick
 import Quickshell
 import Quickshell.Services.Mpris
@@ -7,7 +6,7 @@ import qs
 Item {
   id: root
 
-  property int barCount: 3
+  property int barCount: 4
   property real barWidth: 3
   property real barSpacing: 2
   property real maxBarHeight: 12
@@ -26,11 +25,12 @@ Item {
 
   implicitWidth: barCount * barWidth + (barCount - 1) * barSpacing
   implicitHeight: maxBarHeight
+  width: implicitWidth   // <- plain Item needs this explicitly
+  height: implicitHeight // <- same
   visible: root.isPlaying
 
   Row {
-    anchors.centerIn: parent
-    height: root.maxBarHeight
+    anchors.bottom: parent.bottom
     spacing: root.barSpacing
 
     Repeater {
