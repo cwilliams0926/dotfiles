@@ -9,9 +9,9 @@ Item {
   property int barCount: 4
   property real barWidth: 3
   property real barSpacing: 2
-  property real maxBarHeight: 12
+  property real maxBarHeight: 11
   property real minBarHeight: 3
-  property color barColor: Colors.fg
+  property color barColor: Colors.aqua
 
   readonly property var activePlayer: {
     const players = Mpris.players.values;
@@ -31,33 +31,41 @@ Item {
 
   Row {
     anchors.bottom: parent.bottom
+    height: root.maxBarHeight
     spacing: root.barSpacing
 
     Repeater {
       model: root.barCount
-      Rectangle {
+      Item {
+        // fixed-size slot Row can position safely — this is Row's actual child
         width: root.barWidth
-        height: root.minBarHeight
-        radius: width / 2
-        color: root.barColor
-        anchors.bottom: parent.bottom
+        height: root.maxBarHeight
 
-        SequentialAnimation {
-          running: root.isPlaying
-          loops: Animation.Infinite
-          NumberAnimation {
-            target: parent
-            property: "height"
-            to: root.maxBarHeight
-            duration: 280 + index * 60
-            easing.type: Easing.InOutSine
-          }
-          NumberAnimation {
-            target: parent
-            property: "height"
-            to: root.minBarHeight
-            duration: 280 + index * 60
-            easing.type: Easing.InOutSine
+        Rectangle {
+          id: bar
+          width: root.barWidth
+          height: root.minBarHeight
+          radius: width / 2
+          color: root.barColor
+          anchors.bottom: parent.bottom  // now anchored to the Item, not Row
+
+          SequentialAnimation {
+            running: root.isPlaying
+            loops: Animation.Infinite
+            NumberAnimation {
+              target: bar
+              property: "height"
+              to: root.maxBarHeight
+              duration: 280 + index * 60
+              easing.type: Easing.InOutSine
+            }
+            NumberAnimation {
+              target: bar
+              property: "height"
+              to: root.minBarHeight
+              duration: 280 + index * 60
+              easing.type: Easing.InOutSine
+            }
           }
         }
       }

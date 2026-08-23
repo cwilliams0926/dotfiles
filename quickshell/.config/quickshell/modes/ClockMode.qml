@@ -16,20 +16,28 @@ Item {
     precision: SystemClock.Minutes
   }
 
-  Text {
+  Row {
     anchors.centerIn: parent
+    spacing: 6
     opacity: root.collapsed ? 1 : 0
-    text: Qt.formatDateTime(clock.date, "hh:mm")
-    color: Colors.fg
-    font {
-      pixelSize: 15
-      weight: 700
-      family: "SF Mono"
-      letterSpacing: -1
-    }
     Behavior on opacity {
       NumberAnimation {
         duration: 150
+      }
+    }
+
+    EqualizerIcon {
+      anchors.verticalCenter: clockText.verticalCenter
+    }
+    Text {
+      id: clockText
+      text: Qt.formatDateTime(clock.date, "hh:mm")
+      color: Colors.fg
+      font {
+        pixelSize: 15
+        weight: 700
+        family: "SF Mono"
+        letterSpacing: -1
       }
     }
   }
