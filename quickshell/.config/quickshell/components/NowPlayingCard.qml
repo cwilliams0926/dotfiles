@@ -67,14 +67,20 @@ Item {
       spacing: 2
       anchors.verticalCenter: artFrame.verticalCenter
 
-      Text {
-        width: parent.width
-        text: root.hasMedia ? (root.activePlayer.trackTitle || "Unknown Title") : "Nothing playing"
-        color: Colors.fg
-        font.pixelSize: 13
-        font.weight: 600
-        font.family: "SF Pro Display"
-        elide: Text.ElideRight
+      Row {
+        spacing: 4
+        EqualizerIcon {
+          anchors.verticalCenter: titleText.verticalCenter
+        }
+        Text {
+          id: titleText
+          text: root.hasMedia ? (root.activePlayer.trackTitle || "Unknown Title") : "Nothing playing"
+          color: Colors.fg
+          font.pixelSize: 13
+          font.weight: 600
+          font.family: "SF Pro Display"
+          elide: Text.ElideRight
+        }
       }
 
       Text {
