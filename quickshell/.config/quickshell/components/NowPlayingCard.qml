@@ -1,5 +1,6 @@
 import QtQuick
 import Quickshell
+import Quickshell.Widgets
 import Quickshell.Services.Mpris
 import qs
 
@@ -24,11 +25,11 @@ Item {
     anchors.verticalCenter: parent.verticalCenter
     spacing: 8
 
-    Rectangle {
+    ClippingRectangle {
       id: artFrame
       width: 48
       height: 48
-      radius: 8
+      radius: 12
       color: Colors.bg1
       clip: true
 
