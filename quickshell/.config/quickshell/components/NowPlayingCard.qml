@@ -32,30 +32,31 @@ Item {
       color: Colors.bg1
       clip: true
 
+      // Tracks the last successfully-seen art URL, separate from
+      // the live (sometimes-empty) trackArtUrl binding
+      property string lastGoodArt: ""
+
+      Connections {
+        target: root.activePlayer
+        function onTrackArtUrlChanged() {
+          const art = root.activePlayer?.trackArtUrl || "";
+          if (art.length > 0) {
+            artFrame.lastGoodArt = art.startsWith("/") ? "file://" + art : art;
+          }
+        }
+      }
+
       Image {
         anchors.fill: parent
-        visible: root.hasMedia
-
-        source: {
-          const art = root.activePlayer?.trackArtUrl || "";
-
-          if (!art)
-            return "";
-
-          if (art.startsWith("/"))
-            return "file://" + art;
-
-          return art;
-        }
-
+        visible: root.hasMedia && artFrame.lastGoodArt.length > 0 && status === Image.Ready
+        source: artFrame.lastGoodArt
         fillMode: Image.PreserveAspectCrop
         asynchronous: true
       }
 
-      // Placeholder glyph for when nothing's playing
       Text {
         anchors.centerIn: parent
-        visible: !root.hasMedia
+        visible: !root.hasMedia || artFrame.lastGoodArt.length === 0
         text: "\u266A"
         color: Colors.grey2
         font.pixelSize: 20
