@@ -42,15 +42,55 @@ Item {
     }
   }
 
-  // Left: Now Playing
-  NowPlayingCard {
-    anchors.left: parent.left
-    anchors.verticalCenter: parent.verticalCenter
-    anchors.leftMargin: 20
-    opacity: root.collapsed ? 0 : 1
-    Behavior on opacity {
-      NumberAnimation {
-        duration: 200
+  Item {
+    anchors.centerIn: parent
+    implicitWidth: 572
+    implicitHeight: 84
+
+    // Left: Now Playing
+    NowPlayingCard {
+      anchors.left: parent.left
+      anchors.verticalCenter: parent.verticalCenter
+      anchors.leftMargin: 20
+      opacity: root.collapsed ? 0 : 1
+      Behavior on opacity {
+        NumberAnimation {
+          duration: 200
+        }
+      }
+    }
+
+    // Right: Battery and Network
+    Rectangle {
+      anchors.right: parent.right
+      anchors.verticalCenter: parent.verticalCenter
+      anchors.rightMargin: 20
+      opacity: root.collapsed ? 0 : 1
+      Behavior on opacity {
+        NumberAnimation {
+          duration: 200
+        }
+      }
+      HoverHandler {
+        id: hover
+        cursorShape: Qt.PointingHandCursor
+      }
+
+      color: Colors.bg0
+      radius: height / 3
+      border.width: hover.hovered ? 1 : 0
+      border.color: hover.hovered ? Colors.aqua : Colors.bg0
+
+      implicitWidth: statusRow.implicitWidth + 32
+      implicitHeight: statusRow.implicitHeight + 20
+
+      Row {
+        id: statusRow
+        anchors.centerIn: parent
+        spacing: 14
+
+        BatteryIndicator {}
+        NetworkIndicator {}
       }
     }
   }
@@ -86,40 +126,6 @@ Item {
       color: Colors.grey2
       font.pixelSize: 13
       font.family: "SF Pro Display"
-    }
-  }
-
-  // Right: Battery and Network
-  Rectangle {
-    anchors.right: parent.right
-    anchors.verticalCenter: parent.verticalCenter
-    anchors.rightMargin: 20
-    opacity: root.collapsed ? 0 : 1
-    Behavior on opacity {
-      NumberAnimation {
-        duration: 200
-      }
-    }
-    HoverHandler {
-      id: hover
-      cursorShape: Qt.PointingHandCursor
-    }
-
-    color: Colors.bg0
-    radius: height / 3
-    border.width: hover.hovered ? 1 : 0
-    border.color: hover.hovered ? Colors.aqua : Colors.bg0
-
-    implicitWidth: statusRow.implicitWidth + 32
-    implicitHeight: statusRow.implicitHeight + 20
-
-    Row {
-      id: statusRow
-      anchors.centerIn: parent
-      spacing: 14
-
-      BatteryIndicator {}
-      NetworkIndicator {}
     }
   }
 }
