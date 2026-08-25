@@ -41,9 +41,10 @@ Item {
     Text {
       id: magnify
       Layout.alignment: Qt.AlignVCenter
-      text: ""
+      text: "search"
       font {
         pixelSize: 14
+        family: "Material Symbols Rounded"
       }
       color: Colors.fg
     }
