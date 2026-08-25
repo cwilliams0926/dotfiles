@@ -16,27 +16,27 @@ Item {
   readonly property var actions: [
     {
       label: "Lock",
-      icon: "",
+      icon: "lock",
       command: ["hyprlock"]
     },
     {
       label: "Log Out",
-      icon: "󰍃",
+      icon: "logout",
       command: ["hyprctl", "dispatch", "exit"]
     },
     {
       label: "Suspend",
-      icon: "󰍷",
+      icon: "do_not_disturb_on",
       command: ["systemctl", "suspend"]
     },
     {
       label: "Reboot",
-      icon: "",
+      icon: "refresh",
       command: ["systemctl", "reboot"]
     },
     {
       label: "Power Off",
-      icon: "",
+      icon: "power_settings_new",
       command: ["systemctl", "poweroff"]
     }
   ]
@@ -62,6 +62,7 @@ Item {
             id: buttonIcon
             text: modelData.icon
             font.pixelSize: 14
+            font.family: "Material Symbols Rounded"
             color: mouseArea.containsMouse ? Colors.bg0 : Colors.fg
           }
           Text {
