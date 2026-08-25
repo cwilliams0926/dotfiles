@@ -5,7 +5,7 @@ import Quickshell.Wayland
 Scope {
   id: root
 
-  property int size: 24
+  property int size: 20
 
   component Corner: PanelWindow {
     required property bool isTop
