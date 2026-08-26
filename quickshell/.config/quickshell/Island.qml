@@ -7,7 +7,7 @@ import qs.singletons
 Rectangle {
   id: island
 
-  property string mode: "clock"
+  property string mode: "controlCenter"
   property bool hoverExpand: hover.hovered
   property bool audioReady: false
   property bool brightnessReady: false
