@@ -11,7 +11,7 @@ if hl.plugin.hyprglass then
 
 	hg.config({
 		default_theme = "dark",
-		default_preset = "glass",
+		default_preset = "apple",
 
 		light = { adaptive_boost = 0.5 },
 
