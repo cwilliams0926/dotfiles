@@ -6,13 +6,14 @@ import qs
 Item {
   id: root
   property bool collapsed: true
+  readonly property real bodyHeight: NotificationManager.history.length > 0 ? listView.contentHeight : placeholderText.implicitHeight + placeholderText.topPadding
 
-  implicitWidth: 320
-  implicitHeight: Math.min(400, headerRow.implicitHeight + listView.contentHeight + 24)
+  implicitWidth: 440
+  implicitHeight: Math.min(400, headerRow.implicitHeight + bodyHeight + 24)
 
   Column {
     anchors.fill: parent
-    anchors.margins: 12
+    anchors.margins: 16
     spacing: 8
 
     Item {
@@ -39,6 +40,10 @@ Item {
         TapHandler {
           onTapped: NotificationManager.clearHistory()
         }
+
+        HoverHandler {
+          cursorShape: Qt.PointingHandCursor
+        }
       }
     }
 
@@ -46,6 +51,7 @@ Item {
       id: listView
       width: parent.width
       height: contentHeight
+      visible: NotificationManager.history.length > 0
       model: NotificationManager.history
       spacing: 6
       interactive: false // TODO: reconsider once list can exceed visible height
@@ -84,6 +90,16 @@ Item {
           }
         }
       }
+    }
+    Text {
+      id: placeholderText
+      anchors.horizontalCenter: parent.horizontalCenter
+      visible: NotificationManager.history.length === 0
+      text: "No notifications"
+      color: Colors.grey2
+      font.pixelSize: 13
+      font.family: "SF Pro Display"
+      topPadding: 12
     }
   }
 }
