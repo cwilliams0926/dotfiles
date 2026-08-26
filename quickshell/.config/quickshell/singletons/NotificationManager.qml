@@ -9,6 +9,19 @@ Singleton {
 
   property var activeNotification: null
   property var queue: []
+  property var history: []
+
+  function addToHistory(notification) {
+    history = [...history, notification];
+  }
+
+  function removeFromHistory(notification) {
+    history = history.filter(n => n !== notification);
+  }
+
+  function clearHistory() {
+    history = [];
+  }
 
   NotificationServer {
     id: server
@@ -18,11 +31,14 @@ Singleton {
 
     onNotification: notification => {
       notification.tracked = true;
+      root.addToHistory(notification);
       notification.closed.connect(function () {
         if (notification === root.activeNotification) {
+          root.removeFromHistory(notification);
           root.showNext();
         } else {
           root.queue = root.queue.filter(n => n !== notification);
+          root.removeFromHistory(notification);
         }
       });
       if (root.activeNotification === null) {
