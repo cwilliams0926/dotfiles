@@ -1,4 +1,5 @@
 import QtQuick
+import Quickshell.Widgets
 import qs.singletons
 import qs.components
 import qs
@@ -6,7 +7,7 @@ import qs
 Item {
   id: root
   property bool collapsed: true
-  readonly property real bodyHeight: NotificationManager.history.length > 0 ? listView.contentHeight : placeholderText.implicitHeight + placeholderText.topPadding
+  readonly property real bodyHeight: NotificationManager.history.length > 0 ? listView.height : placeholderText.implicitHeight + placeholderText.topPadding
 
   implicitWidth: 440
   implicitHeight: Math.min(400, headerRow.implicitHeight + bodyHeight + 24)
@@ -50,19 +51,25 @@ Item {
     ListView {
       id: listView
       width: parent.width
-      height: contentHeight
+      height: Math.min(NotificationManager.history.length, 5) * itemHeight
       visible: NotificationManager.history.length > 0
       model: NotificationManager.history
       spacing: 6
-      interactive: false // TODO: reconsider once list can exceed visible height
+      interactive: true
+      clip: true
 
-      delegate: Item {
+      property real itemHeight: 40
+
+      delegate: ClippingRectangle {
         width: listView.width
-        height: 40
+        height: listView.itemHeight
+        color: Colors.bg0
+        radius: 12
 
         Row {
           anchors.verticalCenter: parent.verticalCenter
           anchors.left: parent.left
+          anchors.leftMargin: 12
           spacing: 8
 
           NotificationIcon {
