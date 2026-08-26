@@ -7,7 +7,7 @@ import qs.singletons
 Rectangle {
   id: island
 
-  property string mode: "controlCenter"
+  property string mode: "clock"
   property bool hoverExpand: hover.hovered
   property bool audioReady: false
   property bool brightnessReady: false
@@ -203,6 +203,14 @@ Rectangle {
 
     function refresh(): void {
       BrightnessManager.refresh();
+    }
+  }
+
+  IpcHandler {
+    target: "controlCenter"
+
+    function toggle(): void {
+      island.mode = island.mode === "controlCenter" ? "clock" : "controlCenter";
     }
   }
 

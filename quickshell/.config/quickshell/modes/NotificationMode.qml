@@ -10,7 +10,7 @@ Item {
   readonly property var notif: NotificationManager.activeNotification
   readonly property bool hasNotif: notif !== null
 
-  implicitWidth: 364
+  implicitWidth: 440
   implicitHeight: 72
   clip: true
 
