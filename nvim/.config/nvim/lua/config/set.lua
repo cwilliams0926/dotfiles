@@ -2,6 +2,8 @@ vim.opt.number = true
 vim.opt.cursorline = false
 vim.opt.relativenumber = true
 
+vim.opt.fillchars:append({ eob = " " })
+
 vim.opt.showmode = false
 
 vim.opt.tabstop = 2
