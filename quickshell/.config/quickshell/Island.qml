@@ -128,14 +128,14 @@ Rectangle {
   Behavior on implicitWidth {
     SpringAnimation {
       spring: 5.0
-      damping: 0.4
+      damping: 0.35
       mass: 0.7
     }
   }
   Behavior on implicitHeight {
     SpringAnimation {
       spring: 5.0
-      damping: 0.4
+      damping: 0.35
       mass: 0.7
     }
   }
