@@ -88,7 +88,7 @@ Item {
           clip: true
 
           border.width: 2
-          border.color: (cellRoot.GridView.isCurrentItem || mouseArea.containsMouse) ? Colors.fg : "transparent"
+          border.color: mouseArea.containsMouse ? Colors.aqua : "transparent"
 
           Image {
             anchors.fill: parent

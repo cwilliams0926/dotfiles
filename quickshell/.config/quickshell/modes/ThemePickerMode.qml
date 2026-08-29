@@ -1,4 +1,5 @@
 import QtQuick
+import QtQuick.Layouts
 import Quickshell
 import Quickshell.Widgets
 import qs
@@ -14,35 +15,51 @@ Item {
   readonly property var themes: [
     {
       name: "gruvbox-material",
-      swatch: ["#ea6962", "#d8a657", "#a9b665"]
+      swatch: ["#ea6962", "#a9b665", "#d8a657", "#7daea3", "#d3869b", "#89b482"],
+      background: "#141617",
+      foreground: "#d4be98"
     },
     {
       name: "catppuccin",
-      swatch: ["#89b4fa", "#cba6f7", "#f38ba8"]
+      swatch: ["#f38ba8", "#a6e3a1", "#f9e2af", "#89b4fa", "#cba6f7", "#89dceb"],
+      background: "#11111b",
+      foreground: "#cdd6f4"
     },
     {
       name: "everforest",
-      swatch: ["#a7c080", "#dbbc7f", "#e67e80"]
+      swatch: ["#e67e80", "#a7c080", "#dbbc7f", "#7fbbb3", "#d699b6", "#83c092"],
+      background: "#272e33",
+      foreground: "#d3c6aa"
     },
     {
       name: "gruvbox",
-      swatch: ["#fb4934", "#fabd2f", "#b8bb26"]
+      swatch: ["#fb4934", "#b8bb26", "#fabd2f", "#83a598", "#d3869b", "#8ec07c"],
+      background: "#141617",
+      foreground: "#ebdbb2"
     },
     {
       name: "rose-pine",
-      swatch: ["#eb6f92", "#9ccfd8", "#31748f"]
+      swatch: ["#eb6f92", "#9ccfd8", "#f6c177", "#31748f", "#c4a7e7", "#9ccfd8"],
+      background: "#191724",
+      foreground: "#e0def4"
     },
     {
       name: "e-ink",
-      swatch: ["#1a1a1a", "#555555", "#aaaaaa"]
+      swatch: ["#9a9a9a", "#7c7c7c", "#868686", "#686868", "#5e5e5e", "#727272"],
+      background: "#cccccc",
+      foreground: "#333333"
     },
     {
       name: "tokyonight",
-      swatch: ["#7aa2f7", "#bb9af7", "#f7768e"]
+      swatch: ["#ff757f", "#c3e88d", "#ffc777", "#82aaff", "#c099ff", "#86e1fc"],
+      background: "#1e2030",
+      foreground: "#c8d3f5"
     },
     {
       name: "kanagawa",
-      swatch: ["#7e9cd8", "#957fb8", "#c34043"]
+      swatch: ["#e82424", "#98bb6c", "#e6c384", "#7e9cd8", "#957fb8", "#6a9589"],
+      background: "#16161d",
+      foreground: "#dcd7ba"
     }
   ]
 
@@ -98,41 +115,67 @@ Item {
           clip: true
 
           border.width: 2
-          border.color: (cellRoot.GridView.isCurrentItem || mouseArea.containsMouse) ? Colors.fg : "transparent"
+          border.color: mouseArea.containsMouse ? Colors.aqua : "transparent"
 
-          Row {
+          color: modelData.background
+
+          ColumnLayout {
             anchors.fill: parent
-            spacing: 0
+            anchors.margins: 8
 
-            Rectangle {
-              width: parent.width / 3
-              height: parent.height
-              color: modelData.swatch[0]
+            Item {
+              Layout.fillHeight: true
             }
-            Rectangle {
-              width: parent.width / 3
-              height: parent.height
-              color: modelData.swatch[1]
-            }
-            Rectangle {
-              width: parent.width / 3
-              height: parent.height
-              color: modelData.swatch[2]
-            }
-          }
 
-          Rectangle {
-            anchors.centerIn: parent
-            width: nameText.implicitWidth + 16
-            height: nameText.implicitHeight + 8
-            radius: 6
-            color: Qt.rgba(0, 0, 0, 0.45)
+            RowLayout {
+              Layout.alignment: Qt.AlignHCenter
+              Rectangle {
+                width: 12
+                height: 12
+                radius: height / 2
+                color: modelData.swatch[0]
+              }
+              Rectangle {
+                width: 12
+                height: 12
+                radius: height / 2
+                color: modelData.swatch[1]
+              }
+              Rectangle {
+                width: 12
+                height: 12
+                radius: height / 2
+                color: modelData.swatch[2]
+              }
+              Rectangle {
+                width: 12
+                height: 12
+                radius: height / 2
+                color: modelData.swatch[3]
+              }
+              Rectangle {
+                width: 12
+                height: 12
+                radius: height / 2
+                color: modelData.swatch[4]
+              }
+              Rectangle {
+                width: 12
+                height: 12
+                radius: height / 2
+                color: modelData.swatch[5]
+              }
+            }
+
+            Item {
+              Layout.fillHeight: true
+            }
 
             Text {
               id: nameText
-              anchors.centerIn: parent
+              Layout.alignment: Qt.AlignBottom | Qt.AlignHCenter
               text: modelData.name
-              color: Colors.fg
+              color: modelData.foreground
               font {
                 pixelSize: 14
                 family: "SF Pro Display"
