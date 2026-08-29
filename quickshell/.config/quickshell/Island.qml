@@ -130,6 +130,7 @@ Rectangle {
       spring: 5.0
       damping: 0.35
       mass: 0.7
+      epsilon: 0.25
     }
   }
   Behavior on implicitHeight {
@@ -137,6 +138,7 @@ Rectangle {
       spring: 5.0
       damping: 0.35
       mass: 0.7
+      epsilon: 0.25
     }
   }
 
