@@ -49,4 +49,4 @@ Perform a system check to see how much space is being used by logs
 Remove logs based on time:
 `$ sudo journalctl --vacuum-time=7d`
 
-# Last Update 08-09-2026
+# Last Update 08-29-2026
