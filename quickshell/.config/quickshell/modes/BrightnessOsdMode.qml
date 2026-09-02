@@ -17,9 +17,10 @@ Item {
     anchors.rightMargin: 12
     spacing: 6
     Text {
-      text: "󰃞"
+      text: "brightness_7"
       color: Colors.yellow
-      font.pixelSize: 14
+      font.pixelSize: 16
+      font.family: "Material Symbols Rounded"
     }
     Rectangle {
       Layout.fillWidth: true

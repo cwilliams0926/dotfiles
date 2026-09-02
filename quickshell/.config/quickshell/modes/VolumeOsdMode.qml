@@ -17,9 +17,21 @@ Item {
     anchors.rightMargin: 12
     spacing: 6
     Text {
-      text: AudioManager.muted ? "" : ""
+      text: {
+        if (AudioManager.muted) {
+          return "volume_off";
+        }
+        if (AudioManager.volume <= 0.0) {
+          return "volume_off";
+        }
+        if (AudioManager.volume < 0.50) {
+          return "volume_down";
+        }
+        return "volume_up";
+      }
       color: AudioManager.muted ? Colors.fg : Colors.aqua
-      font.pixelSize: 14
+      font.pixelSize: 20
+      font.family: "Material Symbols Rounded"
     }
     Rectangle {
       Layout.fillWidth: true
