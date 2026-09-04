@@ -2,7 +2,7 @@
 
 hl.config({
 	general = {
-		border_size = 1,
+		border_size = 0,
 	},
 })
 
