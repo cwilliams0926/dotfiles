@@ -23,4 +23,4 @@ npm()  { nvm; npm  "$@"; }
 npx()  { nvm; npx  "$@"; }
 [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
 
-[[ ! -f /tmp/fastfetch_shown ]] && touch /tmp/fastfetch_shown && fastfetch
+[[ ! -f /tmp/nitch_shown ]] && touch /tmp/nitch_shown && nitch
