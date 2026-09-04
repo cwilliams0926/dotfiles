@@ -1,21 +1,10 @@
----@module 'hl'
-
-local monitors = require("modules.monitors")
-
-local input = require("modules.input")
-
-local programs = require("modules.programs")
-
-local generalDecorations = require("modules.decorations.general")
-
-local lookAndFeel = require("modules.decorations.current")
-
-local animations = require("modules.decorations.spring-animations")
-
-local binds = require("modules.binds")
-
-local windows = require("modules.windows")
-
-local autostart = require("modules.autostart")
-
-local hyprglass = require("modules.decorations.glass-current")
+require("modules.monitors")
+require("modules.input")
+require("modules.programs")
+require("modules.decorations.general")
+require("modules.decorations.current")
+require("modules.decorations.spring-animations")
+require("modules.binds")
+require("modules.windows")
+require("modules.autostart")
+require("modules.plugins")

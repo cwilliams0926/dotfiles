@@ -1,5 +1,3 @@
----@module 'hl'
-
 local colors = require("colors.colors")
 
 if hl.plugin.hyprglass then
@@ -71,4 +69,31 @@ if hl.plugin.hyprglass then
 		dark = { brightness = 0.82, contrast = 0.90, saturation = 0.80, vibrancy = 0.15, adaptive_dim = 0.4 },
 		light = { brightness = 1.12, contrast = 0.92, saturation = 0.85, vibrancy = 0.12, adaptive_boost = 0.4 },
 	})
+end
+
+if hl.plugin.scrolloverview then
+	hl.config({
+		plugin = {
+			scrolloverview = {
+				gesture_distance = 300, -- how far is the "max" for the gesture
+				scale = 0.7, -- preferred overview scale
+				workspace_gap = 30,
+				layout = "vertical", -- vertical or horizontal
+				wallpaper = 0, -- 0: global only, 1: per-workspace only, 2: both
+				blur = false, -- blur only the main overview wallpaper
+
+				shadow = {
+					enabled = false,
+					range = 50,
+					render_power = 3,
+					color = 0xee1a1a1a,
+				},
+			},
+		},
+	})
+
+	-- Toggle ScrollOverview with SUPER+g
+	hl.bind("SUPER + q", function()
+		hl.plugin.scrolloverview.overview("toggle all")
+	end)
 end
