@@ -15,7 +15,7 @@ Rectangle {
 
   anchors.horizontalCenter: parent.horizontalCenter
   anchors.top: parent.top
-  anchors.topMargin: 8
+  anchors.topMargin: 9
 
   color: ThemeManager.currentTheme === "e-ink" ? Colors.bg0 : "#000000"
   clip: true
