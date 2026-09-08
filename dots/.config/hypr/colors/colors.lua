@@ -1,1 +1,1 @@
-return require("colors.custom.everforest")
+return require("colors.custom.catppuccin")
