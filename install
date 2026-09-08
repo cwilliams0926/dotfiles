@@ -90,4 +90,7 @@ fi
 command -v qs >/dev/null || echo "Warning: quickshell (qs) not found on PATH"
 fc-cache -f
 
+~/.config/scripts/set-theme catppuccin
+
 echo "Install complete."
+

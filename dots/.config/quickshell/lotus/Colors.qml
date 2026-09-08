@@ -7,7 +7,7 @@ Singleton {
   FileView {
     id: colorsFile
 
-    path: Quickshell.env("HOME") + "/.config/quickshell/colors.json"
+    path: Quickshell.env("HOME") + "/.config/quickshell/lotus/colors.json"
     watchChanges: true
     onFileChanged: reload()
 

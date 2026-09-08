@@ -13,15 +13,9 @@ fi
 # ---- paths - adjust these if your dotfiles live somewhere else ----
 CENTRAL_STATE="$HOME/.config/current-theme"
 HYPR_COLORS="$HOME/.config/hypr/colors/colors.lua"
-QUICKSHELL_COLORS="$HOME/.config/quickshell/colors.json"
+QUICKSHELL_COLORS="$HOME/.config/quickshell/lotus/colors.json"
 KITTY_COLORS="$HOME/.config/kitty/colors/colors.conf"
-ROFI_COLORS="$HOME/.config/rofi/colors/colors.rasi"
-WLOGOUT_COLORS="$HOME/.config/wlogout/colors/colors.css"
-WAYBAR_COLORS="$HOME/.config/waybar/colors/colors.css"
 HYPRLOCK_COLORS="$HOME/.config/hypr/colors/colors-lock.conf"
-TMUX_COLORS_PRE="$HOME/.config/tmux/colors/pre-plugin.conf"
-TMUX_COLORS_POST="$HOME/.config/tmux/colors/post-plugin.conf"
-SWAYNC_COLORS="$HOME/.config/swaync/colors/colors.css"
 HYPRLOCK_WALLPAPER="$HOME/.config/hypr/colors/wallpaper.conf"
 WALLPAPER_ROOT="$HOME/.config/wallpapers"
 
@@ -60,7 +54,7 @@ VSCODIUM_SETTINGS="$HOME/.config/VSCodium/User/settings.json"
 echo "$theme" > "$CENTRAL_STATE"
 
 # 1a. Quickshell
-cp "$HOME/.config/quickshell/colors/custom/$theme.json" "$QUICKSHELL_COLORS"
+cp "$HOME/.config/quickshell/lotus/colors/custom/$theme.json" "$QUICKSHELL_COLORS"
 
 # 2. Hyprland - colors.lua just requires the matching palette module.
 echo "return require(\"colors.custom.$theme\")" > "$HYPR_COLORS"
@@ -69,32 +63,9 @@ echo "return require(\"colors.custom.$theme\")" > "$HYPR_COLORS"
 #    Path is relative to colors.conf itself (custom/<theme>.conf).
 echo "include custom/$theme.conf" > "$KITTY_COLORS"
 
-# 4. Rofi - colors.rasi imports the palette, then the shared widget rules.
-#    Order matters: variables must be defined before common.rasi uses them.
-{
-    echo "@import \"custom/$theme.rasi\""
-    echo "@import \"common.rasi\""
-} > "$ROFI_COLORS"
-
-# 5. wlogout - same @import pattern as rofi, GTK CSS flavor.
-echo "@import url(\"custom/$theme.css\");" > "$WLOGOUT_COLORS"
-
-# 6. Waybar - same GTK CSS @import pattern.
-echo "@import url(\"custom/$theme.css\");" > "$WAYBAR_COLORS"
-
 # 6b. Hyprlock - hyprlang source directive, same idea, different syntax.
 #     Expects a matching custom/<theme>-lock.conf file to exist.
 echo "source = custom/$theme-lock.conf" > "$HYPRLOCK_COLORS"
-
-# 6c. Tmux - two source-file pointers: one runs before the catppuccin
-#     plugin loads (sets flavor), one runs after (overrides @thm_* colors
-#     for non-catppuccin themes). Both target files must exist for every
-#     theme, even if empty - source-file errors on a missing file.
-echo "source-file $HOME/.config/tmux/colors/custom/$theme-pre.conf" > "$TMUX_COLORS_PRE"
-echo "source-file $HOME/.config/tmux/colors/custom/$theme-post.conf" > "$TMUX_COLORS_POST"
-
-# 6e. Swaync - same GTK CSS @import pattern as wlogout/waybar.
-echo "@import url(\"custom/$theme.css\");" > "$SWAYNC_COLORS"
 
 # 6d. GTK - no palette file, just an installed theme NAME. Look up the
 #     mapped name for this theme, falling back to a neutral default if
@@ -149,19 +120,6 @@ pkill -SIGUSR1 kitty 2>/dev/null || true
 
 pkill -SIGUSR1 nvim || true
 
-pkill -SIGUSR2 waybar 2>/dev/null || true
-
-if tmux info &>/dev/null; then
-    tmux source-file "$HOME/.config/tmux/tmux.conf"
-fi
-
-#    Swaync's client hangs waiting for a connection if the daemon isn't
-#    running, so guard with a process check before calling it.
-if pgrep -x swaync >/dev/null; then
-    swaync-client --reload-css
-fi
-
-#    Rofi and wlogout read their config fresh each launch - nothing to do.
 #    Neovim reads current-theme on next startup - nothing to do for
 #    already-open instances.
 
