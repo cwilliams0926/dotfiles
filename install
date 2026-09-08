@@ -1,0 +1,96 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+DOTS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/dots" && pwd)"
+
+#####################################################################
+# 1. Symlink everything under dots/.config/* into ~/.config/*
+#####################################################################
+mkdir -p "$HOME/.config"
+for item in "$DOTS_DIR/.config/"*; do
+  name="$(basename "$item")"
+  dest="$HOME/.config/$name"
+  if [ -e "$dest" ] && [ ! -L "$dest" ]; then
+    mv "$dest" "$dest.bak.$(date +%s)"
+    echo "Backed up existing $dest"
+  fi
+  ln -sfn "$item" "$dest"
+  echo "Linked $dest -> $item"
+done
+
+# dots/.zshenv lives outside .config, handle separately
+ln -sfn "$DOTS_DIR/.zshenv" "$HOME/.zshenv"
+echo "Linked $HOME/.zshenv -> $DOTS_DIR/.zshenv"
+
+#####################################################################
+# 2. First-run generated state (things scripts write, not source)
+#####################################################################
+COLORS_JSON="$DOTS_DIR/.config/quickshell/lotus/colors.json"
+COLORS_DEFAULT="$DOTS_DIR/.config/quickshell/lotus/colors.default.json"
+if [ ! -f "$COLORS_JSON" ] && [ -f "$COLORS_DEFAULT" ]; then
+  cp "$COLORS_DEFAULT" "$COLORS_JSON"
+  echo "Seeded colors.json from default"
+fi
+
+#####################################################################
+# 3. Zsh plugins — clone only if missing, treat as vendored
+#####################################################################
+PLUGINS_DIR="$DOTS_DIR/.config/zsh/plugins"
+mkdir -p "$PLUGINS_DIR"
+
+declare -A ZSH_PLUGINS=(
+  [zsh-autosuggestions]="https://github.com/zsh-users/zsh-autosuggestions"
+  [zsh-completions]="https://github.com/zsh-users/zsh-completions"
+  [fzf-tab]="https://github.com/Aloxaf/fzf-tab"
+  [zsh-syntax-highlighting]="https://github.com/zsh-users/zsh-syntax-highlighting"
+)
+
+for name in "${!ZSH_PLUGINS[@]}"; do
+  target="$PLUGINS_DIR/$name"
+  if [ -d "$target" ]; then
+    echo "Plugin $name already present, skipping"
+  else
+    git clone --depth=1 "${ZSH_PLUGINS[$name]}" "$target"
+  fi
+done
+
+#####################################################################
+# 4. Systemd user services/timers
+#####################################################################
+SYSTEMD_USER_DIR="$HOME/.config/systemd/user"
+if [ -d "$SYSTEMD_USER_DIR" ]; then
+  systemctl --user daemon-reload
+
+  # Timers: enable the timer, not the service it triggers
+  for timer in "$SYSTEMD_USER_DIR"/*.timer; do
+    [ -e "$timer" ] || continue
+    unit="$(basename "$timer")"
+    systemctl --user enable --now "$unit"
+    echo "Enabled timer $unit"
+  done
+
+  # Services with no matching timer: enable directly (assumed long-running)
+  for service in "$SYSTEMD_USER_DIR"/*.service; do
+    [ -e "$service" ] || continue
+    unit="$(basename "$service")"
+    base="${unit%.service}"
+    if [ -e "$SYSTEMD_USER_DIR/$base.timer" ]; then
+      continue
+    fi
+    systemctl --user enable --now "$unit"
+    echo "Enabled service $unit"
+  done
+
+  loginctl enable-linger "$USER"
+fi
+
+#####################################################################
+# 5. Sanity checks
+#####################################################################
+command -v qs >/dev/null || echo "Warning: quickshell (qs) not found on PATH"
+fc-cache -f
+
+~/.config/scripts/set-theme catppuccin
+
+echo "Install complete."
+

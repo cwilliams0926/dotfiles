@@ -1,11 +1,20 @@
-zsh/.config/zsh/.zcompdump
-zsh/.config/zsh/.zhistory
-zsh/.config/zsh/plugins/
+dots/.config/zsh/.zcompdump
 
 *.log
 tmux-*.log
 
-hypr/.config/hypr/modules/decorations/current.lua
-hypr/.config/hypr/modules/decorations/glass-current.lua
+dots/.config/hypr/modules/decorations/current.lua
+dots/.config/hypr/modules/decorations/glass-current.lua
 
-colorschemes/.config/current-theme
+**/.qmlls.ini
+
+dots/.config/zsh/plugins/
+**/current-theme
+**/colors.json
+**/.qmlls.ini
+dots/.config/hypr/colors/colors-lock.conf
+dots/.config/hypr/colors/colors.lua
+dots/.config/hypr/colors/wallpaper.conf
+dots/.config/kitty/colors/colors.conf
+dots/.config/quickshell/lotus/colors.json
+dots/.config/zsh/.zhistory
