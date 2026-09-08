@@ -1,5 +1,4 @@
 dots/.config/zsh/.zcompdump
-dots/.config/zsh/.zhistory
 
 *.log
 tmux-*.log
