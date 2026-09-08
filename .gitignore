@@ -13,3 +13,9 @@ dots/.config/zsh/plugins/
 **/current-theme
 **/colors.json
 **/.qmlls.ini
+dots/.config/hypr/colors/colors-lock.conf
+dots/.config/hypr/colors/colors.lua
+dots/.config/hypr/colors/wallpaper.conf
+dots/.config/kitty/colors/colors.conf
+dots/.config/quickshell/lotus/colors.json
+dots/.config/zsh/.zhistory
