@@ -9,3 +9,5 @@ hypr/.config/hypr/modules/decorations/current.lua
 hypr/.config/hypr/modules/decorations/glass-current.lua
 
 colorschemes/.config/current-theme
+
+**/.qmlls.ini

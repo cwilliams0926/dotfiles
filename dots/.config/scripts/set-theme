@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Usage: set-theme.sh <theme-name>
-# e.g.:  set-theme.sh catppuccin
+# Usage: set-theme <theme-name>
+# e.g.:  set-theme catppuccin
 
 set -euo pipefail
 
