@@ -4,7 +4,7 @@ local colors = require("colors.colors")
 
 -- Open apps
 hl.bind("SUPER + return", hl.dsp.exec_cmd("kitty"))
-hl.bind("SUPER + e", hl.dsp.exec_cmd("nautilus"))
+hl.bind("SUPER + e", hl.dsp.exec_cmd("thunar"))
 hl.bind("SUPER + w", hl.dsp.exec_cmd("qs -c lotus ipc call powerMenu toggle"))
 hl.bind("SUPER + space", hl.dsp.exec_cmd("qs -c lotus ipc call launcher toggle"))
 hl.bind("SUPER + SHIFT + w", hl.dsp.exec_cmd("qs -c lotus ipc call wallpaperPicker toggle"))

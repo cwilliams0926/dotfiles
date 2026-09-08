@@ -1,1 +1,1 @@
-return require("colors.custom.catppuccin")
+return require("colors.custom.gruvbox-material")
