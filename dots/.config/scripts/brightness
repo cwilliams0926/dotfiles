@@ -4,4 +4,4 @@ max=$(brightnessctl max)
 min=$((max * 5 / 100))
 
 brightnessctl --min-value="$min" set "$1"
-qs ipc call brightness refresh
+qs -c lotus ipc call brightness refresh

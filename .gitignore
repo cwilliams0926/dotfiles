@@ -18,3 +18,5 @@ dots/.config/hypr/colors/wallpaper.conf
 dots/.config/kitty/colors/colors.conf
 dots/.config/quickshell/lotus/colors.json
 dots/.config/zsh/.zhistory
+
+dots/.config/hypr/scheme/
