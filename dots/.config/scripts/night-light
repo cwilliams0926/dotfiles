@@ -2,8 +2,8 @@
 
 if pgrep -x wlsunset >/dev/null; then
     pkill -x wlsunset
-    qs ipc call nightLight off
+    qs -c lotus ipc call nightLight off
 else
     wlsunset -T 4001 &
-    qs ipc call nightLight on
+    qs -c lotus ipc call nightLight on
 fi
