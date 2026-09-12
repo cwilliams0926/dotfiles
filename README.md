@@ -5,24 +5,14 @@ other dotfiles I've seen however everything is custom.
 
 ## Requirements
 
-- Goes without saying, but GNU Stow is required, along
-  with the applications being configured
-- Obviously, there is no configured display manager, you have to
-  handle that yourself
-- There are a few manual changes that you cannot do by running Stow
-  on directories, these
-  changes can be found in manual-changes.md
+Check deps-info.md.
 
 ## Installation
 
-Meant to be installed using GNU Stow (the directories are designed this way)
-however you could easily copy any individual configuration directory here and
-place it on your machine.
+Installation can be done using the install script. It's still a work in progress. There are a few
+things such as installing some dependencies that need to be done manually currently. I'm still working
+on laying them all out.
 
 ## Usage
 
-Neovim keybinds are found in nvim-README.md. Hyprland keybinds are found in hypr/.config/hypr/modules/binds.
-
-## TO-DO
-
-- Learn quickshell
+Neovim keybinds are found in nvim-README.md. Hyprland keybinds are found in dots/.config/hypr/modules/binds.
