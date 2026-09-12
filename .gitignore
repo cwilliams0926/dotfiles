@@ -6,6 +6,8 @@ tmux-*.log
 dots/.config/hypr/modules/decorations/current.lua
 dots/.config/hypr/modules/decorations/glass-current.lua
 
+dots/.config/tmux/plugins/
+
 **/.qmlls.ini
 
 dots/.config/zsh/plugins/
