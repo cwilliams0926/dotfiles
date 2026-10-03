@@ -10,7 +10,7 @@ hl.config({
 		["col.inactive_border"] = colors.bg2,
 		resize_on_border = false,
 		allow_tearing = false,
-		layout = "scrolling",
+		layout = "dwindle",
 	},
 })
 
