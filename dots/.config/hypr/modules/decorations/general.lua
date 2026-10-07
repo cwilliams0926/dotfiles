@@ -18,6 +18,15 @@ hl.config({
 	decoration = {
 		active_opacity = 1.0,
 		inactive_opacity = 1.0,
+
+		glow = {
+			enabled = true,
+			range = 35,
+			render_power = 3,
+			color = { colors = { colors.bg3, colors.bg2 }, angle = 45 },
+			color_inactive = "rgba(00000000)",
+		},
+
 		shadow = {
 			enabled = true,
 			range = 28,
