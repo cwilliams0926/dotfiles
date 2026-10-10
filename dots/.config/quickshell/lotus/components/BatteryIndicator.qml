@@ -11,16 +11,6 @@ Item {
   readonly property real pct: UPower.displayDevice.percentage * 100
   readonly property bool charging: UPower.displayDevice.state === UPowerDeviceState.Charging
 
-  readonly property string fillColor: {
-    if (charging)
-      return Colors.aqua;
-    if (pct <= 15)
-      return Colors.red;
-    if (pct <= 30)
-      return Colors.orange;
-    return Colors.aqua;
-  }
-
   // Battery itself
   Rectangle {
     id: body
@@ -41,21 +31,13 @@ Item {
       height: parent.height - 6
       width: (parent.width - 6) * (root.pct / 100)
       radius: 1
-      color: root.fillColor
+      color: Colors.aqua
 
       Behavior on width {
         NumberAnimation {
           duration: 400
         }
       }
-    }
-
-    Text {
-      anchors.centerIn: parent
-      text: Math.round(root.pct)
-      color: root.pct < 40 ? Colors.grey0 : Colors.bg0
-      font.pixelSize: 9
-      font.weight: 700
     }
   }
 
