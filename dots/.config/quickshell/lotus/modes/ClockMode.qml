@@ -1,4 +1,5 @@
 import QtQuick
+import QtQuick.Layouts
 import Quickshell
 import qs.components
 import qs
@@ -8,7 +9,7 @@ Item {
 
   property bool collapsed: true
 
-  implicitWidth: collapsed ? 150 : 572
+  implicitWidth: collapsed ? 232 : 572
   implicitHeight: collapsed ? 34 : 84
 
   SystemClock {
@@ -16,9 +17,9 @@ Item {
     precision: SystemClock.Minutes
   }
 
-  Row {
+  RowLayout {
     anchors.centerIn: parent
-    spacing: 6
+    spacing: 28
     opacity: root.collapsed ? 1 : 0
     Behavior on opacity {
       NumberAnimation {
@@ -26,18 +27,48 @@ Item {
       }
     }
 
-    EqualizerIcon {
-      anchors.verticalCenter: clockText.verticalCenter
+    Workspaces {
+      Layout.alignment: Qt.AlignVCenter
     }
-    Text {
-      id: clockText
-      text: Qt.formatDateTime(clock.date, "hh:mm")
-      color: Colors.fg
-      font {
-        pixelSize: 15
-        weight: 700
-        family: "SF Mono"
-        letterSpacing: -1
+
+    RowLayout {
+      spacing: 4
+      Layout.alignment: Qt.AlignVCenter
+
+      Text {
+        id: clockText
+        text: Qt.formatDateTime(clock.date, "hh:mm")
+        color: Colors.fg
+        font {
+          pixelSize: 15
+          weight: 700
+          family: "SF Mono"
+          letterSpacing: -1
+        }
+      }
+    }
+
+    RowLayout {
+      spacing: 4
+      Layout.alignment: Qt.AlignVCenter
+
+      Item {
+        Layout.preferredWidth: net.implicitWidth * 0.7
+        Layout.preferredHeight: net.implicitHeight * 0.7
+        NetworkIndicator {
+          id: net
+          scale: 0.7
+          transformOrigin: Item.TopLeft
+        }
+      }
+      Item {
+        Layout.preferredWidth: battery.implicitWidth * 0.7
+        Layout.preferredHeight: battery.implicitHeight * 0.7
+        BatteryIndicator {
+          id: battery
+          scale: 0.7
+          transformOrigin: Item.TopLeft
+        }
       }
     }
   }
@@ -89,8 +120,8 @@ Item {
         anchors.centerIn: parent
         spacing: 14
 
-        BatteryIndicator {}
         NetworkIndicator {}
+        BatteryIndicator {}
       }
     }
   }
