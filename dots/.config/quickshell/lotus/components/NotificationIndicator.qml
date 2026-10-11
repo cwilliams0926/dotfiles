@@ -6,7 +6,7 @@ import qs.singletons
 RowLayout {
   id: root
   spacing: 6
-  readonly property int count: NotificationManager.count
+  readonly property int count: NotificationManager.history.length
 
   Text {
     Layout.alignment: Qt.AlignVCenter
