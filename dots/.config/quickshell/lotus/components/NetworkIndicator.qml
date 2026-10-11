@@ -53,7 +53,7 @@ Item {
           width: parent.width
           height: root.minHeight + (root.maxHeight - root.minHeight) * index / (root.barCount - 1)
           radius: width / 2
-          color: index < root.bars ? Colors.aqua : Colors.grey0
+          color: index < root.bars ? Colors.aqua : Colors.bg4
 
           Behavior on color {
             ColorAnimation {

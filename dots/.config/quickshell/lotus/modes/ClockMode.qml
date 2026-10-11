@@ -52,15 +52,13 @@ Item {
       spacing: 4
       Layout.alignment: Qt.AlignVCenter
 
-      Item {
-        Layout.preferredWidth: net.implicitWidth * 0.7
-        Layout.preferredHeight: net.implicitHeight * 0.7
-        NetworkIndicator {
-          id: net
-          scale: 0.7
-          transformOrigin: Item.TopLeft
-        }
+      NetworkIndicator {
+        maxHeight: 10
+        minHeight: 3
+        barWidth: 2.5
+        barSpacing: 1.5
       }
+
       Item {
         Layout.preferredWidth: battery.implicitWidth * 0.7
         Layout.preferredHeight: battery.implicitHeight * 0.7
@@ -102,15 +100,9 @@ Item {
           duration: 200
         }
       }
-      HoverHandler {
-        id: hover
-        cursorShape: Qt.PointingHandCursor
-      }
 
       color: Colors.bg0
       radius: height / 3
-      border.width: hover.hovered ? 1 : 0
-      border.color: hover.hovered ? Colors.aqua : Colors.bg0
 
       implicitWidth: statusRow.implicitWidth + 32
       implicitHeight: statusRow.implicitHeight + 20
@@ -118,7 +110,7 @@ Item {
       Row {
         id: statusRow
         anchors.centerIn: parent
-        spacing: 14
+        spacing: 10
 
         NetworkIndicator {}
         BatteryIndicator {}
