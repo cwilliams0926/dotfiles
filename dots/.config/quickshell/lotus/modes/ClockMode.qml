@@ -10,7 +10,7 @@ Item {
   property bool collapsed: true
 
   implicitWidth: collapsed ? 232 : 572
-  implicitHeight: collapsed ? 34 : 84
+  implicitHeight: collapsed ? 34 : 64
 
   SystemClock {
     id: clock
@@ -42,8 +42,7 @@ Item {
         font {
           pixelSize: 15
           weight: 700
-          family: "SF Mono"
-          letterSpacing: -1
+          family: "SF Pro Display"
         }
       }
     }
@@ -76,40 +75,41 @@ Item {
     implicitWidth: 572
     implicitHeight: 84
 
-    // Left: Now Playing
-    NowPlayingCard {
+    // Left: Workspaces and App
+    Column {
       anchors.left: parent.left
       anchors.verticalCenter: parent.verticalCenter
-      anchors.leftMargin: 20
+      anchors.leftMargin: 28
       opacity: root.collapsed ? 0 : 1
+      spacing: 6
       Behavior on opacity {
         NumberAnimation {
           duration: 200
         }
       }
+      ActiveApp {}
+      Workspaces {}
     }
 
     // Right: Battery and Network
-    Rectangle {
+    Column {
       anchors.right: parent.right
       anchors.verticalCenter: parent.verticalCenter
-      anchors.rightMargin: 20
+      anchors.rightMargin: 28
       opacity: root.collapsed ? 0 : 1
+      spacing: 6
       Behavior on opacity {
         NumberAnimation {
           duration: 200
         }
       }
 
-      color: Colors.bg0
-      radius: height / 3
-
-      implicitWidth: statusRow.implicitWidth + 32
-      implicitHeight: statusRow.implicitHeight + 20
-
+      NotificationIndicator {
+        anchors.right: parent.right
+      }
       Row {
         id: statusRow
-        anchors.centerIn: parent
+        anchors.right: parent.right
         spacing: 10
 
         NetworkIndicator {}
@@ -119,9 +119,9 @@ Item {
   }
 
   // Middle: Clock
-  Column {
+  Row {
     anchors.centerIn: parent
-    spacing: 2
+    spacing: 6
     opacity: root.collapsed ? 0 : 1
     Behavior on opacity {
       NumberAnimation {
@@ -132,20 +132,19 @@ Item {
     }
 
     Text {
-      anchors.horizontalCenter: parent.horizontalCenter
+      anchors.verticalCenter: parent.verticalCenter
       text: Qt.formatDateTime(clock.date, "hh:mm")
       color: Colors.fg
       font {
-        pixelSize: 26
+        pixelSize: 24
         weight: 700
-        family: "SF Mono"
-        letterSpacing: -1
+        family: "SF Pro Display"
       }
     }
 
     Text {
-      anchors.horizontalCenter: parent.horizontalCenter
-      text: Qt.formatDateTime(clock.date, "dddd, MMMM d")
+      anchors.verticalCenter: parent.verticalCenter
+      text: Qt.formatDateTime(clock.date, "ddd, MMM d")
       color: Colors.grey2
       font.pixelSize: 13
       font.family: "SF Pro Display"

@@ -14,6 +14,8 @@ hl.env("XCURSOR_THEME", "macOS")
 hl.env("XCURSOR_SIZE", "24")
 hl.env("GTK_THEME", "Graphite-Dark")
 
+hl.env("QS_ICON_THEME", "Papirus-Dark")
+
 hl.env("HYPRSHOT_DIR", "/home/cwilliams0926/Pictures/Screenshots/")
 
 hl.permission("/usr/(bin|local/bin)/hyprpm", "plugin", "allow")

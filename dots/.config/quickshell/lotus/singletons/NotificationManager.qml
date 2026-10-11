@@ -10,6 +10,7 @@ Singleton {
   property var activeNotification: null
   property var queue: []
   property var history: []
+  readonly property int count: server.trackedNotifications.values.length
 
   function addToHistory(notification) {
     history = [...history, notification];
