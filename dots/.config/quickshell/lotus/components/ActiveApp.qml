@@ -15,13 +15,19 @@ RowLayout {
   readonly property string appId: toplevel?.appId ?? ""
   readonly property var entry: appId !== "" ? DesktopEntries.heuristicLookup(appId) : null
   readonly property string appName: entry?.name ?? (appId || "Desktop")
-
   spacing: 6
 
-  IconImage {
+  Image {
     Layout.alignment: Qt.AlignVCenter
-    implicitSize: root.iconSize
+    Layout.preferredWidth: root.iconSize
+    Layout.preferredHeight: root.iconSize
+
+    sourceSize: Qt.size(32, 32)
     source: Quickshell.iconPath(root.entry?.icon ?? root.appId, "application-x-executable")
+    fillMode: Image.PreserveAspectFit
+    smooth: true
+    mipmap: true
+    asynchronous: true
   }
 
   Text {
