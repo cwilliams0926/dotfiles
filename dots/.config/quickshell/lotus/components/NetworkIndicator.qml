@@ -5,20 +5,29 @@ import qs
 
 Item {
   id: root
-  implicitWidth: 24
-  implicitHeight: 18
 
   property string connectionType: ""
   property int wifiSignal: 0
 
-  // 0 = offline, 1-3 = wifi signal tiers, 4 = wired (always full)
-  readonly property int tier: {
+  property int barCount: 4
+  property real barWidth: 3
+  property real barSpacing: 2
+  property real maxHeight: 14
+  property real minHeight: 4
+
+  implicitWidth: barCount * barWidth + (barCount - 1) * barSpacing
+  implicitHeight: maxHeight
+
+  // 0 = offline, 1-4 = filled bars (ethernet is always full)
+  readonly property int bars: {
     if (connectionType === "ethernet")
       return 4;
     if (connectionType === "wifi") {
       if (wifiSignal >= 75)
+        return 4;
+      if (wifiSignal >= 50)
         return 3;
-      if (wifiSignal >= 40)
+      if (wifiSignal >= 25)
         return 2;
       if (wifiSignal > 0)
         return 1;
@@ -26,51 +35,33 @@ Item {
     return 0;
   }
 
-  // Canvas only redraws when needed to
-  onTierChanged: canvas.requestPaint()
-  Component.onCompleted: canvas.requestPaint()
-  Connections {
-    target: Colors
-    function onGreenChanged() {
-      canvas.requestPaint();
-    }
-    function onGrey0Changed() {
-      canvas.requestPaint();
-    }
-  }
+  Row {
+    spacing: root.barSpacing
 
-  Canvas {
-    id: canvas
-    anchors.fill: parent
+    Repeater {
+      model: root.barCount
 
-    onPaint: {
-      const ctx = getContext("2d");
-      ctx.reset();
-      ctx.lineCap = "round";
+      // Fixed-height wrapper: Row positions this, the bar anchors to its bottom
+      delegate: Item {
+        required property int index
 
-      const cx = width / 2;
-      const cy = height - 3;
-      const radii = [5, 9, 13];
+        width: root.barWidth
+        height: root.maxHeight
 
-      for (let i = 0; i < radii.length; i++) {
-        const barTier = i + 1;
-        const active = root.tier === 4 || root.tier >= barTier;
+        Rectangle {
+          anchors.bottom: parent.bottom
+          width: parent.width
+          height: root.minHeight + (root.maxHeight - root.minHeight) * index / (root.barCount - 1)
+          radius: width / 2
+          color: index < root.bars ? Colors.aqua : Colors.grey0
 
-        ctx.beginPath();
-        // Upper arc of a circle: -135deg to -45deg, i.e. the "fan"
-        // shape a wifi icon uses, opening upward.
-        ctx.arc(cx, cy, radii[i], -Math.PI * 0.75, -Math.PI * 0.25);
-        ctx.lineWidth = 2;
-        ctx.strokeStyle = active ? Colors.aqua : Colors.grey0;
-        ctx.stroke();
+          Behavior on color {
+            ColorAnimation {
+              duration: 150
+            }
+          }
+        }
       }
-
-      // Base dot — always drawn, colored the same as an active bar
-      // when there's any connection at all, grey when fully offline.
-      ctx.beginPath();
-      ctx.arc(cx, cy, 1.5, 0, Math.PI * 2);
-      ctx.fillStyle = root.tier > 0 ? Colors.aqua : Colors.grey0;
-      ctx.fill();
     }
   }
 

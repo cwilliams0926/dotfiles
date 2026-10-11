@@ -9,7 +9,7 @@ Row {
   // Tweak these to taste
   property int count: 5
   property real dotWidth: 8
-  property real idleHeight: 10
+  property real idleHeight: 14
   property real activeHeight: 18
   property real dotRadius: 3
   property color idleColor: Colors.bg0
