@@ -24,7 +24,7 @@ function M.build()
 			lualine_b = { "filename", "branch", "diff" },
 			lualine_c = { "%=" },
 			lualine_x = {},
-			lualine_y = { "filetype", "progress" },
+			lualine_y = { "filetype" },
 			lualine_z = { { "location", separator = { right = "" }, left_padding = 2 } },
 		},
 		inactive_sections = {
