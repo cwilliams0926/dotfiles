@@ -58,7 +58,7 @@ Item {
       interactive: true
       clip: true
 
-      property real itemHeight: 40
+      property real itemHeight: 52
 
       delegate: ClippingRectangle {
         width: listView.width
