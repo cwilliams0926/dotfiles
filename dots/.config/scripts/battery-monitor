@@ -28,12 +28,10 @@ send_low_battery_notification() {
         local prev_id
         prev_id=$(cat "$NOTIF_ID_FILE")
         notify-send -u critical -p -r "$prev_id" \
-            -i "/home/cwilliams0926/.config/swaync/icons/low_battery.svg" \
             "Low Battery" "Battery at ${capacity}%" \
             > "$NOTIF_ID_FILE"
     else
         notify-send -u critical -p \
-            -i "/home/cwilliams0926/.config/swaync/icons/low_battery.svg" \
             "Low Battery" "Battery at ${capacity}%" \
             > "$NOTIF_ID_FILE"
     fi
@@ -44,11 +42,11 @@ send_charging_notification() {
     if [ -f "$NOTIF_ID_FILE" ]; then
         local prev_id
         prev_id=$(cat "$NOTIF_ID_FILE")
-        notify-send -r "$prev_id" -i "/home/cwilliams0926/.config/swaync/icons/battery-charging.svg" \
+        notify-send -r "$prev_id" \
             "Charging" "Battery is now charging (${capacity}%)"
         rm -f "$NOTIF_ID_FILE"
     else
-        notify-send -i "/home/cwilliams0926/.config/swaync/icons/battery-charging.svg" \
+        notify-send \
             "Charging" "Battery is now charging (${capacity}%)"
     fi
 }
