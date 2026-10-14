@@ -111,6 +111,7 @@ hl.bind("SUPER + F1", function()
 			shadow = { enabled = false },
 			blur = { enabled = false },
 			rounding = 0,
+			glow = { enabled = false },
 		},
 	})
 end)
