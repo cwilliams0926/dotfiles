@@ -98,7 +98,7 @@ hl.bind("SUPER + F1", function()
 	hl.config({
 		general = {
 			border_size = 2,
-			["col.active_border"] = colors.purple,
+			["col.active_border"] = colors.aqua,
 			["col.inactive_border"] = colors.bg2,
 		},
 

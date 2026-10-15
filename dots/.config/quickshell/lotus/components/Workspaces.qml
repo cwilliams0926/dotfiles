@@ -14,6 +14,17 @@ Row {
   property real dotRadius: 3
   property color idleColor: Colors.bg0
   property color activeColor: Colors.aqua
+  property color occupiedColor: Qt.alpha(Colors.aqua, 0.45)  // between idle and active
+
+  // { "1": true, "3": true, ... } for workspaces that have windows
+  readonly property var occupiedIds: {
+    const map = {};
+    for (const ws of Hyprland.workspaces.values) {
+      if (ws.toplevels.values.length > 0)
+        map[ws.id] = true;
+    }
+    return map;
+  }
 
   readonly property int currentId: Hyprland.focusedWorkspace?.id ?? 1
 
@@ -27,6 +38,7 @@ Row {
       id: slot
       required property int index
       readonly property bool active: root.currentId === index + 1
+      readonly property bool occupied: root.occupiedIds[index + 1] === true
 
       width: root.dotWidth
       height: root.activeHeight
@@ -37,8 +49,8 @@ Row {
         width: root.dotWidth
         height: slot.active ? root.activeHeight : root.idleHeight
         radius: root.dotRadius
-        color: slot.active ? root.activeColor : root.idleColor
-        visible: false   // MultiEffect draws it (plus the glow)
+        color: slot.active ? root.activeColor : slot.occupied ? root.occupiedColor : root.idleColor
+        visible: false
 
         Behavior on height {
           NumberAnimation {
